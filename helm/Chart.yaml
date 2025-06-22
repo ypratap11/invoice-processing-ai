@@ -1,0 +1,35 @@
+# Helm Chart for Invoice Processing AI
+apiVersion: v2
+name: invoice-processing-ai
+description: A Helm chart for Invoice Processing AI application with FastAPI backend and Streamlit frontend
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+home: https://github.com/ypratap11/invoice-processing-ai
+sources:
+  - https://github.com/ypratap11/invoice-processing-ai
+maintainers:
+  - name: ypratap11
+    email: your.email@example.com
+keywords:
+  - ai
+  - machine-learning
+  - invoice-processing
+  - document-ai
+  - fastapi
+  - streamlit
+  - google-cloud
+
+dependencies:
+  - name: postgresql
+    version: "12.1.0"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled
+  - name: redis
+    version: "17.15.0"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: redis.enabled
+
+annotations:
+  category: AI/ML
+  license: MIT

@@ -1,0 +1,214 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18'
+
+jobs:
+  # Code Quality and Testing
+  test:
+    name: Test and Quality Checks
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.8', '3.9', '3.10', '3.11']
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Cache pip dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov pytest-asyncio flake8 black isort mypy
+
+    - name: Code formatting check (Black)
+      run: black --check --diff src/ frontend/
+
+    - name: Import sorting check (isort)
+      run: isort --check-only --diff src/ frontend/
+
+    - name: Lint with flake8
+      run: |
+        # Stop the build if there are Python syntax errors or undefined names
+        flake8 src/ --count --select=E9,F63,F7,F82 --show-source --statistics
+        # Exit-zero treats all errors as warnings
+        flake8 src/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Type checking with mypy
+      run: mypy src/ --ignore-missing-imports
+
+    - name: Run unit tests with pytest
+      run: |
+        pytest tests/ --cov=src/ --cov-report=xml --cov-report=html -v
+
+    - name: Upload coverage to Codecov
+      if: matrix.python-version == '3.11'
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+
+  # Security Scanning
+  security:
+    name: Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run security scan with bandit
+      run: |
+        pip install bandit
+        bandit -r src/ -f json -o bandit-report.json
+
+    - name: Run dependency vulnerability scan
+      uses: pypa/gh-action-pip-audit@v1.0.8
+      with:
+        inputs: requirements.txt
+
+  # Docker Build and Test
+  docker-build:
+    name: Docker Build and Test
+    runs-on: ubuntu-latest
+    needs: [test, security]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build backend Docker image
+      run: |
+        docker build --target backend -t invoice-ai-backend:test .
+
+    - name: Build frontend Docker image
+      run: |
+        docker build --target frontend -t invoice-ai-frontend:test .
+
+    - name: Test Docker images
+      run: |
+        # Test backend health endpoint
+        docker run --rm -d --name backend-test -p 8000:8000 invoice-ai-backend:test
+        sleep 10
+        curl -f http://localhost:8000/ || exit 1
+        docker stop backend-test
+
+    - name: Run container security scan
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'invoice-ai-backend:test'
+        format: 'sarif'
+        output: 'trivy-results.sarif'
+
+  # Performance Testing
+  performance:
+    name: Performance Testing
+    runs-on: ubuntu-latest
+    needs: docker-build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run performance tests
+      run: |
+        # Add performance testing with locust or similar
+        echo "Performance testing would run here"
+
+  # Deploy to Staging
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [test, security, docker-build]
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to staging
+      run: |
+        echo "Deploy to staging environment"
+        # Add deployment scripts here
+
+  # Deploy to Production
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [test, security, docker-build, performance]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push Docker images
+      run: |
+        # Backend
+        docker build --target backend -t ${{ secrets.DOCKERHUB_USERNAME }}/invoice-ai-backend:latest .
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/invoice-ai-backend:latest
+        
+        # Frontend  
+        docker build --target frontend -t ${{ secrets.DOCKERHUB_USERNAME }}/invoice-ai-frontend:latest .
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/invoice-ai-frontend:latest
+
+    - name: Deploy to production
+      run: |
+        echo "Deploy to production environment"
+        # Add production deployment scripts here
+
+  # Cleanup
+  cleanup:
+    name: Cleanup
+    runs-on: ubuntu-latest
+    needs: [deploy-production]
+    if: always()
+
+    steps:
+    - name: Clean up Docker images
+      run: |
+        docker system prune -f

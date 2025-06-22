@@ -1,0 +1,207 @@
+# Default values for invoice-processing-ai Helm chart
+
+# Global configuration
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+  storageClass: ""
+
+# Application configuration
+app:
+  name: invoice-processing-ai
+  version: "1.0.0"
+  environment: production
+
+# Backend service configuration
+backend:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: your-username/invoice-ai-backend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+
+  replicaCount: 3
+
+  service:
+    type: ClusterIP
+    port: 8000
+    targetPort: 8000
+
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+
+  env:
+    API_HOST: "0.0.0.0"
+    API_PORT: "8000"
+    DEBUG: "false"
+
+  livenessProbe:
+    httpGet:
+      path: /
+      port: 8000
+    initialDelaySeconds: 30
+    periodSeconds: 10
+
+  readinessProbe:
+    httpGet:
+      path: /
+      port: 8000
+    initialDelaySeconds: 5
+    periodSeconds: 5
+
+# Frontend service configuration
+frontend:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: your-username/invoice-ai-frontend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+
+  replicaCount: 2
+
+  service:
+    type: ClusterIP
+    port: 8501
+    targetPort: 8501
+
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
+
+  env:
+    STREAMLIT_SERVER_PORT: "8501"
+    STREAMLIT_SERVER_ADDRESS: "0.0.0.0"
+
+  livenessProbe:
+    httpGet:
+      path: /_stcore/health
+      port: 8501
+    initialDelaySeconds: 30
+    periodSeconds: 10
+
+  readinessProbe:
+    httpGet:
+      path: /_stcore/health
+      port: 8501
+    initialDelaySeconds: 5
+    periodSeconds: 5
+
+# Google Cloud configuration
+googleCloud:
+  projectId: ""
+  location: "us"
+  processorId: ""
+  credentialsSecret: "gcp-service-account-key"
+
+# Ingress configuration
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+  hosts:
+    - host: invoice-ai.yourdomain.com
+      paths:
+        - path: /api
+          pathType: Prefix
+          service: backend
+        - path: /
+          pathType: Prefix
+          service: frontend
+  tls:
+    - secretName: invoice-ai-tls
+      hosts:
+        - invoice-ai.yourdomain.com
+
+# PostgreSQL database configuration
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "postgres123"
+    username: "invoice_user"
+    password: "secure_password"
+    database: "invoice_processing"
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "1Gi"
+        cpu: "500m"
+
+# Redis cache configuration
+redis:
+  enabled: true
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: true
+      size: 8Gi
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+
+# Persistent storage configuration
+persistence:
+  uploads:
+    enabled: true
+    storageClass: "standard"
+    size: 10Gi
+    accessMode: ReadWriteMany
+
+# Security configuration
+security:
+  podSecurityPolicy:
+    enabled: false
+  networkPolicy:
+    enabled: false
+
+# Monitoring configuration
+monitoring:
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+    path: /metrics
+
+# Backup configuration
+backup:
+  enabled: false
+  schedule: "0 2 * * *"
+  retention: "7d"
+
+# External secrets (for production)
+externalSecrets:
+  enabled: false
+  secretStore:
+    name: "vault-backend"
+    kind: "SecretStore"
