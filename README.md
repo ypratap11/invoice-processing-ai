@@ -15,7 +15,8 @@ An end-to-end AI-powered invoice processing system that automates document proce
 
 ### 🌟 **Live Demo**
 
-![Invoice Processing Demo](assets/demo-screenshot.png)
+![image](https://github.com/user-attachments/assets/7a0e8f0a-3ef7-4aad-92e6-d3b5c54e8e75)
+
 
 *Real-time invoice processing with AI-powered data extraction and confidence scoring*
 
