@@ -628,6 +628,196 @@ def show_about_page():
     """)
 
 
+def show_ai_chat_page():
+    """Display AI Chat Assistant page"""
+    st.markdown('<h1 class="main-header">🤖 AI Chat Assistant</h1>', unsafe_allow_html=True)
+    st.markdown("**Conversational AI for Invoice Processing & Analytics**")
+
+    # Check agent status
+    AGENT_URL = "http://localhost:8001"  # Our test agent
+
+    col1, col2 = st.columns([4, 1])
+
+    with col2:
+        try:
+            response = requests.get(f"{AGENT_URL}/agent/status", timeout=5)
+            if response.status_code == 200:
+                status_data = response.json()
+                st.success("✅ AI Agent Ready")
+
+                with st.expander("🛠️ Agent Info"):
+                    st.write(f"**Status:** {status_data.get('status', 'unknown').title()}")
+                    st.write(f"**Uptime:** {status_data.get('uptime', 'unknown')}")
+                    st.write(f"**Conversations:** {status_data.get('conversation_length', 0)}")
+
+                    tools = status_data.get('available_tools', [])
+                    st.write("**Available Tools:**")
+                    for tool in tools:
+                        st.write(f"• {tool.replace('_', ' ').title()}")
+            else:
+                st.error("❌ Agent Offline")
+                st.info("Start the AI agent: `python tests/test_agent.py` in port 8001")
+                return
+        except:
+            st.error("❌ Cannot connect to AI Agent")
+            st.info("💡 Make sure test_agent.py is running on port 8001")
+            return
+
+    # Initialize chat history
+    if "chat_messages" not in st.session_state:
+        st.session_state.chat_messages = []
+
+    # Chat container
+    with col1:
+        st.markdown("### 💬 Chat with AI Assistant")
+
+        # Display chat messages
+        for message in st.session_state.chat_messages:
+            with st.chat_message(message["role"]):
+                st.write(message["content"])
+
+        # Chat input
+        if prompt := st.chat_input("Ask me about invoice processing, search, or analytics..."):
+            # Add user message
+            st.session_state.chat_messages.append({"role": "user", "content": prompt})
+
+            # Display user message
+            with st.chat_message("user"):
+                st.write(prompt)
+
+            # Get agent response
+            with st.spinner("🤖 Processing your request..."):
+                try:
+                    response = requests.post(
+                        f"{AGENT_URL}/agent/chat",
+                        json={"message": prompt},
+                        timeout=30
+                    )
+                    if response.status_code == 200:
+                        agent_response = response.json()["response"]
+                        st.session_state.chat_messages.append({
+                            "role": "assistant",
+                            "content": agent_response
+                        })
+
+                        # Display agent response
+                        with st.chat_message("assistant"):
+                            st.write(agent_response)
+                    else:
+                        st.error("Failed to get response from AI assistant")
+                except Exception as e:
+                    st.error(f"Error: {str(e)}")
+
+            st.rerun()
+
+    # Quick action buttons
+    st.markdown("---")
+    st.subheader("⚡ Quick Actions")
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    def send_quick_message(message):
+        """Helper function to send quick messages"""
+        st.session_state.chat_messages.append({"role": "user", "content": message})
+        try:
+            response = requests.post(
+                f"{AGENT_URL}/agent/chat",
+                json={"message": message},
+                timeout=30
+            )
+            if response.status_code == 200:
+                agent_response = response.json()["response"]
+                st.session_state.chat_messages.append({
+                    "role": "assistant",
+                    "content": agent_response
+                })
+        except:
+            pass
+        st.rerun()
+
+    with col1:
+        if st.button("💡 What can you help with?"):
+            send_quick_message("What can you help me with?")
+
+    with col2:
+        if st.button("📄 How to process invoices?"):
+            send_quick_message("How do I process an invoice?")
+
+    with col3:
+        if st.button("🔍 Search examples"):
+            send_quick_message("Show me search examples")
+
+    with col4:
+        if st.button("📊 Analytics insights"):
+            send_quick_message("What analytics can you provide?")
+
+    # Chat controls
+    st.markdown("---")
+    col1, col2, col3 = st.columns([1, 1, 2])
+
+    with col1:
+        if st.button("🗑️ Clear Chat"):
+            st.session_state.chat_messages = []
+            st.rerun()
+
+    with col2:
+        if st.button("💾 Export Chat"):
+            if st.session_state.chat_messages:
+                chat_export = {
+                    "timestamp": datetime.now().isoformat(),
+                    "messages": st.session_state.chat_messages
+                }
+                json_data = json.dumps(chat_export, indent=2)
+                st.download_button(
+                    label="📥 Download Chat History",
+                    data=json_data,
+                    file_name=f"chat_history_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+                    mime="application/json"
+                )
+
+    with col3:
+        if st.session_state.chat_messages:
+            st.info(f"💬 {len(st.session_state.chat_messages)} messages in this conversation")
+
+    # Example questions
+    with st.expander("💡 Example Questions to Try"):
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.markdown("""
+            **Processing & Upload:**
+            - "How do I process an invoice?"
+            - "What file formats do you support?"
+            - "How accurate is the extraction?"
+
+            **Search & Query:**
+            - "Find invoices from Microsoft"
+            - "Show invoices over $5000"
+            - "List recent vendor invoices"
+            """)
+
+        with col2:
+            st.markdown("""
+            **Analytics & Insights:**
+            - "What spending insights can you provide?"
+            - "Analyze my vendor relationships"
+            - "Flag any unusual patterns"
+
+            **Help & Examples:**
+            - "What can you help me with?"
+            - "Show me demo examples"
+            - "How does this system work?"
+            """)
+
+    # Footer
+    st.markdown("---")
+    st.markdown("""
+    <div style="text-align: center; color: #666;">
+        <p>🤖 <strong>AI Chat Assistant</strong> - Powered by Advanced Language Models</p>
+        <p>Ask questions in natural language | Get instant insights</p>
+    </div>
+    """, unsafe_allow_html=True)
+
 # Navigation
 def main_navigation():
     """Handle navigation between different pages"""
@@ -637,12 +827,14 @@ def main_navigation():
 
     page = st.sidebar.selectbox(
         "Choose a page",
-        ["🏠 Home", "⚙️ Settings", "ℹ️ About"],
+        ["🏠 Home", "🤖 AI Chat Assistant", "⚙️ Settings", "ℹ️ About"],
         index=0
     )
 
     if page == "🏠 Home":
         main()
+    elif page == "🤖 AI Chat Assistant":
+        show_ai_chat_page()
     elif page == "⚙️ Settings":
         show_settings_page()
     elif page == "ℹ️ About":

@@ -16,6 +16,13 @@ from pathlib import Path
 import uvicorn
 from datetime import datetime
 import logging
+import sys
+from pathlib import Path
+
+# Load environment variables from .env file FIRST
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Google Cloud imports
 from google.cloud import documentai
@@ -25,11 +32,15 @@ from google.api_core.client_options import ClientOptions
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Add the project root to Python path
+project_root = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(project_root))
+
 # Initialize FastAPI app
 app = FastAPI(
     title="Invoice Processing AI",
-    description="Advanced invoice processing using Google Document AI",
-    version="1.0.0"
+    description="Advanced invoice processing using Google Document AI with LangChain Agent",
+    version="2.0.0"  # Updated version for MVP
 )
 
 # Add CORS middleware
@@ -55,12 +66,6 @@ class HealthCheck(BaseModel):
     status: str
     timestamp: str
     version: str
-
-
-# Load environment variables from .env file
-from dotenv import load_dotenv
-
-load_dotenv()
 
 
 # Configuration using environment variables
@@ -265,6 +270,43 @@ async def process_document_with_ai(file_content: bytes, mime_type: str) -> Proce
         )
 
 
+# Import agent components AFTER all dependencies are loaded
+try:
+    from src.api.agent_endpoints import agent_router
+    from src.database import create_tables
+
+    # Add agent router
+    app.include_router(agent_router)
+    logger.info("✅ LangChain Agent endpoints loaded successfully")
+
+except ImportError as e:
+    logger.warning(f"⚠️ Agent components not available: {e}")
+    logger.warning("Running in legacy mode without AI agent features")
+
+
+# Initialize database tables on startup
+@app.on_event("startup")
+async def startup_event():
+    """Initialize application on startup"""
+    logger.info("🚀 Starting Invoice Processing AI...")
+
+    # Initialize database if agent components are available
+    try:
+        create_tables()
+        logger.info("✅ Database tables initialized")
+    except NameError:
+        logger.info("📊 Running without database (legacy mode)")
+
+    # Verify Document AI setup
+    client = get_document_ai_client()
+    if client:
+        logger.info("✅ Document AI client ready")
+    else:
+        logger.warning("⚠️ Document AI client not available")
+
+    logger.info("🎉 Application startup complete!")
+
+
 # API Routes
 @app.get("/", response_model=HealthCheck)
 async def health_check():
@@ -272,7 +314,7 @@ async def health_check():
     return HealthCheck(
         status="healthy",
         timestamp=datetime.now().isoformat(),
-        version="1.0.0"
+        version="2.0.0"
     )
 
 
@@ -324,6 +366,51 @@ async def process_invoice(file: UploadFile = File(...)):
     # Process the document
     result = await process_document_with_ai(file_content, mime_type)
 
+    # Process the document
+    result = await process_document_with_ai(file_content, mime_type)
+
+    # Store recent processing data for AI agent access
+    if result.success and result.extracted_data:
+        try:
+            # Calculate average confidence
+            avg_confidence = 0
+            if result.confidence_scores:
+                avg_confidence = sum(result.confidence_scores.values()) / len(result.confidence_scores)
+
+            # Extract key information
+            vendor_name = "Unknown Vendor"
+            total_amount = "0.00"
+
+            if result.extracted_data.get("vendor_info", {}).get("name"):
+                vendor_name = result.extracted_data["vendor_info"]["name"]
+
+            if result.extracted_data.get("totals", {}).get("total_amount"):
+                total_amount = result.extracted_data["totals"]["total_amount"]
+
+            # Prepare data for agent
+            recent_data = {
+                "timestamp": datetime.now().isoformat(),
+                "filename": file.filename,
+                "vendor": vendor_name,
+                "amount": total_amount,
+                "confidence": f"{avg_confidence:.1%}" if avg_confidence else "Unknown",
+                "processing_time": f"{result.processing_time:.2f}s" if result.processing_time else "Unknown",
+                "invoice_number": result.extracted_data.get("invoice_details", {}).get("invoice_number", "N/A"),
+                "invoice_date": result.extracted_data.get("dates", {}).get("invoice_date", "N/A"),
+                "line_items_count": len(result.extracted_data.get("line_items", [])),
+                "extraction_success": True
+            }
+
+            # Save to file that agent can read
+            recent_file_path = Path(__file__).parent.parent.parent / "recent_processing.json"
+            with open(recent_file_path, "w") as f:
+                json.dump(recent_data, f, indent=2)
+
+            logger.info(f"✅ Saved recent processing data for agent: {vendor_name} - ${total_amount}")
+
+        except Exception as e:
+            logger.warning(f"⚠️ Failed to save recent processing data: {e}")
+
     return result
 
 
@@ -336,7 +423,12 @@ async def get_config():
         "processor_location": config.LOCATION,
         "project_id": config.PROJECT_ID,
         "processor_id": config.PROCESSOR_ID[:8] + "...",  # Partial ID for security
-        "api_version": "1.0.0"
+        "api_version": "2.0.0",
+        "features": {
+            "document_ai": True,
+            "langchain_agent": "agent_router" in locals(),
+            "database": "create_tables" in locals()
+        }
     }
 
 
