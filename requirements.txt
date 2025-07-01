@@ -37,5 +37,5 @@ langchain==0.1.0
 langchain-google-vertexai==0.1.0
 langchain-community==0.0.10
 chromadb==0.4.22
-sqlalchemy==2.0.25
+sqlalchemy==2.0.41
 sentence-transformers==2.2.2
