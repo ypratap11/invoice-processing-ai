@@ -30,7 +30,7 @@ httpx==0.25.2
 
 # Frontend
 streamlit==1.28.2
-pillow==10.1.0
+pillow==11.3.0
 
 # Add these to your existing requirements.txt
 langchain==0.1.0
