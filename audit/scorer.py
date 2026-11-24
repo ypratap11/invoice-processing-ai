@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from decimal import ROUND_HALF_UP, Decimal
 from typing import Literal
 
 import numpy as np
@@ -59,6 +60,10 @@ def _sim(a, b) -> float:
     return fuzz.token_set_ratio(norm_text(str(a)), norm_text(str(b)))
 
 
+def _cent(v) -> Decimal:
+    return Decimal(v).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+
+
 def _blank(v) -> bool:
     return v is None or str(v).strip() == ""
 
@@ -70,8 +75,9 @@ def _compare(field: str, truth, pred, mode: Mode) -> Status:
     p = str(pred)
     if field in _AMOUNT_FIELDS:
         v = parse_amount(p, strict=strict)
-        # Decimal equality: "1250" == "1250.00"; 1250.001 != 1250.00 (to the cent and exact)
-        ok = v is not None and v == truth
+        # "equal to the cent": both sides quantized to 0.01 ROUND_HALF_UP, so
+        # "1250.004" == 1250.00 but "1250.006" != 1250.00 (also quantity/unit_price)
+        ok = v is not None and _cent(v) == _cent(truth)
     elif field in _DATE_FIELDS:
         v = parse_date(p, strict=strict)
         ok = v is not None and v == truth
@@ -147,12 +153,15 @@ def _generic(field: str) -> str:
 def aggregate(results: dict) -> dict:
     """Aggregate per-document results.
 
-    - field_accuracy: correct / scored per field; line-item fields are pooled
+    - field_accuracy: 0-1 fraction correct/scored per field; line-item fields are pooled
       across lines as ``line.description`` etc. Missing counts as not correct.
     - invoice_fully_correct_pct: percent (0-100) of docs where every scored
       field is correct and no extra predicted lines exist.
-    - silent_errors / missing: {"count", "rate"}, rate over all scored fields.
-    - review_rate: fraction (0-1) of docs with any flagged field.
+    - silent_errors / missing: {"count", "rate"}; "rate" is a 0-1 fraction
+      over all scored fields.
+    - review_rate: 0-1 fraction of docs with any flagged field.
+    - field_accuracy values are also 0-1 fractions; only
+      invoice_fully_correct_pct is on a 0-100 scale.
     - extra_lines: total predicted line items not aligned to a truth line.
     """
     n_docs = len(results)

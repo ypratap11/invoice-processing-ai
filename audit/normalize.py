@@ -35,6 +35,7 @@ def parse_amount(s: str | None, strict: bool) -> Decimal | None:
     t = core
     if "-" in t or "(" in t or ")" in t:
         return None
+    # Accepted (controller ruling): a glued letter prefix like "INV1234" parses as 1234 (needed for "USD12.00").
     if re.search(r"[A-Za-z]-", s) or re.search(r"\d[A-Za-z]", s):
         return None  # identifiers like INV-1234, not amounts
     if not re.search(r"\d", t):

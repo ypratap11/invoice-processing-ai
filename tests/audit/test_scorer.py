@@ -246,3 +246,13 @@ def test_extra_line_prevents_fully_correct():
     res = score_invoice(T, pred, "lenient", set(), False)
     assert all(x.status == "correct" for x in res)
     assert aggregate({"d1": res})["invoice_fully_correct_pct"] == 0.0
+
+
+def test_amounts_quantized_to_cent_half_up():
+    def st(v, mode="strict"):
+        return by_field(score_invoice(T, {**P, "total": v}, mode, set(), False))["total"].status
+    assert st("1250.004") == "correct"
+    assert st("1249.995") == "correct"   # half-up rounds to 1250.00
+    assert st("1250.006") == "wrong"
+    assert st("1250.005") == "wrong"     # half-up rounds to 1250.01
+    assert st("$1,250.004", "lenient") == "correct"
