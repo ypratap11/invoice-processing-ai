@@ -203,7 +203,8 @@ the second result. At $0.10 per document, the app paid $0.20 per invoice for one
   path the language model gave it and send the contents to Document AI. A crafted chat message could have made
   the server read its own files. This was fixed in the same change set, before the work was merged: the tool
   now only opens ordinary files inside the configured upload folder, refuses links that point elsewhere, and
-  enforces the size limit.
+  enforces the size limit. A final review found one more path form that reached the filesystem before the
+  folder check; paths are now checked by their text alone before any file lookup.
 - **Error messages revealed where the cloud credentials file lives.** When credentials were missing, the
   error returned to the caller included the credentials file path. Errors are now generic; details go to the
   server log only.
@@ -365,7 +366,7 @@ in this round.
   responses, so its latency is the "before" network time.
 - **Open items, not fixed in this round:** a failed extraction is reported with `review_required` set to false;
   nothing in the app yet saves uploads to the folder the agent tool reads from; a few agent endpoints still
-  return raw exception text; one Windows-specific path form is resolved before the upload-folder check.
+  return raw exception text.
 
 ## 9. Changes after the scoring freeze
 

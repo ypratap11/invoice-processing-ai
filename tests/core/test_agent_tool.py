@@ -108,3 +108,49 @@ def test_non_file_and_unsupported_extension_rejected(tools):
         out = tools.tool._run(arg)
         assert out.startswith("❌"), arg
     assert tools.calls == []
+
+
+@pytest.fixture
+def fs_calls(tools, monkeypatch):
+    """Record every filesystem query made on a path other than the upload dir.
+
+    Recorded, not raised: the tool turns unexpected exceptions into a generic
+    error, which would hide a call."""
+    import pathlib
+    calls = []
+    upload = str(tools.upload)
+    for name in ("is_symlink", "resolve", "is_file", "exists", "stat", "lstat", "open"):
+        orig = getattr(pathlib.Path, name)
+
+        def spy(self, *a, _orig=orig, _name=name, **kw):
+            if str(self) != upload:
+                calls.append((_name, str(self)))
+            return _orig(self, *a, **kw)
+        monkeypatch.setattr(pathlib.Path, name, spy)
+    real_open = open
+    monkeypatch.setattr("builtins.open", lambda f, *a, **kw: calls.append(("open", str(f))) or real_open(f, *a, **kw))
+    return calls
+
+
+@pytest.mark.parametrize("arg", [r"\host\share\x.pdf", "//host/share/x.pdf", r"\?\C:\secret.pdf",
+                                 r"\.\C:\secret.pdf", r"\/host\share\x.pdf"])
+def test_unc_and_device_paths_rejected_without_touching_the_filesystem(tools, fs_calls, arg):
+    out = tools.tool._run(arg)
+    assert out.startswith("❌") and tools.calls == []
+    assert fs_calls == []
+
+
+def test_other_drive_and_drive_relative_paths_rejected_lexically(tools, fs_calls):
+    drive = tools.upload.resolve().drive or "C:"
+    other = "Z:" if drive.upper() != "Z:" else "Y:"
+    for arg in (other + r"\secret.pdf", drive + "secret.pdf"):
+        out = tools.tool._run(arg)
+        assert out.startswith("❌") and tools.calls == []
+    assert fs_calls == []
+
+
+@pytest.mark.parametrize("arg", ["../secret.pdf", "sub/../../secret.pdf", r"..\..\x.pdf", r"\secret.pdf"])
+def test_relative_escape_rejected_lexically(tools, fs_calls, arg):
+    out = tools.tool._run(arg)
+    assert out.startswith("❌") and tools.calls == []
+    assert fs_calls == []

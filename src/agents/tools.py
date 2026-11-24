@@ -3,6 +3,7 @@ from typing import Optional, Type
 from pydantic import BaseModel, Field
 import json
 import logging
+import os
 import time
 from datetime import datetime
 from pathlib import Path
@@ -89,10 +90,21 @@ def _read_upload(file_path: str):
     ``UploadRejected`` (never echoing file contents) otherwise."""
     from src.api import main
 
+    # Purely lexical checks first: no filesystem call may see a path that is
+    # already known to be outside UPLOAD_DIR (on Windows, even is_symlink() on
+    # a UNC path makes a network request).
+    raw = str(file_path)
+    if raw[:1] in ("\\", "/") and raw[1:2] in ("\\", "/"):  # UNC share or a \\?\ / \\.\ device path
+        raise UploadRejected("Only files in the upload directory can be processed")
     upload_dir = Path(main.UPLOAD_DIR).resolve()
-    candidate = Path(file_path)
+    candidate = Path(raw)
+    if candidate.drive and (not candidate.is_absolute()
+                            or candidate.drive.lower() != upload_dir.drive.lower()):
+        raise UploadRejected("Only files in the upload directory can be processed")  # other or drive-relative
     if not candidate.is_absolute():
         candidate = upload_dir / candidate
+    if not Path(os.path.normpath(candidate)).is_relative_to(upload_dir):
+        raise UploadRejected("Only files in the upload directory can be processed")
     if candidate.is_symlink():
         raise UploadRejected("Symbolic links are not accepted")
     resolved = candidate.resolve()
