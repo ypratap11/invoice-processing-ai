@@ -613,14 +613,13 @@ def show_about_page():
     - **Financial Data Entry**: Reduce manual data entry errors
     - **Audit and Compliance**: Maintain accurate financial records
     - **Business Intelligence**: Extract insights from financial documents
-    - **ERP Integration**: Feed structured data into enterprise systems
+    - **Accounting Integration**: Feed structured data into accounting systems
 
     ## 📊 Performance Metrics
 
-    - **Processing Speed**: ~2-5 seconds per document
-    - **Accuracy**: 95%+ for standard invoice formats
-    - **Throughput**: 100+ documents per hour
-    - **Reliability**: 99.9% uptime SLA
+    - **Processing Speed**: typically a few seconds per document
+    - **Accuracy**: not yet measured; an accuracy audit is in progress
+    - **Confidence scores** are Document AI's own estimates, not measured accuracy
 
     ---
 

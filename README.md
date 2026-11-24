@@ -11,7 +11,9 @@
 
 ## 🎯 **Project Overview**
 
-An end-to-end AI-powered invoice processing system that automates document processing for enterprises. Built to solve real business problems where teams spend hours manually processing invoices - **this system reduces processing time by 90%** and achieves **95%+ accuracy**.
+An end-to-end AI-powered invoice processing system that automates document processing for enterprises. Built for teams that spend hours keying invoices by hand.
+
+> **Status, honestly:** extraction accuracy has **not yet been measured** against a labeled test set, and the chat agent's `process_invoice` tool currently returns sample data (see `src/agents/tools.py`). A full accuracy audit is in progress; results will be published here with the test set and method.
 
 ### 🌟 **Live Demo**
 
@@ -22,11 +24,10 @@ An end-to-end AI-powered invoice processing system that automates document proce
 
 ### 💼 **Business Impact**
 
-- ⚡ **90% reduction** in manual processing time (from 5+ minutes to <30 seconds)
-- 🎯 **95%+ accuracy** in data extraction with confidence scoring
-- 💰 **Zero data entry errors** with automated validation
-- 📊 **100+ documents per hour** processing capability
-- 🔄 **Batch processing** for enterprise-scale operations
+- ⚡ Turns an invoice into structured data (vendor, dates, totals, line items) in seconds instead of manual keying
+- 🎯 Shows Document AI's per-field confidence, so low-confidence fields can be routed to review
+- 🔄 Batch processing for multiple documents
+- 📏 Accuracy on real invoices: **being measured** (audit in progress)
 
 ## 🏗️ **System Architecture**
 
@@ -57,15 +58,15 @@ An end-to-end AI-powered invoice processing system that automates document proce
 ### 🤖 **AI-Powered Processing**
 - **Google Document AI Integration** - Enterprise-grade document understanding
 - **Real-time Data Extraction** - Vendor info, amounts, dates, line items
-- **Confidence Scoring** - Field-level accuracy metrics with visualization
+- **Confidence Scoring** - Document AI's own per-field confidence, visualized (an estimate, not measured accuracy)
 - **Multi-format Support** - PDF, PNG, JPG, JPEG, TIFF, GIF files
 - **Intelligent Parsing** - Understands invoice structure, not just OCR
 
 ### ⚡ **Performance & Scale**
-- **Sub-10 Second Processing** - Average processing time: 3-9 seconds
+- **Fast Processing** - Typically a few seconds per document in development testing
 - **Batch Processing** - Handle up to 10 documents simultaneously
-- **100% Success Rate** - Robust error handling and validation
-- **Enterprise Ready** - Scalable architecture with Docker support
+- **Error Handling** - Validation and error handling around the Document AI call
+- **Container Ready** - Docker setup included
 - **Real-time Analytics** - Processing history and performance metrics
 
 ### 🎨 **Professional Interface**
@@ -185,13 +186,7 @@ helm install invoice-ai ./helm
 
 ## 📊 **Performance Metrics**
 
-| Metric | Achievement | Target |
-|--------|-------------|---------|
-| **Accuracy** | 95%+ | ✅ Achieved |
-| **Processing Time** | 3-9 seconds | ✅ Sub-10s |
-| **Success Rate** | 100% | ✅ Perfect |
-| **Throughput** | 100+ docs/hour | ✅ Enterprise Scale |
-| **Response Time** | <500ms | ✅ Fast API |
+Not yet measured. An accuracy audit is in progress: a labeled set of public sample invoices, field-level accuracy for vendor, invoice number, dates, totals, tax and line items, and the failure cases. Results, the test set and the method will be published here; until then, treat any accuracy figure as unverified.
 
 ## 📁 **Project Structure**
 
@@ -227,14 +222,13 @@ invoice-processing-ai/
 
 ### **Enterprise Applications**
 - **Accounts Payable Automation** - Streamline invoice processing workflows
-- **Financial Data Entry** - Eliminate manual data entry errors
+- **Financial Data Entry** - Reduce manual keying, with low-confidence fields sent to review
 - **Audit & Compliance** - Maintain accurate financial records
-- **ERP Integration** - Feed structured data into enterprise systems
+- **Accounting Integration** - Feed structured data into accounting systems
 
 ### **Business Benefits**
-- **Cost Reduction** - Reduce processing costs by 90%
 - **Time Savings** - Process invoices in seconds, not minutes
-- **Accuracy Improvement** - Eliminate human data entry errors
+- **Review Focus** - Spend human time on low-confidence fields instead of every field
 - **Scalability** - Handle volume spikes without additional staff
 - **Compliance** - Standardized data extraction and audit trails
 
@@ -335,7 +329,7 @@ This project demonstrates:
 
 ## 👨‍💻 **About the Developer**
 
-**Yeragudipati Pratap** - Oracle ERP Expert transitioning to AI/ML Engineering
+**Pratap Yeragudipati** - Founder, Augaster. I build AI systems whose outputs can be checked.
 
 - 💼 **LinkedIn**: [Connect with me](https://www.linkedin.com/in/pratapyeragudipati/)
 - 📧 **Email**: ypratap114u@gmail.com
@@ -343,11 +337,14 @@ This project demonstrates:
 - 💻 **Portfolio**: [Live Projects](https://github.com/ypratap11?tab=repositories)
 
 ### **Background**
-Leveraging years of ERP consulting experience to build AI solutions that solve real business problems. This project combines domain expertise in financial processes with cutting-edge AI technology.
+20+ years in finance systems and program delivery, where numbers have to reconcile. This project combines that domain knowledge with modern document AI.
 
 ## 🌟 **What's Next?**
 
 ### **Immediate Roadmap**
+- [ ] **Accuracy Audit** - Labeled test set, measured field-level accuracy, published method (in progress)
+- [ ] **Real Agent Tool** - Wire the chat agent's `process_invoice` tool to Document AI (currently returns sample data)
+- [ ] **Arithmetic Checks** - Line items + tax must equal the total, or the invoice goes to review
 - [ ] **Database Integration** - PostgreSQL for processing history
 - [ ] **User Authentication** - Secure multi-user support
 - [ ] **Advanced Analytics** - Deeper processing insights
@@ -356,7 +353,7 @@ Leveraging years of ERP consulting experience to build AI solutions that solve r
 ### **Future Enhancements**
 - [ ] **Multi-language Support** - Process invoices in various languages
 - [ ] **Custom Model Training** - Fine-tune AI with user feedback
-- [ ] **ERP Integrations** - Direct integration with SAP, Oracle, QuickBooks
+- [ ] **Accounting Integrations** - Direct integration with QuickBooks and Xero
 - [ ] **Advanced Document Types** - Purchase orders, receipts, contracts
 
 ---

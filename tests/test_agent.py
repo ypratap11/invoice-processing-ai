@@ -216,9 +216,8 @@ class SimpleInvoiceAgent:
         - Confidence scores for each field
 
         **3. Processing Time:**
-        - Average: 3-9 seconds per document
-        - 95%+ accuracy rate
-        - Real-time confidence scoring
+        - Typically a few seconds per document
+        - Real-time confidence scoring (Document AI's own estimates)
 
         **Want to try?** Upload an invoice file and I'll extract all the key information!
             """,
