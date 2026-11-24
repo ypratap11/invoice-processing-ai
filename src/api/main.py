@@ -26,7 +26,6 @@ load_dotenv()
 
 # Google Cloud imports
 from google.cloud import documentai
-from google.api_core.client_options import ClientOptions
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -60,6 +59,8 @@ class ProcessingResult(BaseModel):
     extracted_data: Optional[Dict[str, Any]] = None
     confidence_scores: Optional[Dict[str, float]] = None
     processing_time: Optional[float] = None
+    review_required: bool = False
+    review_reasons: List[str] = []
 
 
 class HealthCheck(BaseModel):
@@ -69,11 +70,16 @@ class HealthCheck(BaseModel):
 
 
 # Configuration using environment variables
+from src.core.docai_client import credentials_available, settings as _settings
+
+_docai_settings = _settings()
+
+
 class Config:
-    # Google Cloud Document AI settings from environment
-    PROJECT_ID = os.getenv("GCP_PROJECT_ID", "invoiceprocessingai2498")
-    LOCATION = os.getenv("GCP_LOCATION", "us")
-    PROCESSOR_ID = os.getenv("GCP_PROCESSOR_ID", "cca0593594bfdba1")
+    # Google Cloud Document AI settings from environment (see src/core/docai_client.py)
+    PROJECT_ID = _docai_settings.project_id
+    LOCATION = _docai_settings.location
+    PROCESSOR_ID = _docai_settings.processor_id
 
     # File upload settings
     MAX_FILE_SIZE = int(os.getenv("MAX_FILE_SIZE", 10 * 1024 * 1024))  # 10MB
@@ -83,7 +89,7 @@ class Config:
     def verify_credentials(cls):
         """Verify Google Cloud credentials are properly set"""
         creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-        if creds_path and os.path.exists(creds_path):
+        if credentials_available():
             logger.info(f"Google Cloud credentials found: {creds_path}")
             return True
         else:
@@ -94,125 +100,82 @@ class Config:
 config = Config()
 
 
-# Initialize Document AI client
-def get_document_ai_client():
-    """Initialize and return Document AI client"""
-    try:
-        # Verify credentials first
-        if not Config.verify_credentials():
-            logger.error("Google Cloud credentials verification failed")
-            return None
+# Document AI processing (single path shared by the API and the agent tool)
+from src.core import docai_client
+from src.core.invoice_checks import check as check_invoice
+from src.core.invoice_extractor import HEADER_FIELDS, entity_text, extract_invoice
 
-        # Set up client options for the specified location
-        opts = ClientOptions(api_endpoint=f"{config.LOCATION}-documentai.googleapis.com")
-        client = documentai.DocumentProcessorServiceClient(client_options=opts)
-        logger.info(f"Document AI client initialized for location: {config.LOCATION}")
-        logger.info(f"Using project: {config.PROJECT_ID}, processor: {config.PROCESSOR_ID}")
-        return client
+LOW_CONFIDENCE = 0.7
+
+MIME_TYPES = {
+    ".pdf": "application/pdf",
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".tiff": "image/tiff",
+    ".gif": "image/gif",
+}
+
+RECENT_PROCESSING_PATH = project_root / "recent_processing.json"
+
+
+def get_document_ai_client():
+    """Document AI client, or None if it cannot be created (startup check only)."""
+    try:
+        return docai_client.get_client()
     except Exception as e:
         logger.error(f"Failed to initialize Document AI client: {e}")
-        logger.error(f"Credentials path: {os.getenv('GOOGLE_APPLICATION_CREDENTIALS')}")
         return None
 
 
-# Invoice processing functions
-def extract_invoice_data(document: documentai.Document) -> Dict[str, Any]:
-    """Extract structured data from processed invoice document"""
+def extract_invoice_data(document: documentai.Document):
+    """Response shape the Streamlit frontend renders, filled from ``extract_invoice``.
 
+    Returns ``(extracted_data, confidence_scores)``; line items are schema
+    dicts (description, quantity, unit_price, amount)."""
+    inv, confidence = extract_invoice(document)
+    vendor_info = {"name": inv["vendor_name"]}
+    bill_to = entity_text(document, "receiver_name")
+    if bill_to:
+        vendor_info["bill_to"] = bill_to
+    addresses = {}
+    for key, etype in (("vendor_address", "supplier_address"),
+                       ("billing_address", "receiver_address")):
+        text = entity_text(document, etype)
+        if text:
+            addresses[key] = text
     extracted_data = {
-        "vendor_info": {},
-        "invoice_details": {},
-        "line_items": [],
-        "totals": {},
-        "dates": {},
-        "addresses": {}
+        "vendor_info": vendor_info,
+        "invoice_details": {"invoice_number": inv["invoice_id"]},
+        "line_items": inv["line_items"],
+        "totals": {"total_amount": inv["total"], "net_amount": inv["subtotal"],
+                   "tax_amount": inv["tax_total"], "currency": inv["currency"]},
+        "dates": {"invoice_date": inv["invoice_date"], "due_date": inv["due_date"]},
+        "addresses": addresses,
     }
+    return extracted_data, confidence
 
-    confidence_scores = {}
 
-    # Process entities
-    for entity in document.entities:
-        entity_type = entity.type_
-        entity_value = entity.mention_text if entity.mention_text else ""
-        confidence = entity.confidence
+def review_reasons(inv: dict, confidence: Dict[str, float]) -> List[str]:
+    """Deterministic check failures plus fields extracted with low confidence."""
+    reasons = check_invoice(inv)
+    reasons += [f"low_confidence:{f}" for f in (*HEADER_FIELDS, "line_items")
+                if confidence.get(f, 1.0) < LOW_CONFIDENCE]
+    return reasons
 
-        # Store confidence scores
-        confidence_scores[entity_type] = confidence
 
-        # Categorize entities based on common invoice fields
-        if entity_type in ["supplier_name", "vendor_name", "remit_to_name"]:
-            extracted_data["vendor_info"]["name"] = entity_value
-        elif entity_type in ["supplier_address", "vendor_address", "remit_to_address"]:
-            extracted_data["addresses"]["vendor_address"] = entity_value
-        elif entity_type in ["invoice_id", "invoice_number"]:
-            extracted_data["invoice_details"]["invoice_number"] = entity_value
-        elif entity_type in ["invoice_date", "invoice_issue_date"]:
-            extracted_data["dates"]["invoice_date"] = entity_value
-        elif entity_type in ["due_date", "payment_due_date"]:
-            extracted_data["dates"]["due_date"] = entity_value
-        elif entity_type in ["total_amount", "invoice_total_amount"]:
-            extracted_data["totals"]["total_amount"] = entity_value
-        elif entity_type in ["net_amount", "subtotal_amount"]:
-            extracted_data["totals"]["net_amount"] = entity_value
-        elif entity_type in ["total_tax_amount", "tax_amount"]:
-            extracted_data["totals"]["tax_amount"] = entity_value
-        elif entity_type in ["currency"]:
-            extracted_data["totals"]["currency"] = entity_value
-        elif entity_type in ["receiver_name", "bill_to_name"]:
-            extracted_data["vendor_info"]["bill_to"] = entity_value
-        elif entity_type in ["receiver_address", "bill_to_address"]:
-            extracted_data["addresses"]["billing_address"] = entity_value
+def process_invoice_bytes(file_content: bytes, mime_type: str) -> Dict[str, Any]:
+    """Process one file with Document AI (one call) and extract + check it.
 
-    # Process tables (line items)
-    for page in document.pages:
-        for table in page.tables:
-            headers = []
-            rows = []
-
-            # Extract headers from header rows
-            if table.header_rows:
-                for header_row in table.header_rows:
-                    header_cells = []
-                    for cell in header_row.cells:
-                        cell_text = ""
-                        if cell.layout.text_anchor:
-                            # Extract text from text segments
-                            for segment in cell.layout.text_anchor.text_segments:
-                                start_index = segment.start_index
-                                end_index = segment.end_index
-                                cell_text += document.text[start_index:end_index]
-                        header_cells.append(cell_text.strip())
-                    headers = header_cells
-                    break  # Use first header row
-
-            # Extract data rows
-            for row in table.body_rows:
-                row_data = {}
-                for i, cell in enumerate(row.cells):
-                    cell_text = ""
-                    if cell.layout.text_anchor:
-                        # Extract text from text segments
-                        for segment in cell.layout.text_anchor.text_segments:
-                            start_index = segment.start_index
-                            end_index = segment.end_index
-                            cell_text += document.text[start_index:end_index]
-
-                    # Map to header or use column index
-                    if i < len(headers) and headers[i]:
-                        row_data[headers[i]] = cell_text.strip()
-                    else:
-                        row_data[f"column_{i}"] = cell_text.strip()
-
-                # Only add non-empty rows
-                if any(value.strip() for value in row_data.values() if value):
-                    rows.append(row_data)
-
-            # Add line items if we found any
-            if rows:
-                extracted_data["line_items"] = rows
-                break  # Use first table with data
-
-    return extracted_data, confidence_scores
+    Returns ``invoice`` (schema keys), ``extracted_data`` (frontend shape),
+    ``confidence_scores``, ``review_required`` and ``review_reasons``."""
+    document = docai_client.process_bytes(file_content, mime_type)
+    inv, _ = extract_invoice(document)
+    extracted_data, confidence = extract_invoice_data(document)
+    reasons = review_reasons(inv, confidence)
+    return {"invoice": inv, "extracted_data": extracted_data,
+            "confidence_scores": confidence,
+            "review_required": bool(reasons), "review_reasons": reasons}
 
 
 async def process_document_with_ai(file_content: bytes, mime_type: str) -> ProcessingResult:
@@ -221,40 +184,16 @@ async def process_document_with_ai(file_content: bytes, mime_type: str) -> Proce
     start_time = datetime.now()
 
     try:
-        # Initialize client
-        client = get_document_ai_client()
-        if not client:
-            raise HTTPException(status_code=500, detail="Document AI client not available")
-
-        # Create the full resource name
-        name = client.processor_path(config.PROJECT_ID, config.LOCATION, config.PROCESSOR_ID)
-        logger.info(f"Using processor: {name}")
-
-        # Create document object
-        raw_document = documentai.RawDocument(content=file_content, mime_type=mime_type)
-
-        # Create process request
-        request = documentai.ProcessRequest(name=name, raw_document=raw_document)
-
-        # Process the document
-        logger.info("Sending document to Document AI...")
-        result = client.process_document(request=request)
-        document = result.document
-
-        logger.info(f"Document processed. Found {len(document.entities)} entities")
-
-        # Extract structured data
-        extracted_data, confidence_scores = extract_invoice_data(document)
-
-        # Calculate processing time
+        out = process_invoice_bytes(file_content, mime_type)
         processing_time = (datetime.now() - start_time).total_seconds()
-
         return ProcessingResult(
             success=True,
             message="Document processed successfully with Google Document AI",
-            extracted_data=extracted_data,
-            confidence_scores=confidence_scores,
-            processing_time=processing_time
+            extracted_data=out["extracted_data"],
+            confidence_scores=out["confidence_scores"],
+            processing_time=processing_time,
+            review_required=out["review_required"],
+            review_reasons=out["review_reasons"],
         )
 
     except Exception as e:
@@ -352,21 +291,9 @@ async def process_invoice(file: UploadFile = File(...)):
             detail=f"File too large. Max size: {config.MAX_FILE_SIZE / (1024 * 1024):.1f}MB"
         )
 
-    # Determine MIME type
-    mime_type_map = {
-        ".pdf": "application/pdf",
-        ".png": "image/png",
-        ".jpg": "image/jpeg",
-        ".jpeg": "image/jpeg",
-        ".tiff": "image/tiff",
-        ".gif": "image/gif"
-    }
-    mime_type = mime_type_map.get(file_ext, "application/octet-stream")
+    mime_type = MIME_TYPES.get(file_ext, "application/octet-stream")
 
-    # Process the document
-    result = await process_document_with_ai(file_content, mime_type)
-
-    # Process the document
+    # Process the document (one Document AI call per upload)
     result = await process_document_with_ai(file_content, mime_type)
 
     # Store recent processing data for AI agent access
@@ -398,12 +325,13 @@ async def process_invoice(file: UploadFile = File(...)):
                 "invoice_number": result.extracted_data.get("invoice_details", {}).get("invoice_number", "N/A"),
                 "invoice_date": result.extracted_data.get("dates", {}).get("invoice_date", "N/A"),
                 "line_items_count": len(result.extracted_data.get("line_items", [])),
-                "extraction_success": True
+                "extraction_success": True,
+                "review_required": result.review_required,
+                "review_reasons": result.review_reasons,
             }
 
             # Save to file that agent can read
-            recent_file_path = Path(__file__).parent.parent.parent / "recent_processing.json"
-            with open(recent_file_path, "w") as f:
+            with open(RECENT_PROCESSING_PATH, "w") as f:
                 json.dump(recent_data, f, indent=2)
 
             logger.info(f"✅ Saved recent processing data for agent: {vendor_name} - ${total_amount}")
@@ -479,15 +407,7 @@ async def batch_process_invoices(files: List[UploadFile] = File(...)):
                 continue
 
             # Determine MIME type and process
-            mime_type_map = {
-                ".pdf": "application/pdf",
-                ".png": "image/png",
-                ".jpg": "image/jpeg",
-                ".jpeg": "image/jpeg",
-                ".tiff": "image/tiff",
-                ".gif": "image/gif"
-            }
-            mime_type = mime_type_map.get(file_ext, "application/octet-stream")
+            mime_type = MIME_TYPES.get(file_ext, "application/octet-stream")
 
             # Process document
             result = await process_document_with_ai(file_content, mime_type)
@@ -499,7 +419,9 @@ async def batch_process_invoices(files: List[UploadFile] = File(...)):
                 "message": result.message,
                 "extracted_data": result.extracted_data,
                 "confidence_scores": result.confidence_scores,
-                "processing_time": result.processing_time
+                "processing_time": result.processing_time,
+                "review_required": result.review_required,
+                "review_reasons": result.review_reasons,
             })
 
         except Exception as e:

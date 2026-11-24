@@ -53,19 +53,6 @@ def test_configuration():
         return False
 
 
-def test_document_processor():
-    """Test Document AI processor"""
-    print("\n🤖 Testing Document AI Processor...")
-    print("-" * 40)
-
-    try:
-        from src.core.document_processor import test_processor
-        return test_processor()
-    except Exception as e:
-        print(f"❌ Document processor test failed: {str(e)}")
-        return False
-
-
 def test_classifier():
     """Test ML classifier"""
     print("\n🧠 Testing ML Classifier...")
@@ -109,7 +96,6 @@ def main():
         ("Project Structure", test_project_structure),
         ("Package Imports", test_imports),
         ("Configuration", test_configuration),
-        ("Document Processor", test_document_processor),
         ("ML Classifier", test_classifier),
     ]
 

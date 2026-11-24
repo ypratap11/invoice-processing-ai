@@ -28,6 +28,13 @@ RUNNERS = ("docai", "gemini", "local")
 PHASES = ("before", "after")
 RUN_NAMES = tuple(f"{r}-{p}" for r in RUNNERS for p in PHASES)
 RESULTS_DIR = REPO / "audit" / "results"
+CACHE_DIR = REPO / "audit" / "cache"
+
+
+def ledger_and_cache() -> tuple[SpendLedger, Cache]:
+    """The shared spend ledger and response cache, anchored to the repo root
+    (not the working directory), like the results directory."""
+    return SpendLedger(CACHE_DIR / "spend.json"), Cache(CACHE_DIR)
 
 
 def parse_run_name(run_name: str) -> tuple[str, str]:
@@ -59,6 +66,23 @@ def load_adapter(runner: str, phase: str):
     if adapt is None:
         raise SystemExit(f"audit.runners.{runner} has no adapt_{phase} (or adapt)")
     return module, adapt
+
+
+def model_for(run_name: str, module) -> tuple[str, dict]:
+    """Model id and detail for the results file.
+
+    An ``*-after`` run re-scores the ``*-before`` run's cached responses, so it
+    reuses that run's recorded model instead of querying the API (an after run
+    makes no network calls). Otherwise ``module.model_info()`` is asked."""
+    runner, phase = parse_run_name(run_name)
+    before = RESULTS_DIR / f"{runner}-before.json"
+    if phase == "after" and before.exists():
+        prev = json.loads(before.read_text(encoding="utf-8"))
+        info = dict(prev.get("model_detail") or {}, source=before.name)
+        return prev.get("model") or runner, info
+    info = module.model_info() if hasattr(module, "model_info") else {}
+    model = info.get("processor_version") or info.get("model") or info.get("processor") or runner
+    return model, info
 
 
 def _rel(path) -> str:
@@ -129,13 +153,12 @@ def main(argv=None) -> int:
     if args.limit is not None:
         docs = docs[: args.limit]
 
-    ledger, cache = SpendLedger(), Cache()
+    ledger, cache = ledger_and_cache()
     print(f"{args.run_name}: {len(docs)} docs; ledger before ${ledger.total():.2f} (cap ${ledger.cap_usd})")
     preds = run(runner, module.fetch, adapt, docs, ledger=ledger, cache=cache,
                 log=lambda s: print("  " + s, flush=True))
 
-    info = module.model_info() if hasattr(module, "model_info") else {}
-    model = info.get("processor_version") or info.get("model") or info.get("processor") or runner
+    model, info = model_for(args.run_name, module)
     out = build_results(args.run_name, model, docs, preds, spend_usd=ledger.total(),
                         flagger=flagger,
                         extra={"model_detail": info, "limit": args.limit,

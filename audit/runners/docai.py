@@ -1,21 +1,23 @@
 """Document AI runner: the app's own call path, plus adapters to schema keys.
 
-``fetch`` sends the file exactly as the app does (``get_document_ai_client()``,
-``config`` processor, ``RawDocument`` + ``ProcessRequest`` on the regional
+``fetch`` sends the file exactly as the app does (``src.core.docai_client``:
+configured processor, ``RawDocument`` + ``ProcessRequest`` on the regional
 endpoint) and returns the Document as ``documentai.Document.to_json`` dict.
+Its price function first resolves the client and processor name, so a
+credentials failure stops before anything is charged to the ledger.
 
-``adapt_before`` runs the app's ``extract_invoice_data`` unchanged and only
-renames keys. Task 5 adds ``adapt_after`` (same ``doc_json -> Prediction``
-signature); ``run_audit`` looks adapters up by name, so it is a drop-in.
+``adapt_before`` runs the app's original ``extract_invoice_data`` (frozen in
+``docai_legacy``) unchanged and only renames keys. ``adapt_after`` runs the
+fixed app extractor ``src.core.invoice_extractor.extract_invoice``.
 """
 from __future__ import annotations
 
 import json
 import math
-from functools import lru_cache
 from pathlib import Path
 
 from audit.runners.base import Prediction
+from src.core import docai_client
 
 USD_PER_10_PAGES = 0.10
 LOW_CONFIDENCE = 0.7
@@ -23,8 +25,8 @@ LOW_CONFIDENCE = 0.7
 _MIME = {".pdf": "application/pdf", ".png": "image/png",
          ".jpg": "image/jpeg", ".jpeg": "image/jpeg"}
 
-# Schema field -> the Document AI entity types the app reads into it
-# (mirrors the if/elif chain in src/api/main.py::extract_invoice_data).
+# Schema field -> the Document AI entity types the original app read into it
+# (mirrors the if/elif chain in docai_legacy.extract_invoice_data).
 ENTITY_TYPES = {
     "vendor_name": ("supplier_name", "vendor_name", "remit_to_name"),
     "invoice_id": ("invoice_id", "invoice_number"),
@@ -76,22 +78,12 @@ def estimate_cost(path: Path) -> float:
     return cost_for_pages(page_count(path))
 
 
-def _app():
-    from src.api import main  # loads .env and the app's config on first import
-    return main
-
-
-@lru_cache(maxsize=1)
 def _client():
-    client = _app().get_document_ai_client()
-    if client is None:
-        raise RuntimeError("Document AI client not available (see app log: credentials)")
-    return client
+    return docai_client.get_client()  # raises RuntimeError without credentials
 
 
 def processor_name() -> str:
-    cfg = _app().config
-    return _client().processor_path(cfg.PROJECT_ID, cfg.LOCATION, cfg.PROCESSOR_ID)
+    return docai_client.processor_name()
 
 
 def model_info() -> dict:
@@ -118,16 +110,22 @@ def fetch(path: Path) -> dict:
     from google.cloud import documentai
 
     path = Path(path)
-    raw = documentai.RawDocument(content=path.read_bytes(), mime_type=mime_type(path))
-    request = documentai.ProcessRequest(name=processor_name(), raw_document=raw)
-    result = _client().process_document(request=request)
-    doc = json.loads(documentai.Document.to_json(result.document))
+    document = docai_client.process_bytes(path.read_bytes(), mime_type(path))
+    doc = json.loads(documentai.Document.to_json(document))
     for page in doc.get("pages", []):
         page.pop("image", None)
     return doc
 
 
-fetch.cost = estimate_cost
+def priced_cost(path: Path) -> float:
+    """Price of processing ``path``, after checking the call can be made at all:
+    the client and processor name are resolved first, so missing credentials
+    raise here, before the run loop charges the ledger."""
+    processor_name()
+    return estimate_cost(path)
+
+
+fetch.cost = priced_cost
 
 
 def _document(doc_json: dict):
@@ -161,8 +159,9 @@ def _low_confidence_flags(document, confidence_scores: dict) -> set[str]:
 
 
 def adapt_before(doc_json: dict) -> Prediction:
+    from audit.runners.docai_legacy import extract_invoice_data
     document = _document(doc_json)
-    data, conf = _app().extract_invoice_data(document)
+    data, conf = extract_invoice_data(document)
     vendor, details = data.get("vendor_info", {}), data.get("invoice_details", {})
     dates, totals = data.get("dates", {}), data.get("totals", {})
     fields = {
@@ -178,3 +177,13 @@ def adapt_before(doc_json: dict) -> Prediction:
     return Prediction(doc_id="", fields=fields,
                       line_items=[map_line(r) for r in data.get("line_items", [])],
                       flags=_low_confidence_flags(document, conf))
+
+
+def adapt_after(doc_json: dict) -> Prediction:
+    """The fixed app extractor; flags = fields (and ``line_items``) whose
+    confidence is below LOW_CONFIDENCE."""
+    from src.core.invoice_extractor import HEADER_FIELDS, extract_invoice
+    inv, conf = extract_invoice(_document(doc_json))
+    return Prediction(doc_id="", fields={f: inv[f] for f in HEADER_FIELDS},
+                      line_items=list(inv["line_items"]),
+                      flags={f for f, c in conf.items() if c < LOW_CONFIDENCE})

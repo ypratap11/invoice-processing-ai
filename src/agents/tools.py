@@ -2,8 +2,9 @@ from langchain.tools import BaseTool
 from typing import Optional, Type
 from pydantic import BaseModel, Field
 import json
-import os
-from datetime import datetime, timedelta
+import time
+from datetime import datetime
+from pathlib import Path
 from sqlalchemy.orm import Session
 from src.database import (
     get_db, save_invoice_to_db, search_invoices_by_vendor,
@@ -22,52 +23,67 @@ class InvoiceProcessingTool(BaseTool):
 
     def _run(self, file_path: str) -> str:
         try:
-            # Import your existing Document AI processing function
-            # For now, we'll simulate the response
-            # TODO: Replace with your actual Document AI code
+            # Same path as the /process-invoice endpoint: one Document AI call,
+            # entity-based extraction, deterministic checks.
+            from src.api.main import MIME_TYPES, process_invoice_bytes
 
-            # Simulate processing result
+            path = Path(file_path)
+            mime_type = MIME_TYPES.get(path.suffix.lower())
+            if mime_type is None:
+                return f"❌ Unsupported file type: {path.suffix or '(none)'}"
+            start = time.perf_counter()
+            out = process_invoice_bytes(path.read_bytes(), mime_type)
+            processing_time = round(time.perf_counter() - start, 3)
+            inv = out["invoice"]
             result = {
-                "filename": os.path.basename(file_path),
-                "vendor_name": "Acme Corporation",
-                "total_amount": 1250.00,
-                "invoice_date": datetime(2025, 6, 28),
-                "invoice_number": "INV-2025-001",
-                "line_items": [
-                    {"description": "Software License", "amount": 1000.00, "quantity": 1},
-                    {"description": "Support Services", "amount": 250.00, "quantity": 1}
-                ],
-                "confidence_scores": {
-                    "vendor_name": 0.98,
-                    "total_amount": 0.95,
-                    "invoice_date": 0.92
-                },
-                "raw_extraction": {"full_text": "Sample invoice data"},
-                "processing_time": 3.2
+                "filename": path.name,
+                "invoice": inv,
+                "confidence_scores": out["confidence_scores"],
+                "review_required": out["review_required"],
+                "review_reasons": out["review_reasons"],
+                "processing_time": processing_time,
             }
 
-            # Save to database
+            # Save to database (columns: total_amount Float, invoice_date DateTime)
             db = SessionLocal()
             try:
-                saved_invoice = save_invoice_to_db(result, db)
-
-                return f"""✅ Invoice processed successfully!
-
-**Vendor:** {result['vendor_name']}
-**Amount:** ${result['total_amount']:,.2f}
-**Date:** {result['invoice_date'].strftime('%Y-%m-%d')}
-**Invoice #:** {result['invoice_number']}
-**Line Items:** {len(result['line_items'])} items
-**Processing Time:** {result['processing_time']}s
-**Confidence:** {result['confidence_scores']['total_amount'] * 100:.1f}%
-
-Invoice saved to database with ID: {saved_invoice.id}"""
-
+                saved = save_invoice_to_db({
+                    "filename": path.name,
+                    "vendor_name": inv["vendor_name"],
+                    "total_amount": _as_float(inv["total"]),
+                    "invoice_date": _as_datetime(inv["invoice_date"]),
+                    "invoice_number": inv["invoice_id"],
+                    "line_items": inv["line_items"],
+                    "confidence_scores": out["confidence_scores"],
+                    "raw_extraction": out["extracted_data"],
+                    "processing_time": processing_time,
+                }, db)
+                result["database_id"] = saved.id
+            except Exception as e:
+                result["database_error"] = str(e)
             finally:
                 db.close()
 
+            return json.dumps(result, indent=2, ensure_ascii=False)
+
         except Exception as e:
             return f"❌ Error processing invoice: {str(e)}"
+
+
+def _as_float(value):
+    """Plain decimal string from the extractor -> float; None if absent/not numeric."""
+    try:
+        return float(value) if value is not None else None
+    except ValueError:
+        return None
+
+
+def _as_datetime(value):
+    """ISO date from the extractor -> datetime; None if absent/not ISO."""
+    try:
+        return datetime.fromisoformat(value) if value else None
+    except ValueError:
+        return None
 
 
 class InvoiceSearchInput(BaseModel):

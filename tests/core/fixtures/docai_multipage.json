@@ -1,0 +1,575 @@
+{
+ "mimeType": "application/pdf",
+ "text": "Northwind Paper Co.\nInvoice INV-7731\nDate 03/04/2026\nDue 04/04/2026\nA4 paper ream 10 4.50 45.00\nStaples box 2 3.25 6.50\n--- page 2 ---\nToner cartridge 1 1198.50 1198.50\nSubtotal $1,250.00\nTax $0.00\nTotal $1,250.00\nNorthwind Paper\n",
+ "pages": [
+  {
+   "pageNumber": 1,
+   "dimension": {
+    "width": 612,
+    "height": 792,
+    "unit": "points"
+   }
+  },
+  {
+   "pageNumber": 2,
+   "dimension": {
+    "width": 612,
+    "height": 792,
+    "unit": "points"
+   }
+  }
+ ],
+ "entities": [
+  {
+   "type": "supplier_name",
+   "mentionText": "Northwind Paper",
+   "confidence": 0.41,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "0",
+      "endIndex": "15"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {}
+    ]
+   }
+  },
+  {
+   "type": "invoice_id",
+   "mentionText": "INV-7731",
+   "confidence": 0.98,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "28",
+      "endIndex": "36"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {}
+    ]
+   }
+  },
+  {
+   "type": "invoice_date",
+   "mentionText": "03/04/2026",
+   "confidence": 0.97,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "42",
+      "endIndex": "52"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {}
+    ]
+   },
+   "normalizedValue": {
+    "text": "2026-04-03",
+    "dateValue": {
+     "year": 2026,
+     "month": 4,
+     "day": 3
+    }
+   }
+  },
+  {
+   "type": "due_date",
+   "mentionText": "04/04/2026",
+   "confidence": 0.96,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "57",
+      "endIndex": "67"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {}
+    ]
+   },
+   "normalizedValue": {
+    "text": "2026-05-04",
+    "dateValue": {
+     "year": 2026,
+     "month": 5,
+     "day": 4
+    }
+   }
+  },
+  {
+   "type": "currency",
+   "mentionText": "$",
+   "confidence": 0.92,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "178",
+      "endIndex": "179"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {}
+    ]
+   },
+   "normalizedValue": {
+    "text": "USD"
+   }
+  },
+  {
+   "type": "net_amount",
+   "mentionText": "$1,250.00",
+   "confidence": 0.95,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "178",
+      "endIndex": "187"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {
+      "page": "1"
+     }
+    ]
+   },
+   "normalizedValue": {
+    "text": "1250",
+    "moneyValue": {
+     "currencyCode": "USD",
+     "units": "1250",
+     "nanos": 0
+    }
+   }
+  },
+  {
+   "type": "total_tax_amount",
+   "mentionText": "$0.00",
+   "confidence": 0.93,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "192",
+      "endIndex": "197"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {
+      "page": "1"
+     }
+    ]
+   },
+   "normalizedValue": {
+    "text": "0",
+    "moneyValue": {
+     "currencyCode": "USD",
+     "units": "0",
+     "nanos": 0
+    }
+   }
+  },
+  {
+   "type": "total_amount",
+   "mentionText": "$1,250.00",
+   "confidence": 0.99,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "178",
+      "endIndex": "187"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {
+      "page": "1"
+     }
+    ]
+   },
+   "normalizedValue": {
+    "text": "1250",
+    "moneyValue": {
+     "currencyCode": "USD",
+     "units": "1250",
+     "nanos": 0
+    }
+   }
+  },
+  {
+   "type": "supplier_name",
+   "mentionText": "Northwind Paper Co.",
+   "confidence": 0.88,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "0",
+      "endIndex": "19"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {}
+    ]
+   }
+  },
+  {
+   "type": "supplier_address",
+   "mentionText": "Northwind Paper",
+   "confidence": 0.5,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "0",
+      "endIndex": "15"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {}
+    ]
+   }
+  },
+  {
+   "type": "line_item",
+   "mentionText": "A4 paper ream 10 4.50 45.00",
+   "confidence": 1.0,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "68",
+      "endIndex": "95"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {}
+    ]
+   },
+   "properties": [
+    {
+     "type": "line_item/description",
+     "mentionText": "A4 paper ream",
+     "confidence": 0.91,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "68",
+        "endIndex": "81"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {}
+      ]
+     }
+    },
+    {
+     "type": "line_item/quantity",
+     "mentionText": "10",
+     "confidence": 0.93,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "82",
+        "endIndex": "84"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {}
+      ]
+     },
+     "normalizedValue": {
+      "text": "10",
+      "integerValue": 10
+     }
+    },
+    {
+     "type": "line_item/unit_price",
+     "mentionText": "4.50",
+     "confidence": 0.97,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "85",
+        "endIndex": "89"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {}
+      ]
+     },
+     "normalizedValue": {
+      "text": "4.50",
+      "floatValue": 4.5
+     }
+    },
+    {
+     "type": "line_item/amount",
+     "mentionText": "45.00",
+     "confidence": 0.98,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "90",
+        "endIndex": "95"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {}
+      ]
+     },
+     "normalizedValue": {
+      "text": "45.00",
+      "floatValue": 45.0
+     }
+    }
+   ]
+  },
+  {
+   "type": "line_item",
+   "mentionText": "Staples box 2 3.25 6.50",
+   "confidence": 1.0,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "96",
+      "endIndex": "119"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {}
+    ]
+   },
+   "properties": [
+    {
+     "type": "line_item/description",
+     "mentionText": "Staples box",
+     "confidence": 0.91,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "96",
+        "endIndex": "107"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {}
+      ]
+     }
+    },
+    {
+     "type": "line_item/quantity",
+     "mentionText": "2",
+     "confidence": 0.93,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "48",
+        "endIndex": "49"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {}
+      ]
+     },
+     "normalizedValue": {
+      "text": "2",
+      "integerValue": 2
+     }
+    },
+    {
+     "type": "line_item/unit_price",
+     "mentionText": "3.25",
+     "confidence": 0.97,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "110",
+        "endIndex": "114"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {}
+      ]
+     },
+     "normalizedValue": {
+      "text": "3.25",
+      "floatValue": 3.25
+     }
+    },
+    {
+     "type": "line_item/amount",
+     "mentionText": "6.50",
+     "confidence": 0.98,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "115",
+        "endIndex": "119"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {}
+      ]
+     },
+     "normalizedValue": {
+      "text": "6.50",
+      "floatValue": 6.5
+     }
+    }
+   ]
+  },
+  {
+   "type": "line_item",
+   "mentionText": "Toner cartridge 1 1198.50 1198.50",
+   "confidence": 1.0,
+   "textAnchor": {
+    "textSegments": [
+     {
+      "startIndex": "135",
+      "endIndex": "168"
+     }
+    ]
+   },
+   "pageAnchor": {
+    "pageRefs": [
+     {
+      "page": "1"
+     }
+    ]
+   },
+   "properties": [
+    {
+     "type": "line_item/description",
+     "mentionText": "Toner cartridge",
+     "confidence": 0.91,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "135",
+        "endIndex": "150"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {
+        "page": "1"
+       }
+      ]
+     }
+    },
+    {
+     "type": "line_item/quantity",
+     "mentionText": "1",
+     "confidence": 0.93,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "35",
+        "endIndex": "36"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {
+        "page": "1"
+       }
+      ]
+     },
+     "normalizedValue": {
+      "text": "1",
+      "integerValue": 1
+     }
+    },
+    {
+     "type": "line_item/unit_price",
+     "mentionText": "1198.50",
+     "confidence": 0.97,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "153",
+        "endIndex": "160"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {
+        "page": "1"
+       }
+      ]
+     },
+     "normalizedValue": {
+      "text": "1198.50",
+      "floatValue": 1198.5
+     }
+    },
+    {
+     "type": "line_item/amount",
+     "mentionText": "1198.50",
+     "confidence": 0.98,
+     "textAnchor": {
+      "textSegments": [
+       {
+        "startIndex": "153",
+        "endIndex": "160"
+       }
+      ]
+     },
+     "pageAnchor": {
+      "pageRefs": [
+       {
+        "page": "1"
+       }
+      ]
+     },
+     "normalizedValue": {
+      "text": "1198.50",
+      "floatValue": 1198.5
+     }
+    }
+   ]
+  }
+ ]
+}
