@@ -98,6 +98,7 @@ def build(out: Path = OUT) -> Path:
     co_review, co_len = checks_only(load("docai-after"), "lenient")
     _, co_str = checks_only(load("docai-after"), "strict")
     pct = lambda x, n: f"{100 * x / n:.0f}%"
+    pct1 = lambda x, n: f"{100 * x / n:.1f}%"  # review rates: same rounding as the chart
     story = [
         p("Invoice accuracy audit", H1),
         p("Subject: this repository's invoice extraction app (FastAPI + Google Document AI Invoice Parser). "
@@ -162,7 +163,8 @@ def build(out: Path = OUT) -> Path:
             "<b>Silent error</b> = a wrong value that is not flagged for review. Missing values are never silent. "
             "Flags: before, Document AI confidence below 0.7; after, any failed check sends the whole invoice to "
             "review. Checks: qty x price = amount, lines add to subtotal, subtotal + tax = total, valid dates "
-            "with due date not before invoice date, required fields present.",
+            "with due date not before invoice date, required fields present, and every amount readable as a "
+            "number once currency symbols and codes (\"Rs.\", \"INR\") are removed.",
             "<b>Gemini:</b> gemini-3.8-flash on Vertex AI (global endpoint), temperature 0, JSON schema output; the "
             "prompt asks for ISO dates and plain numbers and is quoted in full in REPORT.md.",
         ]),
@@ -170,17 +172,17 @@ def build(out: Path = OUT) -> Path:
         table([
             ["App after fixes: what can flag an invoice", "Sent to review", "Silent errors, lenient",
              "Silent errors, strict"],
-            ["(a) Checks only", f"{co_review} of 53 ({pct(co_review, 53)})", f"{co_len}", f"{co_str}"],
-            ["(b) Checks + Document AI confidence &lt; 0.7", f"{a['review']} of 53 ({pct(a['review'], 53)})", f"{a['silent']}",
+            ["(a) Checks only", f"{co_review} of 53 ({pct1(co_review, 53)})", f"{co_len}", f"{co_str}"],
+            ["(b) Checks + Document AI confidence &lt; 0.7", f"{a['review']} of 53 ({pct1(a['review'], 53)})", f"{a['silent']}",
              f"{as_['silent']}"],
         ], [2.9 * inch, 1.3 * inch, 1.45 * inch, 1.45 * inch]),
         Spacer(1, 3),
-        p("<b>A 92% review rate is not a usable operating point:</b> if 49 of 53 invoices go to a person, the "
-          "app is mostly a pre-filled form. The checks do catch all 4 invoices whose own printed total is wrong. "
-          "31 of the 32 remaining lenient silent errors sit on 4 scanned invoices where Document AI splits each "
-          "printed row into fragments; values shift between rows but still add up, so no check fires. The 32nd "
-          "is one misread quantity (\"5050\" for 50) on a digital PDF. Better line extraction, not looser "
-          "checks, is the way to a lower review rate."),
+        p(f"<b>A {pct1(a['review'], 53)} review rate is not a usable operating point:</b> if {a['review']} of 53 "
+          "invoices go to a person, the app is mostly a pre-filled form. The checks do catch all 4 invoices whose "
+          f"own printed total is wrong. All {a['silent']} remaining silent errors sit on 4 scanned invoices where "
+          "Document AI splits each printed row into fragments; values shift between rows but still add up, so no "
+          "check fires. A misread quantity (\"5050\" for 50) on a digital PDF is caught by qty x price. Better "
+          "line extraction, not looser checks, is the way to a lower review rate."),
         p("Model comparison (lenient first: Gemini was told to output clean formats, the app was not)", H2),
         table([
             ["", "App after fixes (Document AI)", "Gemini 3.8 Flash + same checks"],

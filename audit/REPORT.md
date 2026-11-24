@@ -15,7 +15,7 @@ Every number below comes from the committed files in `audit/results/`. A two-pag
 | Line items returned | | **0 of 471** | 472 for 471 printed | 471 of 471 |
 | Values correct (lenient) | | 356 of 2,283 (16%) | 1,864 of 2,283 (82%) | 2,278 of 2,283 (99.8%) |
 | Values missing | | 1,883 | 261 | 3 |
-| Wrong values passed on silently (lenient) | "Zero data entry errors" | 40 | 32 | 2 |
+| Wrong values passed on silently (lenient) | "Zero data entry errors" | 40 | 31 | 2 |
 | Invoices sent to human review | | 36 of 53 | 49 of 53 | 7 of 53 |
 | Cost per invoice | | $0.20 (Document AI called twice per upload) | $0.10 | about $0.006 |
 
@@ -136,7 +136,9 @@ flagged* for review. A missing value is never silent, because a blank is visible
 
 **The checks** (`src/core/invoice_checks.py`): quantity × unit price = line amount; line amounts add up to the
 subtotal; subtotal + tax = total (all within 1 cent); dates are valid and the due date is not before the
-invoice date; vendor, invoice number, invoice date and total are present.
+invoice date; vendor, invoice number, invoice date and total are present. Amounts are read with any currency
+symbol or code removed ("$", "€", "₹", "Rs.", "INR"); an amount that is present but still cannot be read as a
+number is itself a reason for review (`unparseable_amount:<field>`), so a check is never skipped silently.
 
 **Gemini.** Model `gemini-3.8-flash` on Vertex AI, endpoint `global`, temperature 0, the document sent as
 file bytes with a JSON schema for the output. The prompt, verbatim (`PROMPT` in `audit/runners/gemini.py`):
@@ -231,7 +233,7 @@ low-confidence flag.
 | Several tax lines, one reported | 7 of 53 | gen-003, as above |
 | Day and month swapped | invoice date 3, due date 2 | gen-026 2026-10-02 for 2026-02-10 |
 | Header value not found | 7 values on 5 invoices | gen-024 currency (INR) not returned |
-| "Rs." amounts passed through as printed (strict) | 10 values on 1 invoice (8 unflagged) | gen-024 total "Rs.32,304.78" |
+| "Rs." amounts passed through as printed (strict) | 10 values on 1 invoice (all flagged) | gen-024 total "Rs.32,304.78" |
 
 In total 261 values were missing after the fixes (254 line values, 7 header values).
 
@@ -268,10 +270,12 @@ check catches all 7 and sends them to review.
 | Header values correct | 356 of 407 (158) | 388 of 407 (385) |
 | Line values correct | 0 of 1,876 (0) | 1,476 of 1,876 (1,464) |
 | Values missing | 1,883 (1,883) | 261 (261) |
-| Silent errors | 40 (195) | 32 (40) |
+| Silent errors | 40 (195) | 31 (31) |
 | Invoices sent to review | 36 of 53 | 49 of 53 |
 
 Per-field accuracy is in the chart and in `aggregate_lenient.field_accuracy` in each results file.
+The "after" results were re-scored on 2026-11-24 from the same cached responses, after a fix to how the checks
+read "Rs." amounts (below); no API calls were made and only the review flags changed.
 
 ### The review rate, read honestly
 
@@ -280,24 +284,27 @@ the app after fixes:
 
 | What can flag an invoice | Sent to review | Silent errors, lenient | Silent errors, strict |
 |---|---|---|---|
-| (a) Checks only | 42 of 53 (79%) | 32 | 42 |
-| (b) Checks + Document AI confidence below 0.7 | 49 of 53 (92%) | 32 | 40 |
+| (a) Checks only | 43 of 53 (81.1%) | 31 | 31 |
+| (b) Checks + Document AI confidence below 0.7 | 49 of 53 (92.5%) | 31 | 31 |
 
 View (a) was computed by re-scoring the committed predictions with the frozen scorer and the confidence flags
 removed. No API calls were made.
 
-**A review rate of 92% is not a usable operating point.** If 49 of every 53 invoices go to a person, the app
+**A review rate of 92.5% is not a usable operating point.** If 49 of every 53 invoices go to a person, the app
 saves very little keying; it is mostly a pre-filled form. What the checks show is narrower but real: on this
 test set they stop most wrong values from passing silently, and they caught all 4 invoices whose own printed
 total is wrong. The way to a lower review rate is better line extraction, not looser checks. Confidence
-flags add 7 invoices to review but remove almost no silent errors (none lenient, 2 strict).
+flags add 6 invoices to review but remove no silent errors in either mode.
 
-**Where the remaining silent errors are.** 31 of the 32 lenient silent errors are on 4 scanned invoices
-(gen-008, gen-010, gen-020, gen-036). On these, Document AI splits a printed row into fragments: the
+**Where the remaining silent errors are.** All 31 silent errors (lenient and strict alike) are on 4 scanned
+invoices (gen-008, gen-010, gen-020, gen-036). On these, Document AI splits a printed row into fragments: the
 description lands on one extracted line, the quantity on another, the price on a third. Values shift between
 rows, yet the line amounts still add up to the subtotal, and every row that has all three numbers is
-internally consistent. So no check fires. The 32nd is one quantity on gen-024, a digital PDF, read as "5050"
-for 50. In strict mode gen-024 adds 8 more, because the app passes its "Rs." amounts through as printed.
+internally consistent. So no check fires. gen-024, a digital PDF, has one quantity read as "5050" for 50; the
+quantity × unit price check catches it and sends the invoice to review. (A first version of the checks could
+not read its "Rs." amounts and skipped every check on that invoice without saying so; the checks now strip the
+"Rs." prefix and report any amount they cannot read.) Its "Rs." amounts are still wrong in strict mode, but
+flagged.
 
 ## 7. Model comparison
 
@@ -310,7 +317,7 @@ Lenient numbers lead, because Gemini was told to output clean formats and the ap
 | Model / version | Invoice Parser `pretrained-invoice-v2.0-2023-12-06` | `gemini-3.8-flash`, Vertex AI `global` |
 | Invoices fully correct | 6 of 53 (strict 6) | 48 of 53 (strict 48) |
 | Values correct | 1,864 of 2,283 (strict 1,849) | 2,278 of 2,283 (strict 2,278) |
-| Silent errors | 32 (strict 40) | 2 (strict 2) |
+| Silent errors | 31 (strict 31) | 2 (strict 2) |
 | Sent to review | 49 of 53 | 7 of 53 |
 | Cost for 53 invoices | $5.30 | $0.314 |
 | Cost per invoice | $0.10 | about $0.006 |

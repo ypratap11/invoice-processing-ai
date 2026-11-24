@@ -193,15 +193,15 @@ Measured on 53 labeled invoices (40 generated in 5 layouts with deliberate hard 
 | Invoices fully correct, lenient (strict) | 0 of 53 (0) | 6 of 53 (6) | 48 of 53 (48) |
 | Line items returned | 0 of 471 | 472 for 471 printed | 471 of 471 |
 | Values correct, lenient (strict), of 2,283 | 356 (158) | 1,864 (1,849) | 2,278 (2,278) |
-| Silent errors, lenient (strict) | 40 (195) | 32 (40) | 2 (2) |
+| Silent errors, lenient (strict) | 40 (195) | 31 (31) | 2 (2) |
 | Invoices sent to human review | 36 of 53 | 49 of 53 | 7 of 53 |
 | Cost per invoice | $0.20 (Document AI called twice) | $0.10 | about $0.006 |
 | Median time per invoice | 4.1 s | 4.1 s | 7.9 s |
 
 What this means:
 - After the fixes, header fields are right 388 of 407 times (95%) and line-item values 1,476 of 1,876 (79%).
-- A 92% review rate is not a usable operating point. The checks stop most wrong values from passing silently, but by sending nearly every invoice to a person.
-- Almost all remaining silent errors are on 4 scanned invoices where Document AI splits table rows into fragments.
+- A 92.5% review rate is not a usable operating point. The checks stop most wrong values from passing silently, but by sending nearly every invoice to a person.
+- All remaining silent errors are on 4 scanned invoices where Document AI splits table rows into fragments.
 - The test set is mostly synthetic and small. Treat the Gemini result as a reason for a real trial, not a verdict. A local-model comparison is deferred.
 
 ![Before vs after](audit/report/before_after.png)
