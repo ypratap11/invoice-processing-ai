@@ -1,7 +1,7 @@
 """The app's original extraction, frozen for the audit's "before" adapter.
 
 ``extract_invoice_data`` below is a verbatim copy of
-``src/api/main.py::extract_invoice_data`` at commit 1df4af9 (the code the
+``src/api/main.py::extract_invoice_data`` at commit ed8e846 (the code the
 "before" run measured). The app now uses ``src.core.invoice_extractor``;
 this copy keeps ``adapt_before`` reproducible. Do not edit.
 """

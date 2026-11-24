@@ -251,7 +251,7 @@ In total 261 values were missing after the fixes (254 line values, 7 header valu
 
 ## 5. Fixes
 
-Made in commits `9a04d1d` and `50bbf66`, with tests in `tests/core/`:
+Made in commits `84e641f` and `174eccb`, with tests in `tests/core/`:
 
 1. **One extractor** (`src/core/invoice_extractor.py`) that reads Document AI's `line_item` entities and
    their parts, using Document AI's normalised values (ISO dates, plain numbers, currency codes) instead of
@@ -372,4 +372,4 @@ in this round.
 
 None. `git diff --stat audit-scoring-frozen HEAD -- audit/scorer.py audit/normalize.py` is empty. The scoring
 and normalising rules behind every number here are the ones tagged before the first measured run (tag
-`audit-scoring-frozen`, commit `33b780c`).
+`audit-scoring-frozen`, commit `cb9617b`).
