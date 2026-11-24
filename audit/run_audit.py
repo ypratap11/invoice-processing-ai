@@ -129,7 +129,7 @@ def build_results(run_name: str, model, docs, preds: list[Prediction], spend_usd
         "summary": {
             "n_docs": len(docs),
             "n_errors": sum(1 for p in preds if p.error),
-            "api_cost_usd": round(sum(p.cost_usd for p in preds), 2),
+            "api_cost_usd": round(sum(p.cost_usd for p in preds), 4),
             "median_latency_s": round(statistics.median(latencies), 3) if latencies else None,
             "docs_fewer_pred_lines_than_truth": sum(
                 1 for d in per_doc if d["pred_lines"] < d["truth_lines"]),
@@ -163,6 +163,9 @@ def main(argv=None) -> int:
                         flagger=flagger,
                         extra={"model_detail": info, "limit": args.limit,
                                "spend_by_runner": ledger.by_runner()})
+    entries = [cache.get(runner, d[0]) for d in docs]
+    out["summary"]["charged_estimate_usd"] = round(
+        sum(e["cost_usd"] for e in entries if e), 4)
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     dest = RESULTS_DIR / f"{args.run_name}.json"
     dest.write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")

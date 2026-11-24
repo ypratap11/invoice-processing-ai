@@ -51,3 +51,25 @@ def test_estimate_is_upper_bound(tmp_path):
     p.write_bytes(b"x")
     assert gemini.estimate_cost(p) >= gemini.cost_from_usage(
         {"prompt_tokens": 2000, "output_tokens": 2000, "thoughts_tokens": 0})
+
+
+def test_results_use_actual_usage_cost_not_estimate(tmp_path):
+    from audit.cache import Cache
+    from audit.runners.base import run
+    from audit.schema import Invoice
+    from audit.spend import SpendLedger
+
+    p = tmp_path / "d.png"
+    p.write_bytes(b"x")
+    docs = [("d1", p, Invoice(vendor_name="A"))]
+
+    def fetch(path):
+        return {"text": "{}", "usage": {}, "cost_usd": 0.0042}
+    fetch.cost = lambda path: 0.03
+    ledger, cache = SpendLedger(tmp_path / "s.json"), Cache(tmp_path / "c")
+    preds = run("gemini", fetch, gemini.adapt, docs, ledger=ledger, cache=cache)
+    assert ledger.total() == pytest.approx(0.03)          # cap guard charges the estimate
+    assert preds[0].cost_usd == pytest.approx(0.0042)     # reported cost is actual
+    again = run("gemini", fetch, gemini.adapt, docs, ledger=ledger, cache=cache)
+    assert again[0].cost_usd == pytest.approx(0.0042)     # also from cache
+    assert cache.get("gemini", "d1")["cost_usd"] == pytest.approx(0.03)

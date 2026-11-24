@@ -34,6 +34,14 @@ class Prediction:
         return {**self.fields, "line_items": list(self.line_items)}
 
 
+def _actual_cost(resp, charged: float) -> float:
+    """Reported cost of a call: the actual usage cost when the response carries
+    one (``resp["cost_usd"]``), else the amount charged to the ledger."""
+    if isinstance(resp, dict) and isinstance(resp.get("cost_usd"), (int, float)):
+        return float(resp["cost_usd"])
+    return charged
+
+
 def _err(doc_id: str, exc: BaseException, latency_s=0.0, cost_usd=0.0) -> Prediction:
     msg = f"{type(exc).__name__}: {exc}"
     return Prediction(doc_id=doc_id, error=msg, latency_s=latency_s, cost_usd=cost_usd)
@@ -51,8 +59,9 @@ def run(runner_name: str, fetch: Callable[[Path], dict], adapt: Callable[[dict],
     - A fetch or adapt exception yields ``Prediction(error=...)`` with empty
       fields and the run continues. Failed fetches are not cached (a rerun
       retries them and is charged again).
-    - ``latency_s``/``cost_usd`` on each prediction are those of the original
-      API call, carried in the cache entry.
+    - ``latency_s`` on each prediction is that of the original API call;
+      ``cost_usd`` is the actual usage cost if the response has ``cost_usd``,
+      else the ledger charge (the cache entry's ``cost_usd`` stays the charge).
     """
     ledger = ledger if ledger is not None else SpendLedger()
     cache = cache if cache is not None else Cache()
@@ -87,8 +96,9 @@ def run(runner_name: str, fetch: Callable[[Path], dict], adapt: Callable[[dict],
             pred = adapt(entry["response"])
         except Exception as e:
             log(f"{doc_id}: adapt failed: {traceback.format_exc(limit=3)}")
-            preds.append(_err(doc_id, e, entry["latency_s"], entry["cost_usd"]))
+            preds.append(_err(doc_id, e, entry["latency_s"],
+                              _actual_cost(entry["response"], entry["cost_usd"])))
             continue
         preds.append(replace(pred, doc_id=doc_id, latency_s=entry["latency_s"],
-                             cost_usd=entry["cost_usd"]))
+                             cost_usd=_actual_cost(entry["response"], entry["cost_usd"])))
     return preds

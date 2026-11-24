@@ -95,7 +95,7 @@
    ],
    "error": null,
    "latency_s": 9.802,
-   "cost_usd": 0.0344,
+   "cost_usd": 0.0067965,
    "pred": {
     "vendor_name": "Quillfeather Office Supply",
     "invoice_id": "05478",
@@ -2055,7 +2055,7 @@
    ],
    "error": null,
    "latency_s": 13.325,
-   "cost_usd": 0.0344,
+   "cost_usd": 0.0106365,
    "pred": {
     "vendor_name": "Marrowgate Fasteners",
     "invoice_id": "INV002594",
@@ -3673,7 +3673,7 @@
    ],
    "error": null,
    "latency_s": 10.031,
-   "cost_usd": 0.0344,
+   "cost_usd": 0.00686775,
    "pred": {
     "vendor_name": "TINDLE & OAKRIDGE CONSULTING",
     "invoice_id": "20263054",
@@ -5359,7 +5359,7 @@
    ],
    "error": null,
    "latency_s": 14.392,
-   "cost_usd": 0.0344,
+   "cost_usd": 0.010104,
    "pred": {
     "vendor_name": "Bluefen Catering Co.",
     "invoice_id": "A4-00110",
@@ -6904,7 +6904,7 @@
    ],
    "error": null,
    "latency_s": 14.651,
-   "cost_usd": 0.0344,
+   "cost_usd": 0.0109815,
    "pred": {
     "vendor_name": "Corvane Print Works",
     "invoice_id": "20262988",
@@ -8578,7 +8578,7 @@
    ],
    "error": null,
    "latency_s": 23.266,
-   "cost_usd": 0.0344,
+   "cost_usd": 0.0142515,
    "pred": {
     "vendor_name": "Halloway Janitorial Group",
     "invoice_id": "B26-9241",
@@ -10215,7 +10215,7 @@
    ],
    "error": null,
    "latency_s": 9.652,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.006234,
    "pred": {
     "vendor_name": "Pemberly Lab Instruments",
     "invoice_id": "00227",
@@ -10887,7 +10887,7 @@
    ],
    "error": null,
    "latency_s": 10.472,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.0047325,
    "pred": {
     "vendor_name": "DRIFTMERE FREIGHT LINES",
     "invoice_id": "20264831",
@@ -11190,7 +11190,7 @@
    ],
    "error": null,
    "latency_s": 7.307,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.005934,
    "pred": {
     "vendor_name": "Saffronvale Stationers",
     "invoice_id": "A5-05111",
@@ -11842,7 +11842,7 @@
    ],
    "error": null,
    "latency_s": 6.483,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00483,
    "pred": {
     "vendor_name": "Kestrel Bolt & Bearing",
     "invoice_id": "INV-2026-5057",
@@ -12191,7 +12191,7 @@
    ],
    "error": null,
    "latency_s": 7.852,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00437025,
    "pred": {
     "vendor_name": "Orrin Vasquez Advisory",
     "invoice_id": "A2-08650",
@@ -12632,7 +12632,7 @@
    ],
    "error": null,
    "latency_s": 6.447,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.003924,
    "pred": {
     "vendor_name": "Larkspur Kitchen Provisions",
     "invoice_id": "INV009916",
@@ -13053,7 +13053,7 @@
    ],
    "error": null,
    "latency_s": 8.402,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00621525,
    "pred": {
     "vendor_name": "INKWELL MEADOW PRESS",
     "invoice_id": "B26-5735",
@@ -13633,7 +13633,7 @@
    ],
    "error": null,
    "latency_s": 4.881,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.003375,
    "pred": {
     "vendor_name": "Brisbin Facility Care",
     "invoice_id": "B26-6889",
@@ -13844,7 +13844,7 @@
    ],
    "error": null,
    "latency_s": 32.326,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.01670025,
    "pred": {
     "vendor_name": "Gallowmere Scientific",
     "invoice_id": "INV004563",
@@ -14469,7 +14469,7 @@
    ],
    "error": null,
    "latency_s": 26.874,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.01125525,
    "pred": {
     "vendor_name": "Cobbleton Haulage",
     "invoice_id": "INV-2026-4196",
@@ -14718,7 +14718,7 @@
    ],
    "error": null,
    "latency_s": 29.063,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.01514025,
    "pred": {
     "vendor_name": "Thistledown Paper Goods",
     "invoice_id": "INV-2026-2198",
@@ -15069,7 +15069,7 @@
    ],
    "error": null,
    "latency_s": 10.308,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00577275,
    "pred": {
     "vendor_name": "FERROWICK INDUSTRIAL PARTS",
     "invoice_id": "INV007438",
@@ -15282,7 +15282,7 @@
    ],
    "error": null,
    "latency_s": 3.084,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.0020265,
    "pred": {
     "vendor_name": "Penhallow Data Studio",
     "invoice_id": "SI/26/1814",
@@ -15634,7 +15634,7 @@
    ],
    "error": null,
    "latency_s": 5.522,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00432,
    "pred": {
     "vendor_name": "Wrenfield Events Kitchen",
     "invoice_id": "CN-4326-8",
@@ -16122,7 +16122,7 @@
    ],
    "error": null,
    "latency_s": 3.086,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00226275,
    "pred": {
     "vendor_name": "Moss & Mallory Signage",
     "invoice_id": "INV005545",
@@ -16334,7 +16334,7 @@
    ],
    "error": null,
    "latency_s": 7.434,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.004359,
    "pred": {
     "vendor_name": "Clearbrook Sanitation",
     "invoice_id": "B26-8861",
@@ -16777,7 +16777,7 @@
    ],
    "error": null,
    "latency_s": 6.339,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00489525,
    "pred": {
     "vendor_name": "AMBERGROVE BIOREAGENTS",
     "invoice_id": "B26-5113",
@@ -17357,7 +17357,7 @@
    ],
    "error": null,
    "latency_s": 6.194,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.0038715,
    "pred": {
     "vendor_name": "Sterling Ashby Couriers",
     "invoice_id": "CN-0452-6",
@@ -17662,7 +17662,7 @@
    ],
    "error": null,
    "latency_s": 8.521,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.004845,
    "pred": {
     "vendor_name": "Nettlecombe Desk Supply",
     "invoice_id": "A3-06001",
@@ -18057,7 +18057,7 @@
    ],
    "error": null,
    "latency_s": 6.039,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00395775,
    "pred": {
     "vendor_name": "Grindell Hydraulics",
     "invoice_id": "INV005491",
@@ -18499,7 +18499,7 @@
    ],
    "error": null,
    "latency_s": 6.446,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00402375,
    "pred": {
     "vendor_name": "Varnell Systems Integration",
     "invoice_id": "A2-00079",
@@ -18848,7 +18848,7 @@
    ],
    "error": null,
    "latency_s": 7.464,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.005604,
    "pred": {
     "vendor_name": "HOLLIN FARMHOUSE FOODS",
     "invoice_id": "SI/26/1316",
@@ -19520,7 +19520,7 @@
    ],
    "error": null,
    "latency_s": 6.441,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00423375,
    "pred": {
     "vendor_name": "Pressmark Lithographic",
     "invoice_id": "09141",
@@ -19961,7 +19961,7 @@
    ],
    "error": null,
    "latency_s": 5.624,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.003594,
    "pred": {
     "vendor_name": "Ostrander Cleaning Crew",
     "invoice_id": "A3-09170",
@@ -20402,7 +20402,7 @@
    ],
    "error": null,
    "latency_s": 5.827,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00310275,
    "pred": {
     "vendor_name": "Quenby Precision Optics",
     "invoice_id": "A3-07552",
@@ -20705,7 +20705,7 @@
    ],
    "error": null,
    "latency_s": 5.291,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.0040965,
    "pred": {
     "vendor_name": "Rookwood Cartage",
     "invoice_id": "CN-4943-7",
@@ -21239,7 +21239,7 @@
    ],
    "error": null,
    "latency_s": 11.784,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.005235,
    "pred": {
     "vendor_name": "BLYTHE CORNER SUPPLIES",
     "invoice_id": "01614",
@@ -21589,7 +21589,7 @@
    ],
    "error": null,
    "latency_s": 7.877,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00551775,
    "pred": {
     "vendor_name": "Tallisker Machine Shop",
     "invoice_id": "CN-8009-9",
@@ -22243,7 +22243,7 @@
    ],
    "error": null,
    "latency_s": 7.713,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.005094,
    "pred": {
     "vendor_name": "Ellery Quarles Training",
     "invoice_id": "B26-9145",
@@ -22822,7 +22822,7 @@
    ],
    "error": null,
    "latency_s": 8.954,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.0047925,
    "pred": {
     "vendor_name": "Pipersfield Bakehouse",
     "invoice_id": "06514",
@@ -23161,7 +23161,7 @@
    ],
    "error": null,
    "latency_s": 6.653,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.0048225,
    "pred": {
     "vendor_name": "Carrow Digital Imaging",
     "invoice_id": "INV007686",
@@ -23554,7 +23554,7 @@
    "tags": [],
    "error": null,
    "latency_s": 3.898,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00257775,
    "pred": {
     "vendor_name": "WHITLOCK WINDOW CLEANING",
     "invoice_id": "A7-02139",
@@ -23809,7 +23809,7 @@
    "tags": [],
    "error": null,
    "latency_s": 5.503,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00354525,
    "pred": {
     "vendor_name": "Loxley Analytical",
     "invoice_id": "SI/26/4794",
@@ -24100,7 +24100,7 @@
    "tags": [],
    "error": null,
    "latency_s": 6.327,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00325275,
    "pred": {
     "vendor_name": "Fennimore Removals",
     "invoice_id": "CN-1976-8",
@@ -24357,7 +24357,7 @@
    ],
    "error": null,
    "latency_s": 5.022,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00313425,
    "pred": {
     "vendor_name": "Bradley-Andrade",
     "invoice_id": "97159829",
@@ -24512,7 +24512,7 @@
    ],
    "error": null,
    "latency_s": 12.475,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00749925,
    "pred": {
     "vendor_name": "Hopkins and Sons",
     "invoice_id": "13194726",
@@ -24897,7 +24897,7 @@
    ],
    "error": null,
    "latency_s": 3.961,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.0027555,
    "pred": {
     "vendor_name": "Trujillo-Hunt",
     "invoice_id": "62517865",
@@ -25052,7 +25052,7 @@
    ],
    "error": null,
    "latency_s": 17.618,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.01103925,
    "pred": {
     "vendor_name": "Nichols-Barajas",
     "invoice_id": "56014042",
@@ -25253,7 +25253,7 @@
    ],
    "error": null,
    "latency_s": 9.109,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00587175,
    "pred": {
     "vendor_name": "Smith-Cook",
     "invoice_id": "16662010",
@@ -25684,7 +25684,7 @@
    ],
    "error": null,
    "latency_s": 8.59,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.0054855,
    "pred": {
     "vendor_name": "Kaiser, Hays and Cook",
     "invoice_id": "27543706",
@@ -26023,7 +26023,7 @@
    ],
    "error": null,
    "latency_s": 10.543,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00757425,
    "pred": {
     "vendor_name": "Smith Ltd",
     "invoice_id": "26343874",
@@ -26362,7 +26362,7 @@
    ],
    "error": null,
    "latency_s": 6.647,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00407175,
    "pred": {
     "vendor_name": "Gregory, Patterson and Fischer",
     "invoice_id": "12222347",
@@ -26517,7 +26517,7 @@
    ],
    "error": null,
    "latency_s": 11.557,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00691425,
    "pred": {
     "vendor_name": "Gordon, Alvarado and Jones",
     "invoice_id": "25698672",
@@ -26764,7 +26764,7 @@
    ],
    "error": null,
    "latency_s": 6.367,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00404925,
    "pred": {
     "vendor_name": "Rodriguez-Jackson",
     "invoice_id": "24048799",
@@ -26919,7 +26919,7 @@
    ],
    "error": null,
    "latency_s": 12.665,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00645675,
    "pred": {
     "vendor_name": "Potts, Reed and Miller",
     "invoice_id": "72455228",
@@ -27304,7 +27304,7 @@
    ],
    "error": null,
    "latency_s": 12.891,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00666675,
    "pred": {
     "vendor_name": "Conley Ltd",
     "invoice_id": "58478169",
@@ -27505,7 +27505,7 @@
    ],
    "error": null,
    "latency_s": 16.58,
-   "cost_usd": 0.0329,
+   "cost_usd": 0.00429675,
    "pred": {
     "vendor_name": "Stone-Waller",
     "invoice_id": "90508672",
@@ -27841,9 +27841,10 @@
  "summary": {
   "n_docs": 53,
   "n_errors": 0,
-  "api_cost_usd": 1.75,
+  "api_cost_usd": 0.314,
   "median_latency_s": 7.852,
-  "docs_fewer_pred_lines_than_truth": 0
+  "docs_fewer_pred_lines_than_truth": 0,
+  "charged_estimate_usd": 1.7527
  },
  "model_detail": {
   "model": "gemini-3.8-flash",
