@@ -17,6 +17,11 @@ def parse_amount(s: str | None, strict: bool) -> Decimal | None:
     s = str(s).strip()
     if strict:
         return Decimal(s) if _STRICT_AMOUNT.fullmatch(s) else None
+    # Rupee prefix "Rs."/"Rs" (its dot would otherwise survive as a stray
+    # decimal point), and an upper-case 3-letter currency code glued after the
+    # number ("12.00USD"), are removed before the identifier checks below.
+    s = re.sub(r"(?<![A-Za-z])Rs\.?(?=\s*[\d(])", "", s)
+    s = re.sub(r"(?<=[\d)])\s*[A-Z]{3}(?=\)?$)", "", s)
     # strip currency symbols/codes (letters and non-numeric symbols) first
     core = re.sub(r"[^\d.,\-()]", "", s)
     negative = False
