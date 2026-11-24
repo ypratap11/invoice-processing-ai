@@ -364,9 +364,9 @@ in this round.
   before the first measured run and the test set was not changed after seeing results.
 - **Latency** is from a laptop on a home connection, one request at a time. The "after" run re-used cached
   responses, so its latency is the "before" network time.
-- **Open items, not fixed in this round:** a failed extraction is reported with `review_required` set to false;
-  nothing in the app yet saves uploads to the folder the agent tool reads from; a few agent endpoints still
-  return raw exception text.
+- **Open items, not fixed in this round:** nothing in the app yet saves uploads to the folder the agent tool
+  reads from; a few agent endpoints still return raw exception text. (A failed extraction used to be reported
+  with `review_required` false; it now requires review, with reason `processing_failed`.)
 
 ## 9. Changes after the scoring freeze
 

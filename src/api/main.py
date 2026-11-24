@@ -208,7 +208,10 @@ async def process_document_with_ai(file_content: bytes, mime_type: str) -> Proce
             message="Processing failed (see server log)",
             extracted_data=None,
             confidence_scores=None,
-            processing_time=processing_time
+            processing_time=processing_time,
+            # nothing was extracted, so a person has to handle this document
+            review_required=True,
+            review_reasons=["processing_failed"],
         )
 
 

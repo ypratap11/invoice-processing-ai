@@ -210,8 +210,8 @@ def build(out: Path = OUT) -> Path:
             "on 2026-11-23. One or two invoices of difference is noise; 0 vs 6 vs 48 is not.",
             "<b>Scoring generosity.</b> token_set_ratio treats a subset of words as a full match, which flatters "
             "lenient vendor and description scores. Quantities are compared to the cent.",
-            "<b>Open items:</b> the several-tax-lines case is caught by checks, not fixed; a failed extraction "
-            "reports review_required = false; a few agent endpoints still echo raw errors.",
+            "<b>Open items:</b> the several-tax-lines case is caught by checks, not fixed; nothing yet saves "
+            "uploads to the folder the agent tool reads; a few agent endpoints still echo raw errors.",
             "<b>Changes after the scoring freeze: none</b> (no diff to audit/scorer.py or audit/normalize.py "
             "since tag audit-scoring-frozen).",
         ]),

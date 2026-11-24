@@ -109,3 +109,15 @@ def test_processing_error_message_is_generic(monkeypatch, tmp_path):
                         files=[("files", ("inv.pdf", b"%PDF", "application/pdf"))]).json()
     assert batch["batch_results"][0]["success"] is False
     assert "secret-dir" not in json.dumps(batch)
+
+
+def test_failed_processing_requires_review(monkeypatch, tmp_path):
+    def boom(content, mime_type):
+        raise RuntimeError("processor unavailable")
+    monkeypatch.setattr(main.docai_client, "process_bytes", boom)
+    monkeypatch.setattr(main, "RECENT_PROCESSING_PATH", tmp_path / "recent.json")
+    body = TestClient(main.app).post("/process-invoice",
+                                     files={"file": ("inv.pdf", b"%PDF", "application/pdf")}).json()
+    assert body["success"] is False
+    assert body["review_required"] is True
+    assert body["review_reasons"] == ["processing_failed"]
