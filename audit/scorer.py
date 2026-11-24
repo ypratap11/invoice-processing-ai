@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from decimal import ROUND_HALF_UP, Decimal
+from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 from typing import Literal
 
 import numpy as np
@@ -35,6 +35,11 @@ _DATE_FIELDS = {"invoice_date", "due_date"}
 VENDOR_LENIENT_MIN = 90       # token_set_ratio for lenient vendor match
 LINE_MATCH_MIN = 60           # below this an aligned pair is treated as unmatched
 DESCRIPTION_MATCH_MIN = 85    # token_set_ratio for a correct line description
+# Alignment tie-breaker: cost is reduced by this per cent-equal numeric field
+# (quantity/unit_price/amount). Max total 3 * 0.01 = 0.03, so it can never
+# outweigh even a 1-point difference in description similarity; it only
+# decides between pairings whose similarities tie (e.g. duplicate descriptions).
+TIE_BREAK_EPS = 0.01
 
 Status = Literal["correct", "wrong", "missing"]
 Mode = Literal["strict", "lenient"]
@@ -49,9 +54,11 @@ class FieldResult:
 
 class ScoreResult(list):
     """list[FieldResult] that also carries ``extra_lines`` (predicted line
-    items not aligned to any truth line)."""
+    items not aligned to any truth line) and ``doc_flagged`` (invoice_flagged
+    or any field flag, including flags on fields excluded from scoring)."""
 
     extra_lines: int = 0
+    doc_flagged: bool = False
 
 
 def _sim(a, b) -> float:
@@ -60,8 +67,23 @@ def _sim(a, b) -> float:
     return fuzz.token_set_ratio(norm_text(str(a)), norm_text(str(b)))
 
 
-def _cent(v) -> Decimal:
-    return Decimal(v).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+def _cent(v) -> Decimal | None:
+    """Quantize to 0.01 half-up; None if the value is too large for the
+    decimal context (over-precision input is scored as ``wrong``)."""
+    try:
+        return Decimal(v).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    except InvalidOperation:
+        return None
+
+
+def _amount_equal(pred, truth, strict: bool) -> bool:
+    if _blank(pred):
+        return False
+    v = parse_amount(str(pred), strict=strict)
+    if v is None:
+        return False
+    a, b = _cent(v), _cent(truth)
+    return a is not None and a == b
 
 
 def _blank(v) -> bool:
@@ -74,10 +96,9 @@ def _compare(field: str, truth, pred, mode: Mode) -> Status:
     strict = mode == "strict"
     p = str(pred)
     if field in _AMOUNT_FIELDS:
-        v = parse_amount(p, strict=strict)
         # "equal to the cent": both sides quantized to 0.01 ROUND_HALF_UP, so
         # "1250.004" == 1250.00 but "1250.006" != 1250.00 (also quantity/unit_price)
-        ok = v is not None and _cent(v) == _cent(truth)
+        ok = _amount_equal(p, truth, strict)
     elif field in _DATE_FIELDS:
         v = parse_date(p, strict=strict)
         ok = v is not None and v == truth
@@ -92,7 +113,9 @@ def _compare(field: str, truth, pred, mode: Mode) -> Status:
         else:
             ok = _sim(p, truth) >= VENDOR_LENIENT_MIN
     elif field == "currency":
-        c = p.strip().upper()
+        # strict: the prediction must already be the exact upper-case code;
+        # lenient: strip + upper-case first
+        c = p if strict else p.strip().upper()
         ok = re.fullmatch(r"[A-Z]{3}", c) is not None and c == str(truth).strip().upper()
     elif field == "description":
         # one rule for both modes (brief specifies only the fuzzy threshold)
@@ -114,6 +137,7 @@ def score_invoice(truth: Invoice, pred: dict | None, mode: Mode,
     pred = pred or {}
     flags = set(flags or ())
     out = ScoreResult()
+    out.doc_flagged = bool(invoice_flagged or flags)
 
     for f in HEADER_FIELDS:
         t = getattr(truth, f)
@@ -128,7 +152,11 @@ def score_invoice(truth: Invoice, pred: dict | None, mode: Mode,
     if truth_lines and pred_lines:
         sim = np.array([[_sim(tl.description, pl.get("description")) for pl in pred_lines]
                         for tl in truth_lines], dtype=float)
-        rows, cols = linear_sum_assignment(100.0 - sim)
+        strict = mode == "strict"
+        agree = np.array([[sum(getattr(tl, k) is not None and _amount_equal(pl.get(k), getattr(tl, k), strict)
+                                for k in ("quantity", "unit_price", "amount"))
+                            for pl in pred_lines] for tl in truth_lines], dtype=float)
+        rows, cols = linear_sum_assignment(100.0 - sim - TIE_BREAK_EPS * agree)
         match = {int(r): int(c) for r, c in zip(rows, cols) if sim[r, c] >= LINE_MATCH_MIN}
     out.extra_lines = len(pred_lines) - len(match)
 
@@ -155,22 +183,26 @@ def aggregate(results: dict) -> dict:
 
     - field_accuracy: 0-1 fraction correct/scored per field; line-item fields are pooled
       across lines as ``line.description`` etc. Missing counts as not correct.
+      Shape is stable: always every HEADER_FIELD plus the four ``line.*``
+      names (plus any other field seen); a field scored in no doc has value
+      None. ``field_n`` gives the scored count (0 for such fields).
     - invoice_fully_correct_pct: percent (0-100) of docs where every scored
       field is correct and no extra predicted lines exist.
     - silent_errors / missing: {"count", "rate"}; "rate" is a 0-1 fraction
       over all scored fields.
-    - review_rate: 0-1 fraction of docs with any flagged field.
+    - review_rate: 0-1 fraction of docs with any flag: invoice_flagged or a
+      non-empty ``flags`` set, even if the flagged field was excluded.
     - field_accuracy values are also 0-1 fractions; only
       invoice_fully_correct_pct is on a 0-100 scale.
     - extra_lines: total predicted line items not aligned to a truth line.
     """
     n_docs = len(results)
-    per_field: dict[str, list[int]] = {}
+    per_field: dict[str, list[int]] = {f: [0, 0] for f in HEADER_FIELDS + [f"line.{k}" for k in LINE_FIELDS]}
     total_fields = silent = missing = fully = reviewed = extra = 0
     for res in results.values():
         doc_extra = getattr(res, "extra_lines", 0)
         extra += doc_extra
-        if any(r.flagged for r in res):
+        if getattr(res, "doc_flagged", False) or any(r.flagged for r in res):
             reviewed += 1
         if doc_extra == 0 and all(r.status == "correct" for r in res):
             fully += 1
@@ -186,7 +218,8 @@ def aggregate(results: dict) -> dict:
                 silent += 1
     rate = (lambda x: x / total_fields) if total_fields else (lambda x: 0.0)
     return {
-        "field_accuracy": {f: ok / n for f, (ok, n) in per_field.items()},
+        "field_accuracy": {f: (ok / n if n else None) for f, (ok, n) in per_field.items()},
+        "field_n": {f: n for f, (_, n) in per_field.items()},
         "invoice_fully_correct_pct": 100.0 * fully / n_docs if n_docs else 0.0,
         "silent_errors": {"count": silent, "rate": rate(silent)},
         "missing": {"count": missing, "rate": rate(missing)},

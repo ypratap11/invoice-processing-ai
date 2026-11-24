@@ -165,7 +165,8 @@ def test_vendor_fuzzy_lenient_only():
 
 
 def test_currency_upper_three_letter():
-    assert by_field(score_invoice(T, {**P, "currency": " usd "}, "strict", set(), False))["currency"].status == "correct"
+    assert by_field(score_invoice(T, {**P, "currency": " usd "}, "lenient", set(), False))["currency"].status == "correct"
+    assert by_field(score_invoice(T, {**P, "currency": "USD"}, "strict", set(), False))["currency"].status == "correct"
     assert by_field(score_invoice(T, {**P, "currency": "$"}, "lenient", set(), False))["currency"].status == "wrong"
     assert by_field(score_invoice(T, {**P, "currency": "EUR"}, "lenient", set(), False))["currency"].status == "wrong"
 
@@ -256,3 +257,70 @@ def test_amounts_quantized_to_cent_half_up():
     assert st("1250.006") == "wrong"
     assert st("1250.005") == "wrong"     # half-up rounds to 1250.01
     assert st("$1,250.004", "lenient") == "correct"
+
+
+def test_duplicate_descriptions_out_of_order_all_correct():
+    lines = [LineItem("Labour", D("1"), D("100"), D("100")),
+             LineItem("Labour", D("2"), D("50"), D("100")),
+             LineItem("Labour", D("3"), D("10"), D("30"))]
+    t = make_truth(line_items=lines)
+    pred = stringify(t)
+    pred["line_items"] = list(reversed(pred["line_items"]))
+    for mode in ("strict", "lenient"):
+        res = score_invoice(t, pred, mode, set(), False)
+        assert all(x.status == "correct" for x in res), res
+        assert aggregate({"d1": res})["silent_errors"]["count"] == 0
+
+
+def test_tie_breaker_never_outweighs_description_similarity():
+    # numerics favour the wrong pairing, but description similarity must dominate
+    t = make_truth(line_items=[LineItem("Software License", D("1"), D("1000.00"), D("1000.00")),
+                               LineItem("Onsite Training Day", D("2"), D("250.00"), D("500.00"))])
+    pred = {**stringify(t), "line_items": [
+        {"description": "Software License", "quantity": "2", "unit_price": "250.00", "amount": "500.00"},
+        {"description": "Onsite Training Day", "quantity": "1", "unit_price": "1000.00", "amount": "1000.00"},
+    ]}
+    r = by_field(score_invoice(t, pred, "strict", set(), False))
+    assert r["line[0].description"].status == "correct"
+    assert r["line[0].amount"].status == "wrong"
+
+
+def test_over_precision_amount_is_wrong_not_crash():
+    huge = "123456789012345678901234567890"
+    pred = {**P, "total": huge}
+    pred["line_items"] = [{**P["line_items"][0], "amount": huge}]
+    for mode in ("strict", "lenient"):
+        r = by_field(score_invoice(T, pred, mode, set(), False))
+        assert r["total"].status == "wrong"
+        assert r["line[0].amount"].status == "wrong"
+
+
+def test_review_rate_counts_flags_on_excluded_fields():
+    t = make_truth(due_date=None, line_items=[])
+    res_a = score_invoice(t, P, "lenient", {"due_date"}, False)
+    res_b = score_invoice(t, P, "lenient", {"line_items"}, False)
+    res_c = score_invoice(t, P, "lenient", set(), False)
+    assert aggregate({"a": res_a})["review_rate"] == 1.0
+    assert aggregate({"b": res_b})["review_rate"] == 1.0
+    assert aggregate({"a": res_a, "b": res_b, "c": res_c})["review_rate"] == 2 / 3
+    # invoice_flagged with every truth field excluded still counts
+    empty = Invoice()
+    assert aggregate({"e": score_invoice(empty, {}, "lenient", set(), True)})["review_rate"] == 1.0
+
+
+def test_strict_currency_no_transformation():
+    for v in (" usd ", "usd", "USD ", "Usd"):
+        assert by_field(score_invoice(T, {**P, "currency": v}, "strict", set(), False))["currency"].status == "wrong", v
+        assert by_field(score_invoice(T, {**P, "currency": v}, "lenient", set(), False))["currency"].status == "correct", v
+
+
+def test_field_accuracy_shape_stable():
+    t = make_truth(due_date=None, line_items=[])
+    agg = aggregate({"d1": score_invoice(t, P, "strict", set(), False)})
+    expected = set(HEADER_FIELDS) | {"line.description", "line.quantity", "line.unit_price", "line.amount"}
+    assert set(agg["field_accuracy"]) == expected
+    assert set(agg["field_n"]) == expected
+    assert agg["field_accuracy"]["due_date"] is None and agg["field_n"]["due_date"] == 0
+    assert agg["field_accuracy"]["line.amount"] is None and agg["field_n"]["line.amount"] == 0
+    assert agg["field_accuracy"]["total"] == 1.0 and agg["field_n"]["total"] == 1
+    assert set(aggregate({})["field_accuracy"]) == expected
