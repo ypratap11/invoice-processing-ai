@@ -25,3 +25,18 @@ def test_date_lenient_ambiguous_is_month_first():
     assert parse_date("03/04/2026", strict=False) == date(2026, 3, 4)
 def test_norm_text():
     assert norm_text("  ACME   Corp\n") == "acme corp"
+
+def test_amount_lenient_rejects_dates_and_ids():
+    assert parse_amount("2026-04-03", strict=False) is None
+    assert parse_amount("INV-1234", strict=False) is None
+    assert parse_amount("1-2-3", strict=False) is None
+def test_amount_lenient_signs():
+    assert parse_amount("-12.00", strict=False) == D("-12.00")
+    assert parse_amount("$-12.00", strict=False) == D("-12.00")
+    assert parse_amount("12.00-", strict=False) == D("-12.00")
+    assert parse_amount("$(12.00)", strict=False) == D("-12.00")
+    assert parse_amount("(USD 12.00)", strict=False) == D("-12.00")
+def test_date_lenient_requires_full_date():
+    for s in ("2026", "April", "April 3", "30", "3/4"):
+        assert parse_date(s, strict=False) is None
+    assert parse_date("3 April 2026", strict=False) == date(2026, 4, 3)

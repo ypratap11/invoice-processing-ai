@@ -62,5 +62,8 @@ gcp-key*.json
 invoice-processor-key.json
 
 # Audit
+!audit/**/*.json
+!tests/audit/fixtures/*.json
+!tests/core/fixtures/*.json
 audit/.venv/
 audit/cache/

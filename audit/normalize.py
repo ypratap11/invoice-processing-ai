@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import re
-from datetime import date
+from datetime import date, datetime
 from decimal import Decimal, InvalidOperation
 
 from dateutil import parser as _dateparser
@@ -17,11 +17,21 @@ def parse_amount(s: str | None, strict: bool) -> Decimal | None:
     s = str(s).strip()
     if strict:
         return Decimal(s) if _STRICT_AMOUNT.fullmatch(s) else None
-    negative = s.startswith("(") and s.endswith(")")
-    t = re.sub(r"[^\d.,\-]", "", s)
-    if t.startswith("-"):
-        negative = True
-    t = t.replace("-", "")
+    # strip currency symbols/codes (letters and non-numeric symbols) first
+    core = re.sub(r"[^\d.,\-()]", "", s)
+    negative = False
+    m = re.fullmatch(r"\(([^()]*)\)", core)
+    if m:
+        negative, core = True, m.group(1)
+    if core.startswith("-"):
+        negative, core = True, core[1:]
+    elif core.endswith("-"):
+        negative, core = True, core[:-1]
+    t = core
+    if "-" in t or "(" in t or ")" in t:
+        return None
+    if re.search(r"[A-Za-z]-", s) or re.search(r"\d[A-Za-z]", s):
+        return None  # identifiers like INV-1234, not amounts
     if not re.search(r"\d", t):
         return None
     if "." in t and "," in t:
@@ -53,9 +63,11 @@ def parse_date(s: str | None, strict: bool) -> date | None:
     if strict:
         return None
     try:
-        return _dateparser.parse(s, dayfirst=False).date()
+        a = _dateparser.parse(s, dayfirst=False, default=datetime(2001, 1, 1)).date()
+        b = _dateparser.parse(s, dayfirst=False, default=datetime(2002, 2, 2)).date()
     except (ValueError, OverflowError):
         return None
+    return a if a == b else None
 
 
 def norm_text(s: str) -> str:
