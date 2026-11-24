@@ -60,3 +60,7 @@ node_modules/
 service-account*.json
 gcp-key*.json
 invoice-processor-key.json
+
+# Audit
+audit/.venv/
+audit/cache/

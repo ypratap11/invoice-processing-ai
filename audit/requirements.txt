@@ -1,0 +1,15 @@
+google-cloud-documentai
+google-genai
+ollama
+reportlab
+pillow
+rapidfuzz
+scipy
+python-dateutil
+matplotlib
+pytest
+fastapi
+uvicorn
+python-dotenv
+pydantic
+python-multipart
