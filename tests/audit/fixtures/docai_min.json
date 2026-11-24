@@ -1,0 +1,174 @@
+{
+  "text": "Acme Corporation\nINV-1001\n04/03/2026\n$1,250.00\nDescription\nQty\nUnit Price\nAmount\nSoftware License\n1\n$1,000.00\n$1,000.00\n",
+  "entities": [
+    {
+      "type": "supplier_name",
+      "mentionText": "Acme Corporation",
+      "confidence": 0.95,
+      "textAnchor": {
+        "textSegments": [
+          {
+            "startIndex": "0",
+            "endIndex": "16"
+          }
+        ]
+      }
+    },
+    {
+      "type": "invoice_id",
+      "mentionText": "INV-1001",
+      "confidence": 0.9,
+      "textAnchor": {
+        "textSegments": [
+          {
+            "startIndex": "17",
+            "endIndex": "25"
+          }
+        ]
+      }
+    },
+    {
+      "type": "invoice_date",
+      "mentionText": "04/03/2026",
+      "confidence": 0.92,
+      "textAnchor": {
+        "textSegments": [
+          {
+            "startIndex": "26",
+            "endIndex": "36"
+          }
+        ]
+      }
+    },
+    {
+      "type": "total_amount",
+      "mentionText": "$1,250.00",
+      "confidence": 0.55,
+      "textAnchor": {
+        "textSegments": [
+          {
+            "startIndex": "37",
+            "endIndex": "46"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "pageNumber": 1,
+      "tables": [
+        {
+          "headerRows": [
+            {
+              "cells": [
+                {
+                  "layout": {
+                    "textAnchor": {
+                      "textSegments": [
+                        {
+                          "startIndex": "47",
+                          "endIndex": "58"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "layout": {
+                    "textAnchor": {
+                      "textSegments": [
+                        {
+                          "startIndex": "59",
+                          "endIndex": "62"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "layout": {
+                    "textAnchor": {
+                      "textSegments": [
+                        {
+                          "startIndex": "63",
+                          "endIndex": "73"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "layout": {
+                    "textAnchor": {
+                      "textSegments": [
+                        {
+                          "startIndex": "74",
+                          "endIndex": "80"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ],
+          "bodyRows": [
+            {
+              "cells": [
+                {
+                  "layout": {
+                    "textAnchor": {
+                      "textSegments": [
+                        {
+                          "startIndex": "81",
+                          "endIndex": "97"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "layout": {
+                    "textAnchor": {
+                      "textSegments": [
+                        {
+                          "startIndex": "98",
+                          "endIndex": "99"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "layout": {
+                    "textAnchor": {
+                      "textSegments": [
+                        {
+                          "startIndex": "100",
+                          "endIndex": "109"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "layout": {
+                    "textAnchor": {
+                      "textSegments": [
+                        {
+                          "startIndex": "110",
+                          "endIndex": "119"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
