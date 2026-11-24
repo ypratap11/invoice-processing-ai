@@ -34,9 +34,12 @@ def test_adapt_after_flags_low_confidence_fields():
         if e["type"] == "total_amount":
             e["confidence"] = 0.5
         if e["type"] == "line_item" and e["mentionText"].startswith("Staples"):
-            e["properties"][1]["confidence"] = 0.2
-    pred = adapt_after(d)
-    assert pred.flags == {"total", "line_items"}
+            e["properties"][1]["confidence"] = 0.2  # child confidence does not flag
+    assert adapt_after(d).flags == {"total"}
+    for e in d["entities"]:
+        if e["type"] == "line_item" and e["mentionText"].startswith("Staples"):
+            e["confidence"] = 0.5  # the line entity's own confidence does
+    assert adapt_after(d).flags == {"total", "line_items"}
 
 
 def test_adapt_before_still_reproduces_the_original_app():

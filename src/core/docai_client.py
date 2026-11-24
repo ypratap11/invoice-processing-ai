@@ -45,8 +45,11 @@ def get_client() -> documentai.DocumentProcessorServiceClient:
     """Client on the processor's regional endpoint. Raises ``RuntimeError`` if
     the credentials file is not configured (failures are not cached)."""
     if not credentials_available():
-        raise RuntimeError("Google Cloud credentials not found (GOOGLE_APPLICATION_CREDENTIALS="
-                           f"{os.getenv('GOOGLE_APPLICATION_CREDENTIALS')!r})")
+        # never put the key file path in the message: it can reach API clients
+        logger.debug("GOOGLE_APPLICATION_CREDENTIALS is %s",
+                     "unset" if not os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+                     else "set to a path that does not exist")
+        raise RuntimeError("Google Cloud credentials are not configured")
     s = settings()
     opts = ClientOptions(api_endpoint=f"{s.location}-documentai.googleapis.com")
     client = documentai.DocumentProcessorServiceClient(client_options=opts)

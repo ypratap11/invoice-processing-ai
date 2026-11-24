@@ -68,3 +68,44 @@ def test_review_reasons_include_check_failures(monkeypatch, tmp_path):
         "/process-invoice", files={"file": ("inv.pdf", b"%PDF", "application/pdf")}).json()
     assert body["review_required"] is True
     assert "missing_required:invoice_id" in body["review_reasons"]
+
+
+SECRET_PATH = "C:/secret-dir/sa-key-file.json"
+
+
+def test_credentials_error_does_not_reveal_path(monkeypatch):
+    from src.core import docai_client
+    monkeypatch.setenv("GOOGLE_APPLICATION_CREDENTIALS", SECRET_PATH)
+    docai_client.get_client.cache_clear()
+    try:
+        docai_client.get_client()
+    except RuntimeError as e:
+        assert "secret-dir" not in str(e) and "sa-key-file" not in str(e)
+        assert str(e) == "Google Cloud credentials are not configured"
+    else:
+        raise AssertionError("expected RuntimeError")
+    finally:
+        docai_client.get_client.cache_clear()
+
+
+def test_verify_credentials_does_not_log_path(monkeypatch, caplog):
+    monkeypatch.setenv("GOOGLE_APPLICATION_CREDENTIALS", SECRET_PATH)
+    with caplog.at_level("DEBUG"):
+        assert main.Config.verify_credentials() is False
+    assert "secret-dir" not in caplog.text and "sa-key-file" not in caplog.text
+
+
+def test_processing_error_message_is_generic(monkeypatch, tmp_path):
+    def boom(content, mime_type):
+        raise RuntimeError(f"failed reading {SECRET_PATH}")
+    monkeypatch.setattr(main.docai_client, "process_bytes", boom)
+    monkeypatch.setattr(main, "RECENT_PROCESSING_PATH", tmp_path / "recent.json")
+    client = TestClient(main.app)
+    body = client.post("/process-invoice",
+                       files={"file": ("inv.pdf", b"%PDF", "application/pdf")}).json()
+    assert body["success"] is False
+    assert "secret-dir" not in json.dumps(body)
+    batch = client.post("/batch-process",
+                        files=[("files", ("inv.pdf", b"%PDF", "application/pdf"))]).json()
+    assert batch["batch_results"][0]["success"] is False
+    assert "secret-dir" not in json.dumps(batch)

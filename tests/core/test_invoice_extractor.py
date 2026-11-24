@@ -26,8 +26,17 @@ def test_line_items_across_pages():
         {"description": "Toner cartridge", "quantity": "1", "unit_price": "1198.50",
          "amount": "1198.50"},
     ]
-    # line confidence = min over the line entity and its children
-    assert conf["line_items"] == pytest.approx(0.91)
+    # children inherit their line's flag: confidence is the line entity's own
+    assert conf["line_items"] == pytest.approx(1.0)
+
+
+def test_line_items_confidence_is_min_of_line_entities_not_children():
+    def f(d):
+        lines = [e for e in d["entities"] if e["type"] == "line_item"]
+        lines[0]["properties"][1]["confidence"] = 0.05  # a child: ignored
+        lines[2]["confidence"] = 0.62                    # a line entity: counts
+    _, conf = extract_invoice(_doc(f))
+    assert conf["line_items"] == pytest.approx(0.62)
 
 
 def test_uses_normalized_values():

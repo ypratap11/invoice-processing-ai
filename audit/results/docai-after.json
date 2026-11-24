@@ -33,14 +33,14 @@
   },
   "invoice_fully_correct_pct": 11.320754716981131,
   "silent_errors": {
-   "count": 1,
-   "rate": 0.0004380201489268506
+   "count": 40,
+   "rate": 0.017520805957074025
   },
   "missing": {
    "count": 261,
    "rate": 0.11432325886990802
   },
-  "review_rate": 1.0,
+  "review_rate": 0.9245283018867925,
   "extra_lines": 48,
   "n_docs": 53
  },
@@ -75,14 +75,14 @@
   },
   "invoice_fully_correct_pct": 11.320754716981131,
   "silent_errors": {
-   "count": 0,
-   "rate": 0.0
+   "count": 32,
+   "rate": 0.01401664476565922
   },
   "missing": {
    "count": 261,
    "rate": 0.11432325886990802
   },
-  "review_rate": 1.0,
+  "review_rate": 0.9245283018867925,
   "extra_lines": 48,
   "n_docs": 53
  },
@@ -348,9 +348,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "line_math"
@@ -2210,9 +2208,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "line_math",
@@ -3833,9 +3829,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "line_math",
@@ -5508,7 +5502,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total"
    ],
    "invoice_flagged": true,
@@ -7052,7 +7045,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total"
    ],
    "invoice_flagged": true,
@@ -8725,9 +8717,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "line_math"
@@ -10216,9 +10206,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "line_math",
@@ -10858,8 +10846,7 @@
     ]
    },
    "flags": [
-    "due_date",
-    "line_items"
+    "due_date"
    ],
    "invoice_flagged": false,
    "check_reasons": [],
@@ -10910,82 +10897,82 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 2,
@@ -11036,82 +11023,82 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 2,
@@ -11212,7 +11199,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total"
    ],
    "invoice_flagged": true,
@@ -11858,7 +11844,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total",
     "vendor_name"
    ],
@@ -11911,102 +11896,102 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 6,
@@ -12057,102 +12042,102 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 6,
@@ -12216,9 +12201,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "line_math",
@@ -13098,9 +13081,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "line_math",
@@ -13649,7 +13630,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total",
     "vendor_name"
    ],
@@ -13889,9 +13869,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "line_math",
@@ -14738,7 +14716,6 @@
    "flags": [
     "currency",
     "invoice_date",
-    "line_items",
     "total"
    ],
    "invoice_flagged": true,
@@ -15077,7 +15054,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "vendor_name"
    ],
    "invoice_flagged": true,
@@ -15307,7 +15283,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total"
    ],
    "invoice_flagged": true,
@@ -15725,7 +15700,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total"
    ],
    "invoice_flagged": false,
@@ -15777,162 +15751,162 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 7,
@@ -15983,162 +15957,162 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 7,
@@ -16179,9 +16153,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": false,
    "check_reasons": [],
    "truth_lines": 2,
@@ -16231,46 +16203,46 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
-    "doc_flagged": true
+    "doc_flagged": false
    },
    "lenient": {
     "fields": [
@@ -16317,46 +16289,46 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
-    "doc_flagged": true
+    "doc_flagged": false
    }
   },
   {
@@ -16871,9 +16843,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": false,
    "check_reasons": [],
    "truth_lines": 10,
@@ -16923,206 +16893,206 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[8].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[8].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[8].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[8].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[9].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[9].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[9].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[9].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
-    "doc_flagged": true
+    "doc_flagged": false
    },
    "lenient": {
     "fields": [
@@ -17169,206 +17139,206 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[7].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[8].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[8].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[8].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[8].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[9].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[9].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[9].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[9].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
-    "doc_flagged": true
+    "doc_flagged": false
    }
   },
   {
@@ -17418,7 +17388,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "tax_total",
     "total"
    ],
@@ -17471,82 +17440,82 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
@@ -17597,82 +17566,82 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
@@ -18581,7 +18550,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total"
    ],
    "invoice_flagged": true,
@@ -18959,9 +18927,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "due_before_invoice",
@@ -19650,7 +19616,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total",
     "vendor_name"
    ],
@@ -19703,142 +19668,142 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 7,
@@ -19889,142 +19854,142 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[5].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[6].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 7,
@@ -20089,8 +20054,7 @@
     ]
    },
    "flags": [
-    "due_date",
-    "line_items"
+    "due_date"
    ],
    "invoice_flagged": true,
    "check_reasons": [
@@ -20517,9 +20481,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": true,
    "check_reasons": [
     "due_before_invoice",
@@ -21364,8 +21326,7 @@
     ]
    },
    "flags": [
-    "due_date",
-    "line_items"
+    "due_date"
    ],
    "invoice_flagged": true,
    "check_reasons": [
@@ -21761,7 +21722,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total"
    ],
    "invoice_flagged": true,
@@ -22410,7 +22370,6 @@
    },
    "flags": [
     "due_date",
-    "line_items",
     "total"
    ],
    "invoice_flagged": true,
@@ -22993,9 +22952,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": false,
    "check_reasons": [],
    "truth_lines": 5,
@@ -23040,106 +22997,106 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 5,
-    "doc_flagged": true
+    "doc_flagged": false
    },
    "lenient": {
     "fields": [
@@ -23181,106 +23138,106 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].quantity",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].unit_price",
       "status": "missing",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[3].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].quantity",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].unit_price",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[4].amount",
       "status": "wrong",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 5,
-    "doc_flagged": true
+    "doc_flagged": false
    }
   },
   {
@@ -23744,9 +23701,7 @@
      }
     ]
    },
-   "flags": [
-    "line_items"
-   ],
+   "flags": [],
    "invoice_flagged": false,
    "check_reasons": [],
    "truth_lines": 3,
@@ -23796,66 +23751,66 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
-    "doc_flagged": true
+    "doc_flagged": false
    },
    "lenient": {
     "fields": [
@@ -23902,66 +23857,66 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
-    "doc_flagged": true
+    "doc_flagged": false
    }
   },
   {
@@ -24027,8 +23982,7 @@
    },
    "flags": [
     "currency",
-    "due_date",
-    "line_items"
+    "due_date"
    ],
    "invoice_flagged": true,
    "check_reasons": [
@@ -24318,7 +24272,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "total"
    ],
    "invoice_flagged": false,
@@ -24370,62 +24323,62 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
@@ -24476,62 +24429,62 @@
      {
       "field": "line[0].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[0].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[1].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].description",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].quantity",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].unit_price",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      },
      {
       "field": "line[2].amount",
       "status": "correct",
-      "flagged": true
+      "flagged": false
      }
     ],
     "extra_lines": 0,
@@ -25119,7 +25072,6 @@
    },
    "flags": [
     "currency",
-    "line_items",
     "tax_total"
    ],
    "invoice_flagged": true,
@@ -25947,7 +25899,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "tax_total",
     "vendor_name"
    ],
@@ -26615,7 +26566,6 @@
    },
    "flags": [
     "currency",
-    "line_items",
     "subtotal",
     "tax_total",
     "vendor_name"
@@ -27031,7 +26981,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "tax_total",
     "vendor_name"
    ],
@@ -27596,7 +27545,6 @@
     ]
    },
    "flags": [
-    "line_items",
     "tax_total"
    ],
    "invoice_flagged": true,

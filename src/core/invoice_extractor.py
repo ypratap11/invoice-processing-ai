@@ -105,15 +105,14 @@ def _line(entity) -> tuple[dict, float]:
         if fld:
             by_field.setdefault(fld, []).append(prop)
     line = dict.fromkeys(LINE_FIELDS)
-    confs = [entity.confidence]
     for fld, props in by_field.items():
-        e, v = _best(props, fld)
-        if e is not None:
-            line[fld] = v
-            confs.append(e.confidence)
+        _, v = _best(props, fld)
+        line[fld] = v
     if not by_field and (entity.mention_text or "").strip():
         line["description"] = entity.mention_text.strip()
-    return line, min(confs)
+    # child fields inherit their line's flag: the line's confidence is the
+    # line_item entity's own, not its children's
+    return line, entity.confidence
 
 
 def extract_invoice(doc: documentai.Document) -> tuple[dict, dict[str, float]]:
@@ -123,8 +122,8 @@ def extract_invoice(doc: documentai.Document) -> tuple[dict, dict[str, float]]:
     ``line_items``: one dict per ``line_item`` entity on any page, in document
     order, with description/quantity/unit_price/amount. ``confidence`` has the
     chosen entity's confidence per found header field and, if there are lines,
-    ``line_items`` = the lowest line confidence, where a line's confidence is
-    the minimum over the line entity and its chosen children."""
+    ``line_items`` = the lowest ``line_item`` entity confidence (child fields
+    inherit their line's flag; child confidences are not used)."""
     by_type: dict[str, list] = {}
     for e in doc.entities:
         by_type.setdefault(e.type_, []).append(e)

@@ -2,6 +2,7 @@ from langchain.tools import BaseTool
 from typing import Optional, Type
 from pydantic import BaseModel, Field
 import json
+import logging
 import time
 from datetime import datetime
 from pathlib import Path
@@ -10,6 +11,8 @@ from src.database import (
     get_db, save_invoice_to_db, search_invoices_by_vendor,
     get_recent_invoices, get_invoices_by_amount_range, SessionLocal
 )
+
+logger = logging.getLogger(__name__)
 
 
 class InvoiceProcessingInput(BaseModel):
@@ -25,14 +28,14 @@ class InvoiceProcessingTool(BaseTool):
         try:
             # Same path as the /process-invoice endpoint: one Document AI call,
             # entity-based extraction, deterministic checks.
-            from src.api.main import MIME_TYPES, process_invoice_bytes
+            from src.api.main import process_invoice_bytes
 
-            path = Path(file_path)
-            mime_type = MIME_TYPES.get(path.suffix.lower())
-            if mime_type is None:
-                return f"❌ Unsupported file type: {path.suffix or '(none)'}"
+            try:
+                path, content, mime_type = _read_upload(file_path)
+            except UploadRejected as e:
+                return f"❌ {e}"
             start = time.perf_counter()
-            out = process_invoice_bytes(path.read_bytes(), mime_type)
+            out = process_invoice_bytes(content, mime_type)
             processing_time = round(time.perf_counter() - start, 3)
             inv = out["invoice"]
             result = {
@@ -59,15 +62,53 @@ class InvoiceProcessingTool(BaseTool):
                     "processing_time": processing_time,
                 }, db)
                 result["database_id"] = saved.id
-            except Exception as e:
-                result["database_error"] = str(e)
+            except Exception:
+                logger.exception("Saving invoice %s to the database failed", path.name)
+                result["database_error"] = "database save failed (see server log)"
             finally:
                 db.close()
 
             return json.dumps(result, indent=2, ensure_ascii=False)
 
-        except Exception as e:
-            return f"❌ Error processing invoice: {str(e)}"
+        except Exception:
+            logger.exception("process_invoice tool failed")
+            return "❌ Error processing invoice (see server log)"
+
+
+class UploadRejected(ValueError):
+    """A file the tool refuses to read; the message is safe to show."""
+
+
+def _read_upload(file_path: str):
+    """Validate and read a file the agent asked to process.
+
+    The path comes from the LLM, so it is untrusted: only a regular,
+    non-symlink file inside UPLOAD_DIR with a supported extension and at most
+    MAX_FILE_SIZE bytes is read. A relative path is taken relative to
+    UPLOAD_DIR. Returns ``(resolved_path, content, mime_type)``; raises
+    ``UploadRejected`` (never echoing file contents) otherwise."""
+    from src.api import main
+
+    upload_dir = Path(main.UPLOAD_DIR).resolve()
+    candidate = Path(file_path)
+    if not candidate.is_absolute():
+        candidate = upload_dir / candidate
+    if candidate.is_symlink():
+        raise UploadRejected("Symbolic links are not accepted")
+    resolved = candidate.resolve()
+    if not resolved.is_relative_to(upload_dir):
+        raise UploadRejected("Only files in the upload directory can be processed")
+    if not resolved.is_file():
+        raise UploadRejected("No such file in the upload directory")
+    mime_type = main.MIME_TYPES.get(resolved.suffix.lower())
+    if mime_type is None:
+        raise UploadRejected(f"Unsupported file type: {resolved.suffix or '(none)'}")
+    limit = main.config.MAX_FILE_SIZE
+    with open(resolved, "rb") as f:
+        content = f.read(limit + 1)
+    if len(content) > limit:
+        raise UploadRejected(f"File too large. Max size: {limit / (1024 * 1024):.1f}MB")
+    return resolved, content, mime_type
 
 
 def _as_float(value):

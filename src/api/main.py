@@ -88,13 +88,11 @@ class Config:
     @classmethod
     def verify_credentials(cls):
         """Verify Google Cloud credentials are properly set"""
-        creds_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
         if credentials_available():
-            logger.info(f"Google Cloud credentials found: {creds_path}")
+            logger.info("Google Cloud credentials found")
             return True
-        else:
-            logger.error(f"Google Cloud credentials not found. Path: {creds_path}")
-            return False
+        logger.error("Google Cloud credentials are not configured")
+        return False
 
 
 config = Config()
@@ -117,6 +115,10 @@ MIME_TYPES = {
 }
 
 RECENT_PROCESSING_PATH = project_root / "recent_processing.json"
+
+# The only directory the agent's process_invoice tool may read files from
+# (env UPLOAD_DIR, default "uploads"; a relative value is under the project root).
+UPLOAD_DIR = project_root / os.getenv("UPLOAD_DIR", "uploads")
 
 
 def get_document_ai_client():
@@ -196,13 +198,14 @@ async def process_document_with_ai(file_content: bytes, mime_type: str) -> Proce
             review_reasons=out["review_reasons"],
         )
 
-    except Exception as e:
-        logger.error(f"Document processing failed: {e}")
+    except Exception:
+        # details stay in the server log; clients get a generic message
+        logger.exception("Document processing failed")
         processing_time = (datetime.now() - start_time).total_seconds()
 
         return ProcessingResult(
             success=False,
-            message=f"Processing failed: {str(e)}",
+            message="Processing failed (see server log)",
             extracted_data=None,
             confidence_scores=None,
             processing_time=processing_time
@@ -281,8 +284,9 @@ async def process_invoice(file: UploadFile = File(...)):
     # Read file content
     try:
         file_content = await file.read()
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Failed to read file: {str(e)}")
+    except Exception:
+        logger.exception("Failed to read uploaded file")
+        raise HTTPException(status_code=400, detail="Failed to read file")
 
     # Check file size
     if len(file_content) > config.MAX_FILE_SIZE:
@@ -424,12 +428,13 @@ async def batch_process_invoices(files: List[UploadFile] = File(...)):
                 "review_reasons": result.review_reasons,
             })
 
-        except Exception as e:
+        except Exception:
+            logger.exception("Batch processing failed for file %d", i)
             results.append({
                 "file_index": i,
                 "filename": file.filename if file.filename else "unknown",
                 "success": False,
-                "message": f"Processing error: {str(e)}"
+                "message": "Processing error (see server log)"
             })
 
     return {
