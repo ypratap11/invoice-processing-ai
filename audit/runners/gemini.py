@@ -23,9 +23,10 @@ MODEL = "gemini-3.8-flash"
 LOCATION = "global"
 
 # USD per 1M tokens, standard tier, valid through 2026-12-31 (rises to 1.50 / 7.50
-# on 2027-01-01). Source: https://aistudio.google.com/docs/pricing (Gemini Developer
-# API page, "Gemini 3.8 Flash"), read 2026-11-23; the Vertex AI pricing page did
-# not render its tables to the fetcher. Output price includes thinking tokens.
+# on 2027-01-01). Prices confirmed on the Vertex AI pricing page ("global" endpoint,
+# Gemini 3.8 Flash) on 2026-11-24; the Gemini Developer API pricing page
+# (https://aistudio.google.com/docs/pricing, read 2026-11-23) lists the same
+# figures. Output price includes thinking tokens.
 PRICE_IN = 0.75
 PRICE_OUT = 3.75
 

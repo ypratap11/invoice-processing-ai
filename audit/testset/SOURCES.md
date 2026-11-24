@@ -8,7 +8,8 @@
 
 Synthetic, produced by `audit/generate/generator.py` (seed `20261123`) and
 `audit/generate/render.py`; rebuild with
-`audit/.venv/Scripts/python -m audit.generate.build` (byte-identical output).
+`audit/.venv/Scripts/python -m audit.generate.build` (byte-identical PDFs; the scanned PNGs
+were shown to rebuild identically on the build machine only).
 All vendor/customer names, addresses (`.example` e-mail, 555-01xx phones) and
 items are invented. No third-party content.
 

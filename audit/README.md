@@ -8,7 +8,7 @@ This file is about reproducing them.
 | Path | What it is |
 |---|---|
 | `testset/` | 53 invoices with truth JSON; `manifest.csv` lists them, `SOURCES.md` gives sources, licences and label corrections |
-| `generate/` | Generator for the 40 synthetic invoices (`python -m audit.generate.build` rebuilds them byte-for-byte) |
+| `generate/` | Generator for the 40 synthetic invoices (`python -m audit.generate.build` rebuilds the PDFs byte-for-byte; the scanned PNGs were shown to rebuild identically on the build machine only) |
 | `scorer.py`, `normalize.py` | Scoring rules, frozen at git tag `audit-scoring-frozen` |
 | `runners/` | `docai.py` (the app's Document AI path; `docai_legacy.py` is the original extractor, kept unchanged), `gemini.py` |
 | `run_audit.py` | Runs one configuration over the test set and writes `results/<run>.json` |
@@ -25,6 +25,10 @@ python -m venv audit/.venv
 audit/.venv/Scripts/python -m pip install -r audit/requirements.txt   # Windows
 # audit/.venv/bin/python -m pip install -r audit/requirements.txt     # macOS / Linux
 ```
+
+`requirements.txt` lists the direct dependencies. `requirements.lock` pins the exact versions the audit
+was run with (from `uv pip freeze`); install from it instead to reproduce the environment exactly:
+`audit/.venv/Scripts/python -m pip install -r audit/requirements.lock`.
 
 Run every command from the repository root. Tests (offline, no Google account needed):
 
