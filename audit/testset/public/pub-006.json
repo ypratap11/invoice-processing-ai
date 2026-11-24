@@ -1,0 +1,45 @@
+{
+  "vendor_name": "Kaiser, Hays and Cook",
+  "invoice_id": "27543706",
+  "currency": "USD",
+  "tags": [
+    "decimal_comma"
+  ],
+  "invoice_date": "2020-07-20",
+  "due_date": null,
+  "subtotal": "44364.64",
+  "tax_total": "4436.46",
+  "total": "48801.10",
+  "line_items": [
+    {
+      "description": "Marble Beautiful White Coffee Table Top Malachite Inlay Art Home Decor H5372",
+      "quantity": "5.00",
+      "unit_price": "271.01",
+      "amount": "1355.05"
+    },
+    {
+      "description": "15\"x15\" White Decorative Coffee Table Top Lapis Lazuli Marquetery Patio D\u00e9cor",
+      "quantity": "4.00",
+      "unit_price": "645.77",
+      "amount": "2583.08"
+    },
+    {
+      "description": "16 Inches Marble Coffee Table Top Inlay with Multi Stone at Border Game Table",
+      "quantity": "1.00",
+      "unit_price": "280.50",
+      "amount": "280.50"
+    },
+    {
+      "description": "18\" Black Marble Coffee Table Top Mother of Pearl Inlay Furniture Decors H1883B",
+      "quantity": "3.00",
+      "unit_price": "377.65",
+      "amount": "1132.95"
+    },
+    {
+      "description": "7'x4' Pietra Dura Marble Dining Hallway Table Top Inlay Design Patio Decor E977A",
+      "quantity": "2.00",
+      "unit_price": "19506.53",
+      "amount": "39013.06"
+    }
+  ]
+}

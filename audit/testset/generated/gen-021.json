@@ -1,0 +1,28 @@
+{
+  "vendor_name": "Moss & Mallory Signage",
+  "invoice_id": "INV005545",
+  "currency": "EUR",
+  "tags": [
+    "non_usd",
+    "dmy_date"
+  ],
+  "invoice_date": "2026-04-14",
+  "due_date": "2026-05-14",
+  "subtotal": "2638.04",
+  "tax_total": "553.99",
+  "total": "3192.03",
+  "line_items": [
+    {
+      "description": "Vinyl banner - premium stock",
+      "quantity": "4",
+      "unit_price": "164.21",
+      "amount": "656.84"
+    },
+    {
+      "description": "Presentation folders - matte",
+      "quantity": "6",
+      "unit_price": "330.20",
+      "amount": "1981.20"
+    }
+  ]
+}

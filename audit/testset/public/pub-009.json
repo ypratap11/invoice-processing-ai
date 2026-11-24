@@ -1,0 +1,33 @@
+{
+  "vendor_name": "Gordon, Alvarado and Jones",
+  "invoice_id": "25698672",
+  "currency": "USD",
+  "tags": [
+    "decimal_comma"
+  ],
+  "invoice_date": "2015-08-01",
+  "due_date": null,
+  "subtotal": "115.45",
+  "tax_total": "11.55",
+  "total": "127.00",
+  "line_items": [
+    {
+      "description": "CCNA 200-301 50 GB AUG 2020 Cisco Video/Official Books/Exam Dumps/Licences",
+      "quantity": "5.00",
+      "unit_price": "1.99",
+      "amount": "9.95"
+    },
+    {
+      "description": "Tales from the Buffalo Bills",
+      "quantity": "5.00",
+      "unit_price": "5.50",
+      "amount": "27.50"
+    },
+    {
+      "description": "A boy who grew up eating nightmare It's Okay to Not Be Okay Picturebook",
+      "quantity": "4.00",
+      "unit_price": "19.50",
+      "amount": "78.00"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "vendor_name": "Pemberly Lab Instruments",
+  "invoice_id": "00227",
+  "currency": "USD",
+  "tags": [
+    "discount"
+  ],
+  "invoice_date": "2026-03-08",
+  "due_date": "2026-04-07",
+  "subtotal": "15514.02",
+  "tax_total": "930.84",
+  "total": "16444.86",
+  "line_items": [
+    {
+      "description": "Nitrile gloves - bulk",
+      "quantity": "3",
+      "unit_price": "9.93",
+      "amount": "29.79"
+    },
+    {
+      "description": "Lab wipes - case of 10",
+      "quantity": "20",
+      "unit_price": "56.38",
+      "amount": "1127.60"
+    },
+    {
+      "description": "Microscope slides - pack of 100",
+      "quantity": "5",
+      "unit_price": "101.92",
+      "amount": "509.60"
+    },
+    {
+      "description": "Cuvettes - case of 10",
+      "quantity": "2",
+      "unit_price": "183.98",
+      "amount": "367.96"
+    },
+    {
+      "description": "Filter paper - pack of 100",
+      "quantity": "5",
+      "unit_price": "125.30",
+      "amount": "626.50"
+    },
+    {
+      "description": "Cuvettes - sterile",
+      "quantity": "2",
+      "unit_price": "315.87",
+      "amount": "631.74"
+    },
+    {
+      "description": "Pipette tips 200ul - pack of 100",
+      "quantity": "4",
+      "unit_price": "254.79",
+      "amount": "1019.16"
+    },
+    {
+      "description": "Lab wipes - pack of 500",
+      "quantity": "50",
+      "unit_price": "213.50",
+      "amount": "10675.00"
+    },
+    {
+      "description": "Lab wipes - pack of 100",
+      "quantity": "4",
+      "unit_price": "52.49",
+      "amount": "209.96"
+    },
+    {
+      "description": "Centrifuge tubes 15ml - case of 10",
+      "quantity": "5",
+      "unit_price": "241.84",
+      "amount": "1209.20"
+    },
+    {
+      "description": "Buffer solution pH7 - bulk",
+      "quantity": "10",
+      "unit_price": "36.54",
+      "amount": "365.40"
+    },
+    {
+      "description": "Promotional credit (7.5%)",
+      "quantity": "1",
+      "unit_price": "-1257.89",
+      "amount": "-1257.89"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "vendor_name": "Ferrowick Industrial Parts",
+  "invoice_id": "INV007438",
+  "currency": "INR",
+  "tags": [
+    "multi_tax",
+    "non_usd",
+    "dmy_date"
+  ],
+  "invoice_date": "2026-07-09",
+  "due_date": "2026-07-24",
+  "subtotal": "86.68",
+  "tax_total": "15.60",
+  "total": "102.28",
+  "line_items": [
+    {
+      "description": "Socket cap screw - M6",
+      "quantity": "1",
+      "unit_price": "9.24",
+      "amount": "9.24"
+    },
+    {
+      "description": "Shim plate - M6",
+      "quantity": "4",
+      "unit_price": "19.36",
+      "amount": "77.44"
+    }
+  ]
+}

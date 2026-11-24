@@ -1,0 +1,40 @@
+{
+  "vendor_name": "Driftmere Freight Lines",
+  "invoice_id": "20264831",
+  "currency": "USD",
+  "tags": [
+    "discount",
+    "scanned"
+  ],
+  "invoice_date": "2026-02-10",
+  "due_date": "2026-04-11",
+  "subtotal": "6031.73",
+  "tax_total": "573.01",
+  "total": "6604.74",
+  "line_items": [
+    {
+      "description": "Same-day delivery - per kg",
+      "quantity": "12",
+      "unit_price": "339.37",
+      "amount": "4072.44"
+    },
+    {
+      "description": "Promotional credit (5%)",
+      "quantity": "1",
+      "unit_price": "-317.46",
+      "amount": "-317.46"
+    },
+    {
+      "description": "Express courier - per kg",
+      "quantity": "5",
+      "unit_price": "375.19",
+      "amount": "1875.95"
+    },
+    {
+      "description": "Fuel surcharge - per kg",
+      "quantity": "1",
+      "unit_price": "400.80",
+      "amount": "400.80"
+    }
+  ]
+}

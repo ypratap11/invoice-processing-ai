@@ -1,0 +1,57 @@
+{
+  "vendor_name": "Grindell Hydraulics",
+  "invoice_id": "INV005491",
+  "currency": "USD",
+  "tags": [
+    "dmy_date"
+  ],
+  "invoice_date": "2026-02-10",
+  "due_date": "2026-03-27",
+  "subtotal": "3589.08",
+  "tax_total": "251.24",
+  "total": "3840.32",
+  "line_items": [
+    {
+      "description": "Socket cap screw - M10",
+      "quantity": "4",
+      "unit_price": "58.14",
+      "amount": "232.56"
+    },
+    {
+      "description": "Wing nut - M16",
+      "quantity": "12",
+      "unit_price": "43.32",
+      "amount": "519.84"
+    },
+    {
+      "description": "Shim plate - M6",
+      "quantity": "24",
+      "unit_price": "11.17",
+      "amount": "268.08"
+    },
+    {
+      "description": "Spring washer - M16",
+      "quantity": "12",
+      "unit_price": "50.08",
+      "amount": "600.96"
+    },
+    {
+      "description": "Lock nut nylon - M6",
+      "quantity": "12",
+      "unit_price": "42.31",
+      "amount": "507.72"
+    },
+    {
+      "description": "Hex bolt zinc - M8",
+      "quantity": "12",
+      "unit_price": "3.66",
+      "amount": "43.92"
+    },
+    {
+      "description": "Shim plate - M16",
+      "quantity": "50",
+      "unit_price": "28.32",
+      "amount": "1416.00"
+    }
+  ]
+}

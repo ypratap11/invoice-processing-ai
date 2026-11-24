@@ -1,0 +1,58 @@
+{
+  "vendor_name": "Pressmark Lithographic",
+  "invoice_id": "09141",
+  "currency": "USD",
+  "tags": [
+    "dmy_date",
+    "scanned"
+  ],
+  "invoice_date": "2026-01-27",
+  "due_date": "2026-02-26",
+  "subtotal": "23232.32",
+  "tax_total": "1393.94",
+  "total": "24626.26",
+  "line_items": [
+    {
+      "description": "Foam board signs - two colour",
+      "quantity": "4",
+      "unit_price": "349.59",
+      "amount": "1398.36"
+    },
+    {
+      "description": "Vinyl banner - full colour",
+      "quantity": "4",
+      "unit_price": "349.71",
+      "amount": "1398.84"
+    },
+    {
+      "description": "Notepads - full colour",
+      "quantity": "3",
+      "unit_price": "157.27",
+      "amount": "471.81"
+    },
+    {
+      "description": "Tri-fold brochures - gloss",
+      "quantity": "12",
+      "unit_price": "353.79",
+      "amount": "4245.48"
+    },
+    {
+      "description": "Vinyl banner - gloss",
+      "quantity": "50",
+      "unit_price": "301.99",
+      "amount": "15099.50"
+    },
+    {
+      "description": "Letterhead - full colour",
+      "quantity": "6",
+      "unit_price": "82.42",
+      "amount": "494.52"
+    },
+    {
+      "description": "Window decals - gloss",
+      "quantity": "3",
+      "unit_price": "41.27",
+      "amount": "123.81"
+    }
+  ]
+}

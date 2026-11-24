@@ -1,0 +1,214 @@
+{
+  "vendor_name": "Halloway Janitorial Group",
+  "invoice_id": "B26-9241",
+  "currency": "USD",
+  "tags": [
+    "multipage",
+    "discount"
+  ],
+  "invoice_date": "2026-10-17",
+  "due_date": "2026-11-01",
+  "subtotal": "102521.91",
+  "tax_total": "7176.53",
+  "total": "109698.44",
+  "line_items": [
+    {
+      "description": "Restroom sanitising - per visit",
+      "quantity": "10",
+      "unit_price": "595.39",
+      "amount": "5953.90"
+    },
+    {
+      "description": "Paper towel supply - weekly",
+      "quantity": "50",
+      "unit_price": "168.64",
+      "amount": "8432.00"
+    },
+    {
+      "description": "Office deep clean - level 1",
+      "quantity": "50",
+      "unit_price": "51.98",
+      "amount": "2599.00"
+    },
+    {
+      "description": "Upholstery clean - weekly",
+      "quantity": "4",
+      "unit_price": "174.92",
+      "amount": "699.68"
+    },
+    {
+      "description": "Restroom sanitising - weekly",
+      "quantity": "2",
+      "unit_price": "81.71",
+      "amount": "163.42"
+    },
+    {
+      "description": "Floor buffing - monthly",
+      "quantity": "50",
+      "unit_price": "45.76",
+      "amount": "2288.00"
+    },
+    {
+      "description": "Carpet shampoo - monthly",
+      "quantity": "2",
+      "unit_price": "131.20",
+      "amount": "262.40"
+    },
+    {
+      "description": "Window cleaning - level 1",
+      "quantity": "50",
+      "unit_price": "27.13",
+      "amount": "1356.50"
+    },
+    {
+      "description": "Floor buffing - level 2",
+      "quantity": "1",
+      "unit_price": "151.86",
+      "amount": "151.86"
+    },
+    {
+      "description": "Waste removal - level 2",
+      "quantity": "10",
+      "unit_price": "178.59",
+      "amount": "1785.90"
+    },
+    {
+      "description": "Restroom sanitising - level 2",
+      "quantity": "24",
+      "unit_price": "339.64",
+      "amount": "8151.36"
+    },
+    {
+      "description": "Upholstery clean - level 2",
+      "quantity": "3",
+      "unit_price": "46.58",
+      "amount": "139.74"
+    },
+    {
+      "description": "Paper towel supply - monthly",
+      "quantity": "6",
+      "unit_price": "557.56",
+      "amount": "3345.36"
+    },
+    {
+      "description": "Hand soap refill - level 1",
+      "quantity": "3",
+      "unit_price": "229.77",
+      "amount": "689.31"
+    },
+    {
+      "description": "Floor buffing - level 1",
+      "quantity": "50",
+      "unit_price": "317.66",
+      "amount": "15883.00"
+    },
+    {
+      "description": "Window cleaning - weekly",
+      "quantity": "4",
+      "unit_price": "117.22",
+      "amount": "468.88"
+    },
+    {
+      "description": "Hand soap refill - per visit",
+      "quantity": "50",
+      "unit_price": "626.75",
+      "amount": "31337.50"
+    },
+    {
+      "description": "Waste removal - level 1",
+      "quantity": "5",
+      "unit_price": "229.23",
+      "amount": "1146.15"
+    },
+    {
+      "description": "Upholstery clean - level 1",
+      "quantity": "10",
+      "unit_price": "604.24",
+      "amount": "6042.40"
+    },
+    {
+      "description": "Paper towel supply - per visit",
+      "quantity": "6",
+      "unit_price": "477.79",
+      "amount": "2866.74"
+    },
+    {
+      "description": "Office deep clean - weekly",
+      "quantity": "20",
+      "unit_price": "52.40",
+      "amount": "1048.00"
+    },
+    {
+      "description": "Hand soap refill - weekly",
+      "quantity": "4",
+      "unit_price": "506.99",
+      "amount": "2027.96"
+    },
+    {
+      "description": "Window cleaning - monthly",
+      "quantity": "10",
+      "unit_price": "166.07",
+      "amount": "1660.70"
+    },
+    {
+      "description": "Waste removal - weekly",
+      "quantity": "24",
+      "unit_price": "238.10",
+      "amount": "5714.40"
+    },
+    {
+      "description": "Paper towel supply - level 1",
+      "quantity": "24",
+      "unit_price": "232.89",
+      "amount": "5589.36"
+    },
+    {
+      "description": "Upholstery clean - monthly",
+      "quantity": "24",
+      "unit_price": "48.05",
+      "amount": "1153.20"
+    },
+    {
+      "description": "Hand soap refill - level 2",
+      "quantity": "3",
+      "unit_price": "341.24",
+      "amount": "1023.72"
+    },
+    {
+      "description": "Upholstery clean - per visit",
+      "quantity": "6",
+      "unit_price": "365.18",
+      "amount": "2191.08"
+    },
+    {
+      "description": "Carpet shampoo - weekly",
+      "quantity": "1",
+      "unit_price": "446.27",
+      "amount": "446.27"
+    },
+    {
+      "description": "Floor buffing - weekly",
+      "quantity": "2",
+      "unit_price": "334.07",
+      "amount": "668.14"
+    },
+    {
+      "description": "Office deep clean - monthly",
+      "quantity": "6",
+      "unit_price": "132.69",
+      "amount": "796.14"
+    },
+    {
+      "description": "Kitchen degrease - weekly",
+      "quantity": "5",
+      "unit_price": "84.02",
+      "amount": "420.10"
+    },
+    {
+      "description": "Promotional credit (12%)",
+      "quantity": "1",
+      "unit_price": "-13980.26",
+      "amount": "-13980.26"
+    }
+  ]
+}

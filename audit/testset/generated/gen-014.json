@@ -1,0 +1,28 @@
+{
+  "vendor_name": "Brisbin Facility Care",
+  "invoice_id": "B26-6889",
+  "currency": "USD",
+  "tags": [
+    "multi_tax",
+    "scanned"
+  ],
+  "invoice_date": "2026-05-26",
+  "due_date": "2026-06-25",
+  "subtotal": "14787.14",
+  "tax_total": "1146.01",
+  "total": "15933.15",
+  "line_items": [
+    {
+      "description": "Waste removal - level 1",
+      "quantity": "1",
+      "unit_price": "384.50",
+      "amount": "384.50"
+    },
+    {
+      "description": "Paper towel supply - level 2",
+      "quantity": "24",
+      "unit_price": "600.11",
+      "amount": "14402.64"
+    }
+  ]
+}

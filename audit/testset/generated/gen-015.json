@@ -1,0 +1,81 @@
+{
+  "vendor_name": "Gallowmere Scientific",
+  "invoice_id": "INV004563",
+  "currency": "USD",
+  "tags": [
+    "multi_tax"
+  ],
+  "invoice_date": "2026-07-18",
+  "due_date": "2026-08-17",
+  "subtotal": "19180.53",
+  "tax_total": "1294.68",
+  "total": "20475.21",
+  "line_items": [
+    {
+      "description": "Cuvettes - case of 10",
+      "quantity": "1",
+      "unit_price": "136.44",
+      "amount": "136.44"
+    },
+    {
+      "description": "Filter paper - bulk",
+      "quantity": "20",
+      "unit_price": "229.73",
+      "amount": "4594.60"
+    },
+    {
+      "description": "Sample vials - bulk",
+      "quantity": "1",
+      "unit_price": "169.73",
+      "amount": "169.73"
+    },
+    {
+      "description": "Pipette tips 200ul - pack of 500",
+      "quantity": "10",
+      "unit_price": "69.87",
+      "amount": "698.70"
+    },
+    {
+      "description": "Buffer solution pH7 - pack of 100",
+      "quantity": "5",
+      "unit_price": "171.06",
+      "amount": "855.30"
+    },
+    {
+      "description": "Nitrile gloves - pack of 500",
+      "quantity": "24",
+      "unit_price": "272.92",
+      "amount": "6550.08"
+    },
+    {
+      "description": "Nitrile gloves - sterile",
+      "quantity": "20",
+      "unit_price": "245.91",
+      "amount": "4918.20"
+    },
+    {
+      "description": "Lab wipes - pack of 100",
+      "quantity": "3",
+      "unit_price": "143.79",
+      "amount": "431.37"
+    },
+    {
+      "description": "Petri dishes - bulk",
+      "quantity": "3",
+      "unit_price": "74.08",
+      "amount": "222.24"
+    },
+    {
+      "description": "Petri dishes - pack of 100",
+      "quantity": "1",
+      "unit_price": "204.27",
+      "amount": "204.27"
+    },
+    {
+      "description": "Cuvettes - pack of 100",
+      "quantity": "24",
+      "unit_price": "16.65",
+      "amount": "399.60"
+    }
+  ]
+}

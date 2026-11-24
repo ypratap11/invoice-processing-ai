@@ -1,0 +1,53 @@
+{
+  "vendor_name": "Nettlecombe Desk Supply",
+  "invoice_id": "A3-06001",
+  "currency": "GBP",
+  "tags": [
+    "non_usd",
+    "dmy_date",
+    "scanned"
+  ],
+  "invoice_date": "2026-04-15",
+  "due_date": "2026-05-30",
+  "subtotal": "2095.34",
+  "tax_total": "419.07",
+  "total": "2514.41",
+  "line_items": [
+    {
+      "description": "Sticky notes 76x76 - case of 5",
+      "quantity": "12",
+      "unit_price": "13.09",
+      "amount": "157.08"
+    },
+    {
+      "description": "Toner cartridge - box of 50",
+      "quantity": "20",
+      "unit_price": "30.04",
+      "amount": "600.80"
+    },
+    {
+      "description": "Envelopes C5 - pack of 12",
+      "quantity": "12",
+      "unit_price": "77.30",
+      "amount": "927.60"
+    },
+    {
+      "description": "Whiteboard markers - box of 50",
+      "quantity": "2",
+      "unit_price": "80.52",
+      "amount": "161.04"
+    },
+    {
+      "description": "Highlighters assorted - case of 5",
+      "quantity": "3",
+      "unit_price": "63.77",
+      "amount": "191.31"
+    },
+    {
+      "description": "Whiteboard markers - pack of 12",
+      "quantity": "1",
+      "unit_price": "57.51",
+      "amount": "57.51"
+    }
+  ]
+}

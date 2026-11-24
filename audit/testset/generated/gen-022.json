@@ -1,0 +1,58 @@
+{
+  "vendor_name": "Clearbrook Sanitation",
+  "invoice_id": "B26-8861",
+  "currency": "GBP",
+  "tags": [
+    "non_usd",
+    "dmy_date"
+  ],
+  "invoice_date": "2026-07-17",
+  "due_date": "2026-08-31",
+  "subtotal": "18406.75",
+  "tax_total": "3681.35",
+  "total": "22088.10",
+  "line_items": [
+    {
+      "description": "Restroom sanitising - monthly",
+      "quantity": "3",
+      "unit_price": "310.01",
+      "amount": "930.03"
+    },
+    {
+      "description": "Paper towel supply - monthly",
+      "quantity": "12",
+      "unit_price": "609.53",
+      "amount": "7314.36"
+    },
+    {
+      "description": "Office deep clean - level 2",
+      "quantity": "3",
+      "unit_price": "497.48",
+      "amount": "1492.44"
+    },
+    {
+      "description": "Hand soap refill - monthly",
+      "quantity": "12",
+      "unit_price": "205.41",
+      "amount": "2464.92"
+    },
+    {
+      "description": "Hand soap refill - level 1",
+      "quantity": "12",
+      "unit_price": "386.92",
+      "amount": "4643.04"
+    },
+    {
+      "description": "Restroom sanitising - level 1",
+      "quantity": "4",
+      "unit_price": "119.80",
+      "amount": "479.20"
+    },
+    {
+      "description": "Floor buffing - level 2",
+      "quantity": "6",
+      "unit_price": "180.46",
+      "amount": "1082.76"
+    }
+  ]
+}

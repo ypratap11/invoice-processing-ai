@@ -1,0 +1,57 @@
+{
+  "vendor_name": "Larkspur Kitchen Provisions",
+  "invoice_id": "INV009916",
+  "currency": "USD",
+  "tags": [
+    "discount"
+  ],
+  "invoice_date": "2026-06-30",
+  "due_date": "2026-07-30",
+  "subtotal": "4214.48",
+  "tax_total": "295.01",
+  "total": "4509.49",
+  "line_items": [
+    {
+      "description": "Pastry selection - per person",
+      "quantity": "5",
+      "unit_price": "74.34",
+      "amount": "371.70"
+    },
+    {
+      "description": "Hot lunch buffet - serves 10",
+      "quantity": "24",
+      "unit_price": "29.09",
+      "amount": "698.16"
+    },
+    {
+      "description": "Sandwich tray - serves 30",
+      "quantity": "6",
+      "unit_price": "44.31",
+      "amount": "265.86"
+    },
+    {
+      "description": "Pastry selection - half tray",
+      "quantity": "12",
+      "unit_price": "37.79",
+      "amount": "453.48"
+    },
+    {
+      "description": "Breakfast platter - half tray",
+      "quantity": "20",
+      "unit_price": "133.99",
+      "amount": "2679.80"
+    },
+    {
+      "description": "Sandwich tray - serves 10",
+      "quantity": "10",
+      "unit_price": "8.72",
+      "amount": "87.20"
+    },
+    {
+      "description": "Loyalty discount (7.5%)",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "-341.72"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "vendor_name": "Ambergrove Bioreagents",
+  "invoice_id": "B26-5113",
+  "currency": "GBP",
+  "tags": [
+    "non_usd",
+    "dmy_date",
+    "discount"
+  ],
+  "invoice_date": "2026-07-13",
+  "due_date": "2026-07-28",
+  "subtotal": "30438.55",
+  "tax_total": "6087.71",
+  "total": "36526.26",
+  "line_items": [
+    {
+      "description": "Nitrile gloves - bulk",
+      "quantity": "3",
+      "unit_price": "128.37",
+      "amount": "385.11"
+    },
+    {
+      "description": "Filter paper - bulk",
+      "quantity": "10",
+      "unit_price": "88.79",
+      "amount": "887.90"
+    },
+    {
+      "description": "Centrifuge tubes 15ml - case of 10",
+      "quantity": "50",
+      "unit_price": "175.31",
+      "amount": "8765.50"
+    },
+    {
+      "description": "Petri dishes - pack of 100",
+      "quantity": "20",
+      "unit_price": "35.73",
+      "amount": "714.60"
+    },
+    {
+      "description": "Microscope slides - case of 10",
+      "quantity": "24",
+      "unit_price": "309.45",
+      "amount": "7426.80"
+    },
+    {
+      "description": "Nitrile gloves - pack of 500",
+      "quantity": "50",
+      "unit_price": "275.62",
+      "amount": "13781.00"
+    },
+    {
+      "description": "Nitrile gloves - pack of 100",
+      "quantity": "4",
+      "unit_price": "127.69",
+      "amount": "510.76"
+    },
+    {
+      "description": "Cuvettes - pack of 500",
+      "quantity": "3",
+      "unit_price": "155.26",
+      "amount": "465.78"
+    },
+    {
+      "description": "Loyalty discount (10%)",
+      "quantity": "1",
+      "unit_price": "-3382.06",
+      "amount": "-3382.06"
+    },
+    {
+      "description": "Microscope slides - pack of 500",
+      "quantity": "4",
+      "unit_price": "220.79",
+      "amount": "883.16"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "vendor_name": "Hollin Farmhouse Foods",
+  "invoice_id": "SI/26/1316",
+  "currency": "USD",
+  "tags": [
+    "dmy_date"
+  ],
+  "invoice_date": "2026-10-11",
+  "due_date": "2026-11-10",
+  "subtotal": "8711.34",
+  "tax_total": "522.68",
+  "total": "9234.02",
+  "line_items": [
+    {
+      "description": "Salad station - per person",
+      "quantity": "5",
+      "unit_price": "79.23",
+      "amount": "396.15"
+    },
+    {
+      "description": "Fruit bowl - serves 30",
+      "quantity": "6",
+      "unit_price": "28.31",
+      "amount": "169.86"
+    },
+    {
+      "description": "Vegetarian wraps - half tray",
+      "quantity": "3",
+      "unit_price": "63.50",
+      "amount": "190.50"
+    },
+    {
+      "description": "Vegetarian wraps - serves 20",
+      "quantity": "24",
+      "unit_price": "145.57",
+      "amount": "3493.68"
+    },
+    {
+      "description": "Salad station - half tray",
+      "quantity": "1",
+      "unit_price": "120.51",
+      "amount": "120.51"
+    },
+    {
+      "description": "Fruit bowl - half tray",
+      "quantity": "10",
+      "unit_price": "135.65",
+      "amount": "1356.50"
+    },
+    {
+      "description": "Breakfast platter - serves 10",
+      "quantity": "10",
+      "unit_price": "150.53",
+      "amount": "1505.30"
+    },
+    {
+      "description": "Pastry selection - serves 30",
+      "quantity": "10",
+      "unit_price": "14.74",
+      "amount": "147.40"
+    },
+    {
+      "description": "Dessert tray - per person",
+      "quantity": "1",
+      "unit_price": "93.07",
+      "amount": "93.07"
+    },
+    {
+      "description": "Pastry selection - serves 10",
+      "quantity": "2",
+      "unit_price": "34.30",
+      "amount": "68.60"
+    },
+    {
+      "description": "Breakfast platter - serves 20",
+      "quantity": "5",
+      "unit_price": "39.65",
+      "amount": "198.25"
+    },
+    {
+      "description": "Sandwich tray - serves 20",
+      "quantity": "24",
+      "unit_price": "40.48",
+      "amount": "971.52"
+    }
+  ]
+}

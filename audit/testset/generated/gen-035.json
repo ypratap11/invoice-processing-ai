@@ -1,0 +1,78 @@
+{
+  "vendor_name": "Ellery Quarles Training",
+  "invoice_id": "B26-9145",
+  "currency": "EUR",
+  "tags": [
+    "bad_total",
+    "non_usd",
+    "dmy_date",
+    "decimal_comma"
+  ],
+  "invoice_date": "2026-02-26",
+  "due_date": "2026-03-28",
+  "subtotal": "7670.88",
+  "tax_total": "1534.18",
+  "total": "9215.06",
+  "line_items": [
+    {
+      "description": "Process review workshop - senior (hours)",
+      "quantity": "8",
+      "unit_price": "226.81",
+      "amount": "1814.48"
+    },
+    {
+      "description": "Solution design - standard (hours)",
+      "quantity": "4",
+      "unit_price": "123.66",
+      "amount": "494.64"
+    },
+    {
+      "description": "Security assessment - senior (hours)",
+      "quantity": "4",
+      "unit_price": "92.93",
+      "amount": "371.72"
+    },
+    {
+      "description": "Systems testing - remote (hours)",
+      "quantity": "2",
+      "unit_price": "180.13",
+      "amount": "360.26"
+    },
+    {
+      "description": "Project management - on-site (hours)",
+      "quantity": "2",
+      "unit_price": "213.63",
+      "amount": "427.26"
+    },
+    {
+      "description": "Solution design - remote (hours)",
+      "quantity": "1.5",
+      "unit_price": "141.02",
+      "amount": "211.53"
+    },
+    {
+      "description": "Data migration support - senior",
+      "quantity": "3",
+      "unit_price": "228.27",
+      "amount": "684.81"
+    },
+    {
+      "description": "Process review workshop - remote (hours)",
+      "quantity": "4",
+      "unit_price": "104.60",
+      "amount": "418.40"
+    },
+    {
+      "description": "Requirements analysis - on-site (hours)",
+      "quantity": "4",
+      "unit_price": "235.47",
+      "amount": "941.88"
+    },
+    {
+      "description": "Security assessment - remote",
+      "quantity": "10",
+      "unit_price": "194.59",
+      "amount": "1945.90"
+    }
+  ]
+}

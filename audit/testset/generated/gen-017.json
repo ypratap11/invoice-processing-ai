@@ -1,0 +1,47 @@
+{
+  "vendor_name": "Thistledown Paper Goods",
+  "invoice_id": "INV-2026-2198",
+  "currency": "INR",
+  "tags": [
+    "multi_tax",
+    "non_usd",
+    "dmy_date"
+  ],
+  "invoice_date": "2026-04-24",
+  "due_date": "2026-05-24",
+  "subtotal": "3184.90",
+  "tax_total": "573.28",
+  "total": "3758.18",
+  "line_items": [
+    {
+      "description": "Desk organiser - case of 5",
+      "quantity": "4",
+      "unit_price": "7.79",
+      "amount": "31.16"
+    },
+    {
+      "description": "Envelopes C5 - single",
+      "quantity": "20",
+      "unit_price": "73.93",
+      "amount": "1478.60"
+    },
+    {
+      "description": "Desk organiser - box of 50",
+      "quantity": "1",
+      "unit_price": "56.69",
+      "amount": "56.69"
+    },
+    {
+      "description": "Highlighters assorted - box of 10",
+      "quantity": "5",
+      "unit_price": "6.53",
+      "amount": "32.65"
+    },
+    {
+      "description": "Gel pens black - box of 10",
+      "quantity": "20",
+      "unit_price": "79.29",
+      "amount": "1585.80"
+    }
+  ]
+}

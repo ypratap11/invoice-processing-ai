@@ -1,0 +1,69 @@
+{
+  "vendor_name": "Rookwood Cartage",
+  "invoice_id": "CN-4943-7",
+  "currency": "USD",
+  "tags": [
+    "bad_total"
+  ],
+  "invoice_date": "2026-04-05",
+  "due_date": "2026-05-05",
+  "subtotal": "37029.82",
+  "tax_total": "3517.83",
+  "total": "40647.65",
+  "line_items": [
+    {
+      "description": "Warehouse storage - zone C",
+      "quantity": "2",
+      "unit_price": "336.83",
+      "amount": "673.66"
+    },
+    {
+      "description": "Express courier - per kg",
+      "quantity": "10",
+      "unit_price": "487.11",
+      "amount": "4871.10"
+    },
+    {
+      "description": "Liftgate service - per kg",
+      "quantity": "6",
+      "unit_price": "352.47",
+      "amount": "2114.82"
+    },
+    {
+      "description": "Pallet freight - zone A",
+      "quantity": "50",
+      "unit_price": "75.85",
+      "amount": "3792.50"
+    },
+    {
+      "description": "Warehouse storage - per kg",
+      "quantity": "1",
+      "unit_price": "302.72",
+      "amount": "302.72"
+    },
+    {
+      "description": "Return shipment - zone B",
+      "quantity": "50",
+      "unit_price": "438.46",
+      "amount": "21923.00"
+    },
+    {
+      "description": "Return shipment - per kg",
+      "quantity": "6",
+      "unit_price": "89.49",
+      "amount": "536.94"
+    },
+    {
+      "description": "Fuel surcharge - zone C",
+      "quantity": "2",
+      "unit_price": "307.20",
+      "amount": "614.40"
+    },
+    {
+      "description": "Customs paperwork - per pallet",
+      "quantity": "6",
+      "unit_price": "366.78",
+      "amount": "2200.68"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "vendor_name": "Nichols-Barajas",
+  "invoice_id": "56014042",
+  "currency": "USD",
+  "tags": [
+    "decimal_comma"
+  ],
+  "invoice_date": "2014-10-01",
+  "due_date": null,
+  "subtotal": "59.50",
+  "tax_total": "5.95",
+  "total": "65.45",
+  "line_items": [
+    {
+      "description": "Jordan Hydro 2 (TD)-Child Size 10c",
+      "quantity": "2.00",
+      "unit_price": "5.75",
+      "amount": "11.50"
+    },
+    {
+      "description": "Sketchers Energy Lights Boys Black Canvas Size 4 With Charging Cable",
+      "quantity": "4.00",
+      "unit_price": "12.00",
+      "amount": "48.00"
+    }
+  ]
+}

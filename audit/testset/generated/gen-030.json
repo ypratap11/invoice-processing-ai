@@ -1,0 +1,57 @@
+{
+  "vendor_name": "Ostrander Cleaning Crew",
+  "invoice_id": "A3-09170",
+  "currency": "USD",
+  "tags": [
+    "dmy_date"
+  ],
+  "invoice_date": "2026-04-25",
+  "due_date": "2026-06-09",
+  "subtotal": "13750.11",
+  "tax_total": "962.51",
+  "total": "14712.62",
+  "line_items": [
+    {
+      "description": "Waste removal - level 2",
+      "quantity": "2",
+      "unit_price": "500.39",
+      "amount": "1000.78"
+    },
+    {
+      "description": "Restroom sanitising - weekly",
+      "quantity": "12",
+      "unit_price": "582.76",
+      "amount": "6993.12"
+    },
+    {
+      "description": "Upholstery clean - level 2",
+      "quantity": "1",
+      "unit_price": "248.41",
+      "amount": "248.41"
+    },
+    {
+      "description": "Restroom sanitising - monthly",
+      "quantity": "6",
+      "unit_price": "570.24",
+      "amount": "3421.44"
+    },
+    {
+      "description": "Upholstery clean - level 1",
+      "quantity": "1",
+      "unit_price": "365.44",
+      "amount": "365.44"
+    },
+    {
+      "description": "Waste removal - weekly",
+      "quantity": "1",
+      "unit_price": "210.66",
+      "amount": "210.66"
+    },
+    {
+      "description": "Restroom sanitising - per visit",
+      "quantity": "6",
+      "unit_price": "251.71",
+      "amount": "1510.26"
+    }
+  ]
+}

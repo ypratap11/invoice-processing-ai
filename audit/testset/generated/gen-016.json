@@ -1,0 +1,33 @@
+{
+  "vendor_name": "Cobbleton Haulage",
+  "invoice_id": "INV-2026-4196",
+  "currency": "USD",
+  "tags": [
+    "multi_tax"
+  ],
+  "invoice_date": "2026-06-05",
+  "due_date": null,
+  "subtotal": "8274.88",
+  "tax_total": "661.99",
+  "total": "8936.87",
+  "line_items": [
+    {
+      "description": "Express courier - per kg",
+      "quantity": "6",
+      "unit_price": "60.13",
+      "amount": "360.78"
+    },
+    {
+      "description": "Warehouse storage - per kg",
+      "quantity": "50",
+      "unit_price": "150.75",
+      "amount": "7537.50"
+    },
+    {
+      "description": "Insurance cover - per pallet",
+      "quantity": "5",
+      "unit_price": "75.32",
+      "amount": "376.60"
+    }
+  ]
+}

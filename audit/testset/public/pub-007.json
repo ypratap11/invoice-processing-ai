@@ -1,0 +1,45 @@
+{
+  "vendor_name": "Smith Ltd",
+  "invoice_id": "26343874",
+  "currency": "USD",
+  "tags": [
+    "decimal_comma"
+  ],
+  "invoice_date": "2013-07-17",
+  "due_date": null,
+  "subtotal": "3172.99",
+  "tax_total": "317.30",
+  "total": "3490.29",
+  "line_items": [
+    {
+      "description": "Microsoft Xbox One X 1TB 4k Ultra HD Console black controller works great 1787",
+      "quantity": "5.00",
+      "unit_price": "249.00",
+      "amount": "1245.00"
+    },
+    {
+      "description": "Cables 500gb,Sony PlayStation 4 PS4 CUH 1215A Jet Black Console w/ Controller",
+      "quantity": "5.00",
+      "unit_price": "100.00",
+      "amount": "500.00"
+    },
+    {
+      "description": "PS2 Slim Console System SCPH-77000 PINK Playstation 2 Tested",
+      "quantity": "4.00",
+      "unit_price": "252.00",
+      "amount": "1008.00"
+    },
+    {
+      "description": "Nintendo Game Boy Micro Console - Black (OXYSFBB)",
+      "quantity": "2.00",
+      "unit_price": "130.00",
+      "amount": "260.00"
+    },
+    {
+      "description": "Nintendo GameCube System Console Bundle Mario Sunshine + Genuine controller LOT",
+      "quantity": "1.00",
+      "unit_price": "159.99",
+      "amount": "159.99"
+    }
+  ]
+}

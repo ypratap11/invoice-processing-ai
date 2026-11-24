@@ -1,0 +1,87 @@
+{
+  "vendor_name": "Saffronvale Stationers",
+  "invoice_id": "A5-05111",
+  "currency": "USD",
+  "tags": [
+    "discount"
+  ],
+  "invoice_date": "2026-06-14",
+  "due_date": "2026-07-14",
+  "subtotal": "7970.03",
+  "tax_total": "557.90",
+  "total": "8527.93",
+  "line_items": [
+    {
+      "description": "Gel pens black - box of 10",
+      "quantity": "2",
+      "unit_price": "43.35",
+      "amount": "86.70"
+    },
+    {
+      "description": "Desk organiser - box of 50",
+      "quantity": "2",
+      "unit_price": "70.20",
+      "amount": "140.40"
+    },
+    {
+      "description": "Ballpoint pens blue - case of 5",
+      "quantity": "50",
+      "unit_price": "64.64",
+      "amount": "3232.00"
+    },
+    {
+      "description": "Stapler heavy duty - case of 5",
+      "quantity": "10",
+      "unit_price": "49.77",
+      "amount": "497.70"
+    },
+    {
+      "description": "Whiteboard markers - case of 5",
+      "quantity": "50",
+      "unit_price": "44.30",
+      "amount": "2215.00"
+    },
+    {
+      "description": "Highlighters assorted - box of 10",
+      "quantity": "20",
+      "unit_price": "84.46",
+      "amount": "1689.20"
+    },
+    {
+      "description": "Envelopes C5 - box of 10",
+      "quantity": "4",
+      "unit_price": "60.80",
+      "amount": "243.20"
+    },
+    {
+      "description": "Desk organiser - pack of 12",
+      "quantity": "3",
+      "unit_price": "28.37",
+      "amount": "85.11"
+    },
+    {
+      "description": "Ballpoint pens blue - pack of 12",
+      "quantity": "5",
+      "unit_price": "48.35",
+      "amount": "241.75"
+    },
+    {
+      "description": "Sticky notes 76x76 - case of 5",
+      "quantity": "1",
+      "unit_price": "48.99",
+      "amount": "48.99"
+    },
+    {
+      "description": "Sticky notes 76x76 - box of 10",
+      "quantity": "6",
+      "unit_price": "62.59",
+      "amount": "375.54"
+    },
+    {
+      "description": "Promotional credit (10%)",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "-885.56"
+    }
+  ]
+}

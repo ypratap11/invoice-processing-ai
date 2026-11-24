@@ -1,0 +1,45 @@
+{
+  "vendor_name": "Pipersfield Bakehouse",
+  "invoice_id": "06514",
+  "currency": "USD",
+  "tags": [
+    "scanned"
+  ],
+  "invoice_date": "2026-04-25",
+  "due_date": null,
+  "subtotal": "7387.60",
+  "tax_total": "517.13",
+  "total": "7904.73",
+  "line_items": [
+    {
+      "description": "Hot lunch buffet - serves 20",
+      "quantity": "12",
+      "unit_price": "95.81",
+      "amount": "1149.72"
+    },
+    {
+      "description": "Vegetarian wraps - serves 30",
+      "quantity": "20",
+      "unit_price": "53.74",
+      "amount": "1074.80"
+    },
+    {
+      "description": "Pastry selection - serves 30",
+      "quantity": "50",
+      "unit_price": "62.73",
+      "amount": "3136.50"
+    },
+    {
+      "description": "Salad station - serves 20",
+      "quantity": "1",
+      "unit_price": "48.98",
+      "amount": "48.98"
+    },
+    {
+      "description": "Breakfast platter - serves 30",
+      "quantity": "12",
+      "unit_price": "164.80",
+      "amount": "1977.60"
+    }
+  ]
+}

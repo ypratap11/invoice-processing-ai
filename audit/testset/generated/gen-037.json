@@ -1,0 +1,51 @@
+{
+  "vendor_name": "Carrow Digital Imaging",
+  "invoice_id": "INV007686",
+  "currency": "USD",
+  "tags": [
+    "scanned"
+  ],
+  "invoice_date": "2026-04-15",
+  "due_date": "2026-06-14",
+  "subtotal": "15456.96",
+  "tax_total": "1275.20",
+  "total": "16732.16",
+  "line_items": [
+    {
+      "description": "Event posters - two colour",
+      "quantity": "12",
+      "unit_price": "295.45",
+      "amount": "3545.40"
+    },
+    {
+      "description": "Tri-fold brochures - matte",
+      "quantity": "24",
+      "unit_price": "133.34",
+      "amount": "3200.16"
+    },
+    {
+      "description": "Business cards - premium stock",
+      "quantity": "12",
+      "unit_price": "388.41",
+      "amount": "4660.92"
+    },
+    {
+      "description": "Notepads - two colour",
+      "quantity": "2",
+      "unit_price": "195.36",
+      "amount": "390.72"
+    },
+    {
+      "description": "Event posters - premium stock",
+      "quantity": "12",
+      "unit_price": "125.63",
+      "amount": "1507.56"
+    },
+    {
+      "description": "Notepads - full colour",
+      "quantity": "20",
+      "unit_price": "107.61",
+      "amount": "2152.20"
+    }
+  ]
+}

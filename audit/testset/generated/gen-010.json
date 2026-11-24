@@ -1,0 +1,46 @@
+{
+  "vendor_name": "Kestrel Bolt & Bearing",
+  "invoice_id": "INV-2026-5057",
+  "currency": "USD",
+  "tags": [
+    "discount",
+    "scanned"
+  ],
+  "invoice_date": "2026-06-05",
+  "due_date": "2026-07-05",
+  "subtotal": "1097.71",
+  "tax_total": "65.86",
+  "total": "1163.57",
+  "line_items": [
+    {
+      "description": "Threaded rod - M8",
+      "quantity": "3",
+      "unit_price": "3.85",
+      "amount": "11.55"
+    },
+    {
+      "description": "Coach screw - M12",
+      "quantity": "20",
+      "unit_price": "53.66",
+      "amount": "1073.20"
+    },
+    {
+      "description": "Coach screw - M8",
+      "quantity": "1",
+      "unit_price": "44.09",
+      "amount": "44.09"
+    },
+    {
+      "description": "Loyalty discount (10%)",
+      "quantity": "1",
+      "unit_price": "-121.97",
+      "amount": "-121.97"
+    },
+    {
+      "description": "Spring washer - M16",
+      "quantity": "12",
+      "unit_price": "7.57",
+      "amount": "90.84"
+    }
+  ]
+}

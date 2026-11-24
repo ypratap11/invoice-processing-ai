@@ -1,0 +1,21 @@
+{
+  "vendor_name": "Rodriguez-Jackson",
+  "invoice_id": "24048799",
+  "currency": "USD",
+  "tags": [
+    "decimal_comma"
+  ],
+  "invoice_date": "2014-05-21",
+  "due_date": null,
+  "subtotal": "4.95",
+  "tax_total": "0.50",
+  "total": "5.45",
+  "line_items": [
+    {
+      "description": "Large Blue Long Sleeve Fit & Flare Dress Elastic Waist Crochet Detail Bohemian",
+      "quantity": "5.00",
+      "unit_price": "0.99",
+      "amount": "4.95"
+    }
+  ]
+}

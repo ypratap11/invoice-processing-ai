@@ -1,0 +1,39 @@
+{
+  "vendor_name": "Quenby Precision Optics",
+  "invoice_id": "A3-07552",
+  "currency": "USD",
+  "tags": [
+    "dmy_date"
+  ],
+  "invoice_date": "2026-04-18",
+  "due_date": "2026-06-02",
+  "subtotal": "16442.97",
+  "tax_total": "1562.08",
+  "total": "18005.05",
+  "line_items": [
+    {
+      "description": "Nitrile gloves - bulk",
+      "quantity": "12",
+      "unit_price": "319.04",
+      "amount": "3828.48"
+    },
+    {
+      "description": "Buffer solution pH7 - bulk",
+      "quantity": "1",
+      "unit_price": "154.39",
+      "amount": "154.39"
+    },
+    {
+      "description": "Lab wipes - case of 10",
+      "quantity": "5",
+      "unit_price": "237.72",
+      "amount": "1188.60"
+    },
+    {
+      "description": "Microscope slides - case of 10",
+      "quantity": "50",
+      "unit_price": "225.43",
+      "amount": "11271.50"
+    }
+  ]
+}

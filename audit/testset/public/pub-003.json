@@ -1,0 +1,21 @@
+{
+  "vendor_name": "Trujillo-Hunt",
+  "invoice_id": "62517865",
+  "currency": "USD",
+  "tags": [
+    "decimal_comma"
+  ],
+  "invoice_date": "2015-06-02",
+  "due_date": null,
+  "subtotal": "8.50",
+  "tax_total": "0.85",
+  "total": "9.35",
+  "line_items": [
+    {
+      "description": "Care & Repair of Furniture",
+      "quantity": "2.00",
+      "unit_price": "4.25",
+      "amount": "8.50"
+    }
+  ]
+}

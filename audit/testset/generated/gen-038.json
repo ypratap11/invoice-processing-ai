@@ -1,0 +1,31 @@
+{
+  "vendor_name": "Whitlock Window Cleaning",
+  "invoice_id": "A7-02139",
+  "currency": "USD",
+  "tags": [],
+  "invoice_date": "2026-03-14",
+  "due_date": "2026-05-13",
+  "subtotal": "20885.88",
+  "tax_total": "1984.16",
+  "total": "22870.04",
+  "line_items": [
+    {
+      "description": "Office deep clean - monthly",
+      "quantity": "24",
+      "unit_price": "599.65",
+      "amount": "14391.60"
+    },
+    {
+      "description": "Hand soap refill - weekly",
+      "quantity": "6",
+      "unit_price": "257.74",
+      "amount": "1546.44"
+    },
+    {
+      "description": "Carpet shampoo - level 1",
+      "quantity": "12",
+      "unit_price": "412.32",
+      "amount": "4947.84"
+    }
+  ]
+}

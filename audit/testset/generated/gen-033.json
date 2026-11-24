@@ -1,0 +1,46 @@
+{
+  "vendor_name": "Blythe Corner Supplies",
+  "invoice_id": "01614",
+  "currency": "USD",
+  "tags": [
+    "bad_total",
+    "scanned"
+  ],
+  "invoice_date": "2026-07-07",
+  "due_date": "2026-07-22",
+  "subtotal": "3851.88",
+  "tax_total": "231.11",
+  "total": "4182.99",
+  "line_items": [
+    {
+      "description": "Sticky notes 76x76 - case of 5",
+      "quantity": "24",
+      "unit_price": "12.78",
+      "amount": "306.72"
+    },
+    {
+      "description": "Gel pens black - single",
+      "quantity": "20",
+      "unit_price": "80.24",
+      "amount": "1604.80"
+    },
+    {
+      "description": "Envelopes C5 - case of 5",
+      "quantity": "24",
+      "unit_price": "51.71",
+      "amount": "1241.04"
+    },
+    {
+      "description": "Desk organiser - box of 50",
+      "quantity": "12",
+      "unit_price": "51.10",
+      "amount": "613.20"
+    },
+    {
+      "description": "Toner cartridge - case of 5",
+      "quantity": "2",
+      "unit_price": "43.06",
+      "amount": "86.12"
+    }
+  ]
+}

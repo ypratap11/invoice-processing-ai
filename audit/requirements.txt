@@ -13,3 +13,5 @@ uvicorn
 python-dotenv
 pydantic
 python-multipart
+pypdfium2
+numpy

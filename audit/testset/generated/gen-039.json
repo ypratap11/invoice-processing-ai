@@ -1,0 +1,37 @@
+{
+  "vendor_name": "Loxley Analytical",
+  "invoice_id": "SI/26/4794",
+  "currency": "USD",
+  "tags": [],
+  "invoice_date": "2026-07-15",
+  "due_date": null,
+  "subtotal": "7835.60",
+  "tax_total": "646.44",
+  "total": "8482.04",
+  "line_items": [
+    {
+      "description": "Petri dishes - case of 10",
+      "quantity": "24",
+      "unit_price": "29.03",
+      "amount": "696.72"
+    },
+    {
+      "description": "Petri dishes - bulk",
+      "quantity": "4",
+      "unit_price": "17.65",
+      "amount": "70.60"
+    },
+    {
+      "description": "Lab wipes - bulk",
+      "quantity": "20",
+      "unit_price": "301.60",
+      "amount": "6032.00"
+    },
+    {
+      "description": "Sample vials - pack of 100",
+      "quantity": "4",
+      "unit_price": "259.07",
+      "amount": "1036.28"
+    }
+  ]
+}

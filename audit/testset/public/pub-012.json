@@ -1,0 +1,27 @@
+{
+  "vendor_name": "Conley Ltd",
+  "invoice_id": "58478169",
+  "currency": "USD",
+  "tags": [
+    "decimal_comma"
+  ],
+  "invoice_date": "2016-07-04",
+  "due_date": null,
+  "subtotal": "11147.25",
+  "tax_total": "1114.73",
+  "total": "12261.98",
+  "line_items": [
+    {
+      "description": "30 Inches Marble Patio Table Top Malachite Stone Inlaid Coffee Table Home Decor",
+      "quantity": "3.00",
+      "unit_price": "1023.75",
+      "amount": "3071.25"
+    },
+    {
+      "description": "48 Inch Marble Restaurant Table Inlay with Lapis Lazuli Stone Dinning Table Top",
+      "quantity": "3.00",
+      "unit_price": "2692.00",
+      "amount": "8076.00"
+    }
+  ]
+}

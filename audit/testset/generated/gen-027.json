@@ -1,0 +1,46 @@
+{
+  "vendor_name": "Varnell Systems Integration",
+  "invoice_id": "A2-00079",
+  "currency": "USD",
+  "tags": [
+    "dmy_date",
+    "scanned"
+  ],
+  "invoice_date": "2026-02-27",
+  "due_date": "2026-03-14",
+  "subtotal": "3279.29",
+  "tax_total": "196.76",
+  "total": "3476.05",
+  "line_items": [
+    {
+      "description": "On-site training day - junior (hours)",
+      "quantity": "6.5",
+      "unit_price": "211.12",
+      "amount": "1372.28"
+    },
+    {
+      "description": "Data migration support - senior",
+      "quantity": "2",
+      "unit_price": "167.27",
+      "amount": "334.54"
+    },
+    {
+      "description": "Requirements analysis - on-site (hours)",
+      "quantity": "4",
+      "unit_price": "210.23",
+      "amount": "840.92"
+    },
+    {
+      "description": "Change management - remote",
+      "quantity": "5",
+      "unit_price": "98.35",
+      "amount": "491.75"
+    },
+    {
+      "description": "Process review workshop - senior (hours)",
+      "quantity": "2",
+      "unit_price": "119.90",
+      "amount": "239.80"
+    }
+  ]
+}

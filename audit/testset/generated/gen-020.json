@@ -1,0 +1,66 @@
+{
+  "vendor_name": "Wrenfield Events Kitchen",
+  "invoice_id": "CN-4326-8",
+  "currency": "EUR",
+  "tags": [
+    "non_usd",
+    "dmy_date",
+    "scanned",
+    "decimal_comma"
+  ],
+  "invoice_date": "2026-09-21",
+  "due_date": "2026-10-06",
+  "subtotal": "9635.15",
+  "tax_total": "1927.03",
+  "total": "11562.18",
+  "line_items": [
+    {
+      "description": "Fruit bowl - half tray",
+      "quantity": "24",
+      "unit_price": "176.00",
+      "amount": "4224.00"
+    },
+    {
+      "description": "Vegetarian wraps - serves 30",
+      "quantity": "4",
+      "unit_price": "50.45",
+      "amount": "201.80"
+    },
+    {
+      "description": "Juice carafe - half tray",
+      "quantity": "10",
+      "unit_price": "95.49",
+      "amount": "954.90"
+    },
+    {
+      "description": "Sandwich tray - serves 10",
+      "quantity": "24",
+      "unit_price": "153.92",
+      "amount": "3694.08"
+    },
+    {
+      "description": "Sandwich tray - serves 20",
+      "quantity": "2",
+      "unit_price": "52.62",
+      "amount": "105.24"
+    },
+    {
+      "description": "Fruit bowl - serves 30",
+      "quantity": "4",
+      "unit_price": "90.91",
+      "amount": "363.64"
+    },
+    {
+      "description": "Pastry selection - per person",
+      "quantity": "1",
+      "unit_price": "20.72",
+      "amount": "20.72"
+    },
+    {
+      "description": "Sandwich tray - half tray",
+      "quantity": "1",
+      "unit_price": "70.77",
+      "amount": "70.77"
+    }
+  ]
+}

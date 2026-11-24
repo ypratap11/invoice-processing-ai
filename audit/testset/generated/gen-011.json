@@ -1,0 +1,57 @@
+{
+  "vendor_name": "Orrin Vasquez Advisory",
+  "invoice_id": "A2-08650",
+  "currency": "USD",
+  "tags": [
+    "discount"
+  ],
+  "invoice_date": "2026-05-02",
+  "due_date": "2026-07-01",
+  "subtotal": "9105.13",
+  "tax_total": "637.36",
+  "total": "9742.49",
+  "line_items": [
+    {
+      "description": "On-site training day - remote (hours)",
+      "quantity": "12",
+      "unit_price": "167.79",
+      "amount": "2013.48"
+    },
+    {
+      "description": "Requirements analysis - remote",
+      "quantity": "2",
+      "unit_price": "165.74",
+      "amount": "331.48"
+    },
+    {
+      "description": "Security assessment - junior (hours)",
+      "quantity": "16",
+      "unit_price": "109.70",
+      "amount": "1755.20"
+    },
+    {
+      "description": "Requirements analysis - standard",
+      "quantity": "5",
+      "unit_price": "156.22",
+      "amount": "781.10"
+    },
+    {
+      "description": "On-site training day - standard (hours)",
+      "quantity": "16",
+      "unit_price": "164.08",
+      "amount": "2625.28"
+    },
+    {
+      "description": "Volume discount (12%)",
+      "quantity": "1",
+      "unit_price": "-1241.61",
+      "amount": "-1241.61"
+    },
+    {
+      "description": "Change management - on-site",
+      "quantity": "20",
+      "unit_price": "142.01",
+      "amount": "2840.20"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "vendor_name": "Penhallow Data Studio",
+  "invoice_id": "SI/26/1814",
+  "currency": "EUR",
+  "tags": [
+    "non_usd",
+    "dmy_date",
+    "decimal_comma"
+  ],
+  "invoice_date": "2026-02-28",
+  "due_date": "2026-03-15",
+  "subtotal": "6113.59",
+  "tax_total": "1283.85",
+  "total": "7397.44",
+  "line_items": [
+    {
+      "description": "Requirements analysis - junior (hours)",
+      "quantity": "1.5",
+      "unit_price": "133.17",
+      "amount": "199.76"
+    },
+    {
+      "description": "Requirements analysis - on-site (hours)",
+      "quantity": "6.5",
+      "unit_price": "109.09",
+      "amount": "709.09"
+    },
+    {
+      "description": "Project management - junior (hours)",
+      "quantity": "6.5",
+      "unit_price": "185.40",
+      "amount": "1205.10"
+    },
+    {
+      "description": "On-site training day - on-site",
+      "quantity": "2",
+      "unit_price": "214.02",
+      "amount": "428.04"
+    },
+    {
+      "description": "Project management - on-site",
+      "quantity": "20",
+      "unit_price": "178.58",
+      "amount": "3571.60"
+    }
+  ]
+}

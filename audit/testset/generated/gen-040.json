@@ -1,0 +1,31 @@
+{
+  "vendor_name": "Fennimore Removals",
+  "invoice_id": "CN-1976-8",
+  "currency": "USD",
+  "tags": [],
+  "invoice_date": "2026-06-24",
+  "due_date": "2026-08-23",
+  "subtotal": "11384.31",
+  "tax_total": "796.90",
+  "total": "12181.21",
+  "line_items": [
+    {
+      "description": "Return shipment - per pallet",
+      "quantity": "4",
+      "unit_price": "510.44",
+      "amount": "2041.76"
+    },
+    {
+      "description": "Return shipment - zone B",
+      "quantity": "24",
+      "unit_price": "375.84",
+      "amount": "9020.16"
+    },
+    {
+      "description": "Pallet freight - zone A",
+      "quantity": "1",
+      "unit_price": "322.39",
+      "amount": "322.39"
+    }
+  ]
+}

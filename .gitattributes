@@ -1,0 +1,5 @@
+# audit test-set documents must stay byte-exact (no EOL conversion)
+audit/testset/** -text
+*.pdf binary
+*.png binary
+*.jpg binary

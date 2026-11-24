@@ -1,0 +1,220 @@
+{
+  "vendor_name": "Tindle & Oakridge Consulting",
+  "invoice_id": "20263054",
+  "currency": "USD",
+  "tags": [
+    "multipage",
+    "multi_tax"
+  ],
+  "invoice_date": "2026-01-04",
+  "due_date": "2026-02-03",
+  "subtotal": "58281.98",
+  "tax_total": "4662.55",
+  "total": "62944.53",
+  "line_items": [
+    {
+      "description": "Project management - on-site",
+      "quantity": "4",
+      "unit_price": "221.83",
+      "amount": "887.32"
+    },
+    {
+      "description": "On-site training day - junior (hours)",
+      "quantity": "4",
+      "unit_price": "168.54",
+      "amount": "674.16"
+    },
+    {
+      "description": "Requirements analysis - standard",
+      "quantity": "50",
+      "unit_price": "143.39",
+      "amount": "7169.50"
+    },
+    {
+      "description": "Security assessment - on-site",
+      "quantity": "1",
+      "unit_price": "92.53",
+      "amount": "92.53"
+    },
+    {
+      "description": "Report development - junior (hours)",
+      "quantity": "0.5",
+      "unit_price": "146.45",
+      "amount": "73.23"
+    },
+    {
+      "description": "Data migration support - junior",
+      "quantity": "10",
+      "unit_price": "101.80",
+      "amount": "1018.00"
+    },
+    {
+      "description": "Requirements analysis - junior (hours)",
+      "quantity": "1.5",
+      "unit_price": "118.33",
+      "amount": "177.50"
+    },
+    {
+      "description": "On-site training day - standard",
+      "quantity": "1",
+      "unit_price": "159.54",
+      "amount": "159.54"
+    },
+    {
+      "description": "Systems testing - remote (hours)",
+      "quantity": "16",
+      "unit_price": "214.13",
+      "amount": "3426.08"
+    },
+    {
+      "description": "Security assessment - senior",
+      "quantity": "2",
+      "unit_price": "163.86",
+      "amount": "327.72"
+    },
+    {
+      "description": "Solution design - remote (hours)",
+      "quantity": "12",
+      "unit_price": "231.62",
+      "amount": "2779.44"
+    },
+    {
+      "description": "Report development - senior (hours)",
+      "quantity": "8",
+      "unit_price": "116.96",
+      "amount": "935.68"
+    },
+    {
+      "description": "Systems testing - on-site",
+      "quantity": "12",
+      "unit_price": "100.71",
+      "amount": "1208.52"
+    },
+    {
+      "description": "Solution design - standard",
+      "quantity": "2",
+      "unit_price": "236.25",
+      "amount": "472.50"
+    },
+    {
+      "description": "Project management - junior (hours)",
+      "quantity": "12",
+      "unit_price": "174.06",
+      "amount": "2088.72"
+    },
+    {
+      "description": "Report development - on-site (hours)",
+      "quantity": "4",
+      "unit_price": "175.64",
+      "amount": "702.56"
+    },
+    {
+      "description": "Requirements analysis - on-site (hours)",
+      "quantity": "8",
+      "unit_price": "192.56",
+      "amount": "1540.48"
+    },
+    {
+      "description": "Requirements analysis - senior (hours)",
+      "quantity": "8",
+      "unit_price": "190.79",
+      "amount": "1526.32"
+    },
+    {
+      "description": "Project management - senior (hours)",
+      "quantity": "1.5",
+      "unit_price": "117.09",
+      "amount": "175.64"
+    },
+    {
+      "description": "Solution design - senior",
+      "quantity": "50",
+      "unit_price": "202.93",
+      "amount": "10146.50"
+    },
+    {
+      "description": "Data migration support - on-site (hours)",
+      "quantity": "0.5",
+      "unit_price": "204.45",
+      "amount": "102.23"
+    },
+    {
+      "description": "Security assessment - junior (hours)",
+      "quantity": "12",
+      "unit_price": "191.79",
+      "amount": "2301.48"
+    },
+    {
+      "description": "Change management - senior (hours)",
+      "quantity": "6.5",
+      "unit_price": "173.85",
+      "amount": "1130.03"
+    },
+    {
+      "description": "Change management - remote (hours)",
+      "quantity": "16",
+      "unit_price": "180.15",
+      "amount": "2882.40"
+    },
+    {
+      "description": "Project management - remote (hours)",
+      "quantity": "2",
+      "unit_price": "229.80",
+      "amount": "459.60"
+    },
+    {
+      "description": "On-site training day - senior",
+      "quantity": "1",
+      "unit_price": "179.41",
+      "amount": "179.41"
+    },
+    {
+      "description": "Solution design - junior (hours)",
+      "quantity": "6.5",
+      "unit_price": "150.63",
+      "amount": "979.10"
+    },
+    {
+      "description": "Process review workshop - senior",
+      "quantity": "12",
+      "unit_price": "90.96",
+      "amount": "1091.52"
+    },
+    {
+      "description": "Data migration support - remote",
+      "quantity": "4",
+      "unit_price": "165.35",
+      "amount": "661.40"
+    },
+    {
+      "description": "Systems testing - junior (hours)",
+      "quantity": "16",
+      "unit_price": "236.43",
+      "amount": "3782.88"
+    },
+    {
+      "description": "Process review workshop - standard",
+      "quantity": "20",
+      "unit_price": "212.36",
+      "amount": "4247.20"
+    },
+    {
+      "description": "Change management - on-site (hours)",
+      "quantity": "12",
+      "unit_price": "154.78",
+      "amount": "1857.36"
+    },
+    {
+      "description": "Report development - remote",
+      "quantity": "12",
+      "unit_price": "232.94",
+      "amount": "2795.28"
+    },
+    {
+      "description": "Solution design - on-site",
+      "quantity": "1",
+      "unit_price": "230.15",
+      "amount": "230.15"
+    }
+  ]
+}

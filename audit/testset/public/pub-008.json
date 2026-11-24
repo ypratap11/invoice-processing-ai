@@ -1,0 +1,21 @@
+{
+  "vendor_name": "Gregory, Patterson and Fischer",
+  "invoice_id": "12222347",
+  "currency": "USD",
+  "tags": [
+    "decimal_comma"
+  ],
+  "invoice_date": "2017-03-18",
+  "due_date": null,
+  "subtotal": "123.75",
+  "tax_total": "12.38",
+  "total": "136.13",
+  "line_items": [
+    {
+      "description": "Zara Yellow Shift Dress XS",
+      "quantity": "5.00",
+      "unit_price": "24.75",
+      "amount": "123.75"
+    }
+  ]
+}

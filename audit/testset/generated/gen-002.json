@@ -1,0 +1,214 @@
+{
+  "vendor_name": "Marrowgate Fasteners",
+  "invoice_id": "INV002594",
+  "currency": "USD",
+  "tags": [
+    "multipage",
+    "discount"
+  ],
+  "invoice_date": "2026-03-20",
+  "due_date": "2026-05-04",
+  "subtotal": "12196.06",
+  "tax_total": "1158.63",
+  "total": "13354.69",
+  "line_items": [
+    {
+      "description": "Spring washer - M6",
+      "quantity": "3",
+      "unit_price": "3.86",
+      "amount": "11.58"
+    },
+    {
+      "description": "Lock nut nylon - M8",
+      "quantity": "4",
+      "unit_price": "21.37",
+      "amount": "85.48"
+    },
+    {
+      "description": "Socket cap screw - M6",
+      "quantity": "6",
+      "unit_price": "51.96",
+      "amount": "311.76"
+    },
+    {
+      "description": "Flat washer - M6",
+      "quantity": "1",
+      "unit_price": "15.68",
+      "amount": "15.68"
+    },
+    {
+      "description": "Shim plate - M10",
+      "quantity": "3",
+      "unit_price": "10.70",
+      "amount": "32.10"
+    },
+    {
+      "description": "Hex bolt zinc - M10",
+      "quantity": "2",
+      "unit_price": "13.69",
+      "amount": "27.38"
+    },
+    {
+      "description": "Shim plate - M12",
+      "quantity": "24",
+      "unit_price": "58.40",
+      "amount": "1401.60"
+    },
+    {
+      "description": "Threaded rod - M8",
+      "quantity": "6",
+      "unit_price": "57.77",
+      "amount": "346.62"
+    },
+    {
+      "description": "Ball bearing 6204 - M8",
+      "quantity": "1",
+      "unit_price": "33.40",
+      "amount": "33.40"
+    },
+    {
+      "description": "Socket cap screw - M8",
+      "quantity": "1",
+      "unit_price": "52.52",
+      "amount": "52.52"
+    },
+    {
+      "description": "Wing nut - M6",
+      "quantity": "50",
+      "unit_price": "17.24",
+      "amount": "862.00"
+    },
+    {
+      "description": "Flat washer - M8",
+      "quantity": "12",
+      "unit_price": "18.65",
+      "amount": "223.80"
+    },
+    {
+      "description": "Shim plate - M8",
+      "quantity": "10",
+      "unit_price": "52.49",
+      "amount": "524.90"
+    },
+    {
+      "description": "Threaded rod - M12",
+      "quantity": "50",
+      "unit_price": "30.67",
+      "amount": "1533.50"
+    },
+    {
+      "description": "Socket cap screw - M16",
+      "quantity": "2",
+      "unit_price": "10.06",
+      "amount": "20.12"
+    },
+    {
+      "description": "Ball bearing 6204 - M6",
+      "quantity": "50",
+      "unit_price": "52.92",
+      "amount": "2646.00"
+    },
+    {
+      "description": "Ball bearing 6204 - M12",
+      "quantity": "1",
+      "unit_price": "3.27",
+      "amount": "3.27"
+    },
+    {
+      "description": "Threaded rod - M6",
+      "quantity": "10",
+      "unit_price": "40.85",
+      "amount": "408.50"
+    },
+    {
+      "description": "Flat washer - M16",
+      "quantity": "12",
+      "unit_price": "11.63",
+      "amount": "139.56"
+    },
+    {
+      "description": "Promotional credit (5%)",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "-641.90"
+    },
+    {
+      "description": "Ball bearing 6204 - M10",
+      "quantity": "10",
+      "unit_price": "27.98",
+      "amount": "279.80"
+    },
+    {
+      "description": "Lock nut nylon - M12",
+      "quantity": "12",
+      "unit_price": "25.75",
+      "amount": "309.00"
+    },
+    {
+      "description": "Coach screw - M16",
+      "quantity": "1",
+      "unit_price": "4.86",
+      "amount": "4.86"
+    },
+    {
+      "description": "Coach screw - M10",
+      "quantity": "20",
+      "unit_price": "20.10",
+      "amount": "402.00"
+    },
+    {
+      "description": "Hex bolt zinc - M16",
+      "quantity": "10",
+      "unit_price": "14.82",
+      "amount": "148.20"
+    },
+    {
+      "description": "Spring washer - M8",
+      "quantity": "1",
+      "unit_price": "57.88",
+      "amount": "57.88"
+    },
+    {
+      "description": "Coach screw - M8",
+      "quantity": "50",
+      "unit_price": "32.66",
+      "amount": "1633.00"
+    },
+    {
+      "description": "Wing nut - M10",
+      "quantity": "24",
+      "unit_price": "36.70",
+      "amount": "880.80"
+    },
+    {
+      "description": "Threaded rod - M16",
+      "quantity": "2",
+      "unit_price": "35.52",
+      "amount": "71.04"
+    },
+    {
+      "description": "Lock nut nylon - M16",
+      "quantity": "4",
+      "unit_price": "19.76",
+      "amount": "79.04"
+    },
+    {
+      "description": "Spring washer - M16",
+      "quantity": "6",
+      "unit_price": "34.86",
+      "amount": "209.16"
+    },
+    {
+      "description": "Hex bolt zinc - M6",
+      "quantity": "1",
+      "unit_price": "31.95",
+      "amount": "31.95"
+    },
+    {
+      "description": "Shim plate - M16",
+      "quantity": "1",
+      "unit_price": "51.46",
+      "amount": "51.46"
+    }
+  ]
+}

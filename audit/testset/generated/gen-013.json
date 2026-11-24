@@ -1,0 +1,75 @@
+{
+  "vendor_name": "Inkwell Meadow Press",
+  "invoice_id": "B26-5735",
+  "currency": "USD",
+  "tags": [
+    "multi_tax"
+  ],
+  "invoice_date": "2026-06-04",
+  "due_date": "2026-06-19",
+  "subtotal": "15163.26",
+  "tax_total": "1364.69",
+  "total": "16527.95",
+  "line_items": [
+    {
+      "description": "Presentation folders - premium stock",
+      "quantity": "12",
+      "unit_price": "83.47",
+      "amount": "1001.64"
+    },
+    {
+      "description": "Tri-fold brochures - gloss",
+      "quantity": "6",
+      "unit_price": "250.87",
+      "amount": "1505.22"
+    },
+    {
+      "description": "Foam board signs - matte",
+      "quantity": "12",
+      "unit_price": "338.44",
+      "amount": "4061.28"
+    },
+    {
+      "description": "Business cards - premium stock",
+      "quantity": "2",
+      "unit_price": "266.40",
+      "amount": "532.80"
+    },
+    {
+      "description": "Event posters - matte",
+      "quantity": "1",
+      "unit_price": "381.12",
+      "amount": "381.12"
+    },
+    {
+      "description": "Window decals - full colour",
+      "quantity": "4",
+      "unit_price": "350.49",
+      "amount": "1401.96"
+    },
+    {
+      "description": "Window decals - matte",
+      "quantity": "3",
+      "unit_price": "356.64",
+      "amount": "1069.92"
+    },
+    {
+      "description": "Product labels - premium stock",
+      "quantity": "20",
+      "unit_price": "104.14",
+      "amount": "2082.80"
+    },
+    {
+      "description": "Tri-fold brochures - premium stock",
+      "quantity": "12",
+      "unit_price": "203.01",
+      "amount": "2436.12"
+    },
+    {
+      "description": "Foam board signs - two colour",
+      "quantity": "10",
+      "unit_price": "69.04",
+      "amount": "690.40"
+    }
+  ]
+}

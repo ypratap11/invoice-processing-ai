@@ -1,0 +1,255 @@
+{
+  "vendor_name": "Quillfeather Office Supply",
+  "invoice_id": "05478",
+  "currency": "USD",
+  "tags": [
+    "multipage"
+  ],
+  "invoice_date": "2026-06-10",
+  "due_date": "2026-07-10",
+  "subtotal": "21380.24",
+  "tax_total": "1763.87",
+  "total": "23144.11",
+  "line_items": [
+    {
+      "description": "Toner cartridge - pack of 12",
+      "quantity": "10",
+      "unit_price": "38.38",
+      "amount": "383.80"
+    },
+    {
+      "description": "Highlighters assorted - box of 10",
+      "quantity": "4",
+      "unit_price": "4.41",
+      "amount": "17.64"
+    },
+    {
+      "description": "Highlighters assorted - pack of 12",
+      "quantity": "6",
+      "unit_price": "78.71",
+      "amount": "472.26"
+    },
+    {
+      "description": "Whiteboard markers - pack of 12",
+      "quantity": "24",
+      "unit_price": "84.25",
+      "amount": "2022.00"
+    },
+    {
+      "description": "Desk organiser - box of 10",
+      "quantity": "12",
+      "unit_price": "51.20",
+      "amount": "614.40"
+    },
+    {
+      "description": "Envelopes C5 - single",
+      "quantity": "50",
+      "unit_price": "32.61",
+      "amount": "1630.50"
+    },
+    {
+      "description": "Stapler heavy duty - box of 50",
+      "quantity": "3",
+      "unit_price": "79.16",
+      "amount": "237.48"
+    },
+    {
+      "description": "Ballpoint pens blue - single",
+      "quantity": "10",
+      "unit_price": "30.11",
+      "amount": "301.10"
+    },
+    {
+      "description": "Archive boxes - box of 50",
+      "quantity": "6",
+      "unit_price": "7.60",
+      "amount": "45.60"
+    },
+    {
+      "description": "Gel pens black - single",
+      "quantity": "2",
+      "unit_price": "44.53",
+      "amount": "89.06"
+    },
+    {
+      "description": "Stapler heavy duty - single",
+      "quantity": "24",
+      "unit_price": "22.08",
+      "amount": "529.92"
+    },
+    {
+      "description": "Stapler heavy duty - case of 5",
+      "quantity": "50",
+      "unit_price": "72.12",
+      "amount": "3606.00"
+    },
+    {
+      "description": "Ballpoint pens blue - case of 5",
+      "quantity": "12",
+      "unit_price": "40.98",
+      "amount": "491.76"
+    },
+    {
+      "description": "Copy paper A4 80gsm - box of 10",
+      "quantity": "5",
+      "unit_price": "28.74",
+      "amount": "143.70"
+    },
+    {
+      "description": "Archive boxes - single",
+      "quantity": "50",
+      "unit_price": "50.26",
+      "amount": "2513.00"
+    },
+    {
+      "description": "Lever arch files - single",
+      "quantity": "4",
+      "unit_price": "86.95",
+      "amount": "347.80"
+    },
+    {
+      "description": "Sticky notes 76x76 - pack of 12",
+      "quantity": "5",
+      "unit_price": "67.95",
+      "amount": "339.75"
+    },
+    {
+      "description": "Archive boxes - box of 10",
+      "quantity": "2",
+      "unit_price": "73.37",
+      "amount": "146.74"
+    },
+    {
+      "description": "Lever arch files - box of 50",
+      "quantity": "4",
+      "unit_price": "36.47",
+      "amount": "145.88"
+    },
+    {
+      "description": "Gel pens black - pack of 12",
+      "quantity": "24",
+      "unit_price": "4.89",
+      "amount": "117.36"
+    },
+    {
+      "description": "Gel pens black - case of 5",
+      "quantity": "6",
+      "unit_price": "38.75",
+      "amount": "232.50"
+    },
+    {
+      "description": "Highlighters assorted - single",
+      "quantity": "1",
+      "unit_price": "83.32",
+      "amount": "83.32"
+    },
+    {
+      "description": "Stapler heavy duty - pack of 12",
+      "quantity": "1",
+      "unit_price": "38.52",
+      "amount": "38.52"
+    },
+    {
+      "description": "Envelopes C5 - box of 10",
+      "quantity": "1",
+      "unit_price": "11.85",
+      "amount": "11.85"
+    },
+    {
+      "description": "Whiteboard markers - case of 5",
+      "quantity": "5",
+      "unit_price": "6.80",
+      "amount": "34.00"
+    },
+    {
+      "description": "Toner cartridge - box of 10",
+      "quantity": "6",
+      "unit_price": "78.07",
+      "amount": "468.42"
+    },
+    {
+      "description": "Whiteboard markers - box of 50",
+      "quantity": "3",
+      "unit_price": "34.99",
+      "amount": "104.97"
+    },
+    {
+      "description": "Sticky notes 76x76 - case of 5",
+      "quantity": "10",
+      "unit_price": "34.55",
+      "amount": "345.50"
+    },
+    {
+      "description": "Desk organiser - case of 5",
+      "quantity": "24",
+      "unit_price": "42.87",
+      "amount": "1028.88"
+    },
+    {
+      "description": "Desk organiser - box of 50",
+      "quantity": "6",
+      "unit_price": "56.79",
+      "amount": "340.74"
+    },
+    {
+      "description": "Envelopes C5 - box of 50",
+      "quantity": "4",
+      "unit_price": "52.18",
+      "amount": "208.72"
+    },
+    {
+      "description": "Lever arch files - box of 10",
+      "quantity": "4",
+      "unit_price": "5.70",
+      "amount": "22.80"
+    },
+    {
+      "description": "Whiteboard markers - box of 10",
+      "quantity": "5",
+      "unit_price": "56.13",
+      "amount": "280.65"
+    },
+    {
+      "description": "Highlighters assorted - box of 50",
+      "quantity": "5",
+      "unit_price": "37.15",
+      "amount": "185.75"
+    },
+    {
+      "description": "Toner cartridge - case of 5",
+      "quantity": "5",
+      "unit_price": "76.77",
+      "amount": "383.85"
+    },
+    {
+      "description": "Toner cartridge - single",
+      "quantity": "20",
+      "unit_price": "26.54",
+      "amount": "530.80"
+    },
+    {
+      "description": "Copy paper A4 80gsm - pack of 12",
+      "quantity": "12",
+      "unit_price": "61.13",
+      "amount": "733.56"
+    },
+    {
+      "description": "Sticky notes 76x76 - box of 10",
+      "quantity": "6",
+      "unit_price": "9.15",
+      "amount": "54.90"
+    },
+    {
+      "description": "Desk organiser - single",
+      "quantity": "1",
+      "unit_price": "68.92",
+      "amount": "68.92"
+    },
+    {
+      "description": "Sticky notes 76x76 - box of 50",
+      "quantity": "24",
+      "unit_price": "84.41",
+      "amount": "2025.84"
+    }
+  ]
+}

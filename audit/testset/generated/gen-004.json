@@ -1,0 +1,204 @@
+{
+  "vendor_name": "Bluefen Catering Co.",
+  "invoice_id": "A4-00110",
+  "currency": "EUR",
+  "tags": [
+    "multipage",
+    "non_usd",
+    "dmy_date",
+    "decimal_comma"
+  ],
+  "invoice_date": "2026-07-27",
+  "due_date": "2026-08-26",
+  "subtotal": "31214.13",
+  "tax_total": "7179.25",
+  "total": "38393.38",
+  "line_items": [
+    {
+      "description": "Juice carafe - serves 20",
+      "quantity": "50",
+      "unit_price": "119.27",
+      "amount": "5963.50"
+    },
+    {
+      "description": "Dessert tray - half tray",
+      "quantity": "24",
+      "unit_price": "134.61",
+      "amount": "3230.64"
+    },
+    {
+      "description": "Dessert tray - serves 30",
+      "quantity": "3",
+      "unit_price": "148.68",
+      "amount": "446.04"
+    },
+    {
+      "description": "Vegetarian wraps - serves 10",
+      "quantity": "1",
+      "unit_price": "21.26",
+      "amount": "21.26"
+    },
+    {
+      "description": "Coffee service - serves 30",
+      "quantity": "50",
+      "unit_price": "95.22",
+      "amount": "4761.00"
+    },
+    {
+      "description": "Sandwich tray - serves 10",
+      "quantity": "12",
+      "unit_price": "39.94",
+      "amount": "479.28"
+    },
+    {
+      "description": "Breakfast platter - per person",
+      "quantity": "10",
+      "unit_price": "41.60",
+      "amount": "416.00"
+    },
+    {
+      "description": "Salad station - serves 30",
+      "quantity": "5",
+      "unit_price": "61.01",
+      "amount": "305.05"
+    },
+    {
+      "description": "Sandwich tray - half tray",
+      "quantity": "1",
+      "unit_price": "73.37",
+      "amount": "73.37"
+    },
+    {
+      "description": "Sandwich tray - serves 30",
+      "quantity": "1",
+      "unit_price": "72.78",
+      "amount": "72.78"
+    },
+    {
+      "description": "Salad station - serves 10",
+      "quantity": "1",
+      "unit_price": "99.24",
+      "amount": "99.24"
+    },
+    {
+      "description": "Coffee service - half tray",
+      "quantity": "12",
+      "unit_price": "18.36",
+      "amount": "220.32"
+    },
+    {
+      "description": "Dessert tray - serves 10",
+      "quantity": "24",
+      "unit_price": "54.67",
+      "amount": "1312.08"
+    },
+    {
+      "description": "Hot lunch buffet - serves 30",
+      "quantity": "12",
+      "unit_price": "41.15",
+      "amount": "493.80"
+    },
+    {
+      "description": "Hot lunch buffet - per person",
+      "quantity": "4",
+      "unit_price": "13.78",
+      "amount": "55.12"
+    },
+    {
+      "description": "Hot lunch buffet - serves 20",
+      "quantity": "12",
+      "unit_price": "133.12",
+      "amount": "1597.44"
+    },
+    {
+      "description": "Salad station - per person",
+      "quantity": "1",
+      "unit_price": "88.76",
+      "amount": "88.76"
+    },
+    {
+      "description": "Coffee service - serves 20",
+      "quantity": "1",
+      "unit_price": "143.33",
+      "amount": "143.33"
+    },
+    {
+      "description": "Breakfast platter - serves 10",
+      "quantity": "3",
+      "unit_price": "160.37",
+      "amount": "481.11"
+    },
+    {
+      "description": "Pastry selection - per person",
+      "quantity": "1",
+      "unit_price": "29.17",
+      "amount": "29.17"
+    },
+    {
+      "description": "Sandwich tray - per person",
+      "quantity": "4",
+      "unit_price": "32.47",
+      "amount": "129.88"
+    },
+    {
+      "description": "Pastry selection - serves 30",
+      "quantity": "50",
+      "unit_price": "36.37",
+      "amount": "1818.50"
+    },
+    {
+      "description": "Hot lunch buffet - serves 10",
+      "quantity": "6",
+      "unit_price": "116.49",
+      "amount": "698.94"
+    },
+    {
+      "description": "Dessert tray - per person",
+      "quantity": "6",
+      "unit_price": "98.00",
+      "amount": "588.00"
+    },
+    {
+      "description": "Fruit bowl - serves 30",
+      "quantity": "12",
+      "unit_price": "86.33",
+      "amount": "1035.96"
+    },
+    {
+      "description": "Juice carafe - per person",
+      "quantity": "10",
+      "unit_price": "29.60",
+      "amount": "296.00"
+    },
+    {
+      "description": "Fruit bowl - serves 10",
+      "quantity": "4",
+      "unit_price": "150.83",
+      "amount": "603.32"
+    },
+    {
+      "description": "Juice carafe - serves 30",
+      "quantity": "4",
+      "unit_price": "47.50",
+      "amount": "190.00"
+    },
+    {
+      "description": "Hot lunch buffet - half tray",
+      "quantity": "24",
+      "unit_price": "22.60",
+      "amount": "542.40"
+    },
+    {
+      "description": "Salad station - half tray",
+      "quantity": "24",
+      "unit_price": "121.41",
+      "amount": "2913.84"
+    },
+    {
+      "description": "Breakfast platter - serves 20",
+      "quantity": "50",
+      "unit_price": "42.16",
+      "amount": "2108.00"
+    }
+  ]
+}

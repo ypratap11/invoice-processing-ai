@@ -1,0 +1,57 @@
+{
+  "vendor_name": "Smith-Cook",
+  "invoice_id": "16662010",
+  "currency": "USD",
+  "tags": [
+    "decimal_comma"
+  ],
+  "invoice_date": "2016-08-28",
+  "due_date": null,
+  "subtotal": "2053.73",
+  "tax_total": "205.37",
+  "total": "2259.10",
+  "line_items": [
+    {
+      "description": "Nintendo Gameboy Pocket Console Green with Box MGB-001 Japan Tested Working 59",
+      "quantity": "1.00",
+      "unit_price": "65.00",
+      "amount": "65.00"
+    },
+    {
+      "description": "New Sony Playstation 4 Slim 1TB 3 Game Bundle Console. Sealed!!!",
+      "quantity": "3.00",
+      "unit_price": "399.99",
+      "amount": "1199.97"
+    },
+    {
+      "description": "Atari Flashback 4 Classic Game Console 75 built in games Space Invaders Asteroid",
+      "quantity": "4.00",
+      "unit_price": "8.50",
+      "amount": "34.00"
+    },
+    {
+      "description": "Sony PlayStation 1 PS1 Console model scph-7501",
+      "quantity": "4.00",
+      "unit_price": "14.99",
+      "amount": "59.96"
+    },
+    {
+      "description": "Nintendo Wii Console - 2 Remotes w/ Covers, Nunchucks, Sensor Sega Game Bundle",
+      "quantity": "1.00",
+      "unit_price": "85.00",
+      "amount": "85.00"
+    },
+    {
+      "description": "Sony PlayStation 3 PS3 Super Slim Black Console 20 GB *Tested* Console & Cables",
+      "quantity": "4.00",
+      "unit_price": "99.95",
+      "amount": "399.80"
+    },
+    {
+      "description": "Nintendo Gameboy Pocket Console Green with Box MGB-001 Japan Tested Working 55",
+      "quantity": "3.00",
+      "unit_price": "70.00",
+      "amount": "210.00"
+    }
+  ]
+}

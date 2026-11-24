@@ -1,0 +1,54 @@
+doc_id,source,file,license,tags
+gen-001,generated,generated/gen-001.pdf,generated-synthetic (no third-party content),multipage
+gen-002,generated,generated/gen-002.pdf,generated-synthetic (no third-party content),multipage;discount
+gen-003,generated,generated/gen-003.pdf,generated-synthetic (no third-party content),multipage;multi_tax
+gen-004,generated,generated/gen-004.pdf,generated-synthetic (no third-party content),multipage;non_usd;dmy_date;decimal_comma
+gen-005,generated,generated/gen-005.pdf,generated-synthetic (no third-party content),multipage
+gen-006,generated,generated/gen-006.pdf,generated-synthetic (no third-party content),multipage;discount
+gen-007,generated,generated/gen-007.pdf,generated-synthetic (no third-party content),discount
+gen-008,generated,generated/gen-008.png,generated-synthetic (no third-party content),discount;scanned
+gen-009,generated,generated/gen-009.pdf,generated-synthetic (no third-party content),discount
+gen-010,generated,generated/gen-010.png,generated-synthetic (no third-party content),discount;scanned
+gen-011,generated,generated/gen-011.pdf,generated-synthetic (no third-party content),discount
+gen-012,generated,generated/gen-012.pdf,generated-synthetic (no third-party content),discount
+gen-013,generated,generated/gen-013.pdf,generated-synthetic (no third-party content),multi_tax
+gen-014,generated,generated/gen-014.png,generated-synthetic (no third-party content),multi_tax;scanned
+gen-015,generated,generated/gen-015.pdf,generated-synthetic (no third-party content),multi_tax
+gen-016,generated,generated/gen-016.pdf,generated-synthetic (no third-party content),multi_tax
+gen-017,generated,generated/gen-017.pdf,generated-synthetic (no third-party content),multi_tax;non_usd;dmy_date
+gen-018,generated,generated/gen-018.pdf,generated-synthetic (no third-party content),multi_tax;non_usd;dmy_date
+gen-019,generated,generated/gen-019.pdf,generated-synthetic (no third-party content),non_usd;dmy_date;decimal_comma
+gen-020,generated,generated/gen-020.png,generated-synthetic (no third-party content),non_usd;dmy_date;scanned;decimal_comma
+gen-021,generated,generated/gen-021.pdf,generated-synthetic (no third-party content),non_usd;dmy_date
+gen-022,generated,generated/gen-022.pdf,generated-synthetic (no third-party content),non_usd;dmy_date
+gen-023,generated,generated/gen-023.pdf,generated-synthetic (no third-party content),non_usd;dmy_date;discount
+gen-024,generated,generated/gen-024.pdf,generated-synthetic (no third-party content),non_usd;dmy_date
+gen-025,generated,generated/gen-025.png,generated-synthetic (no third-party content),non_usd;dmy_date;scanned
+gen-026,generated,generated/gen-026.pdf,generated-synthetic (no third-party content),dmy_date
+gen-027,generated,generated/gen-027.png,generated-synthetic (no third-party content),dmy_date;scanned
+gen-028,generated,generated/gen-028.pdf,generated-synthetic (no third-party content),dmy_date
+gen-029,generated,generated/gen-029.png,generated-synthetic (no third-party content),dmy_date;scanned
+gen-030,generated,generated/gen-030.pdf,generated-synthetic (no third-party content),dmy_date
+gen-031,generated,generated/gen-031.pdf,generated-synthetic (no third-party content),dmy_date
+gen-032,generated,generated/gen-032.pdf,generated-synthetic (no third-party content),bad_total
+gen-033,generated,generated/gen-033.png,generated-synthetic (no third-party content),bad_total;scanned
+gen-034,generated,generated/gen-034.pdf,generated-synthetic (no third-party content),bad_total;discount
+gen-035,generated,generated/gen-035.pdf,generated-synthetic (no third-party content),bad_total;non_usd;dmy_date;decimal_comma
+gen-036,generated,generated/gen-036.png,generated-synthetic (no third-party content),scanned
+gen-037,generated,generated/gen-037.png,generated-synthetic (no third-party content),scanned
+gen-038,generated,generated/gen-038.pdf,generated-synthetic (no third-party content),
+gen-039,generated,generated/gen-039.pdf,generated-synthetic (no third-party content),
+gen-040,generated,generated/gen-040.pdf,generated-synthetic (no third-party content),
+pub-001,public,public/pub-001.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-002,public,public/pub-002.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-003,public,public/pub-003.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-004,public,public/pub-004.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-005,public,public/pub-005.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-006,public,public/pub-006.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-007,public,public/pub-007.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-008,public,public/pub-008.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-009,public,public/pub-009.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-010,public,public/pub-010.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-011,public,public/pub-011.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-012,public,public/pub-012.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma
+pub-013,public,public/pub-013.jpg,MIT (katanaml-org/invoices-donut-data-v1); underlying invoices CC-BY-4.0 (Kozlowski & Weichbroth 2021),decimal_comma

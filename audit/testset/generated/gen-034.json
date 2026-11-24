@@ -1,0 +1,88 @@
+{
+  "vendor_name": "Tallisker Machine Shop",
+  "invoice_id": "CN-8009-9",
+  "currency": "USD",
+  "tags": [
+    "bad_total",
+    "discount"
+  ],
+  "invoice_date": "2026-04-19",
+  "due_date": "2026-06-03",
+  "subtotal": "3614.60",
+  "tax_total": "343.39",
+  "total": "3958.89",
+  "line_items": [
+    {
+      "description": "Flat washer - M6",
+      "quantity": "20",
+      "unit_price": "42.82",
+      "amount": "856.40"
+    },
+    {
+      "description": "Hex bolt zinc - M10",
+      "quantity": "1",
+      "unit_price": "59.23",
+      "amount": "59.23"
+    },
+    {
+      "description": "Hex bolt zinc - M16",
+      "quantity": "20",
+      "unit_price": "5.34",
+      "amount": "106.80"
+    },
+    {
+      "description": "Ball bearing 6204 - M16",
+      "quantity": "1",
+      "unit_price": "21.65",
+      "amount": "21.65"
+    },
+    {
+      "description": "Hex bolt zinc - M12",
+      "quantity": "1",
+      "unit_price": "22.23",
+      "amount": "22.23"
+    },
+    {
+      "description": "Ball bearing 6204 - M6",
+      "quantity": "4",
+      "unit_price": "22.97",
+      "amount": "91.88"
+    },
+    {
+      "description": "Coach screw - M6",
+      "quantity": "4",
+      "unit_price": "36.01",
+      "amount": "144.04"
+    },
+    {
+      "description": "Volume discount (7.5%)",
+      "quantity": null,
+      "unit_price": null,
+      "amount": "-293.08"
+    },
+    {
+      "description": "Lock nut nylon - M10",
+      "quantity": "3",
+      "unit_price": "57.25",
+      "amount": "171.75"
+    },
+    {
+      "description": "Threaded rod - M10",
+      "quantity": "50",
+      "unit_price": "31.91",
+      "amount": "1595.50"
+    },
+    {
+      "description": "Ball bearing 6204 - M12",
+      "quantity": "5",
+      "unit_price": "48.60",
+      "amount": "243.00"
+    },
+    {
+      "description": "Coach screw - M10",
+      "quantity": "24",
+      "unit_price": "24.80",
+      "amount": "595.20"
+    }
+  ]
+}

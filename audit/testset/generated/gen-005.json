@@ -1,0 +1,219 @@
+{
+  "vendor_name": "Corvane Print Works",
+  "invoice_id": "20262988",
+  "currency": "USD",
+  "tags": [
+    "multipage"
+  ],
+  "invoice_date": "2026-09-23",
+  "due_date": null,
+  "subtotal": "109516.01",
+  "tax_total": "6570.96",
+  "total": "116086.97",
+  "line_items": [
+    {
+      "description": "Presentation folders - full colour",
+      "quantity": "2",
+      "unit_price": "90.98",
+      "amount": "181.96"
+    },
+    {
+      "description": "Notepads - full colour",
+      "quantity": "2",
+      "unit_price": "159.62",
+      "amount": "319.24"
+    },
+    {
+      "description": "Business cards - full colour",
+      "quantity": "1",
+      "unit_price": "46.30",
+      "amount": "46.30"
+    },
+    {
+      "description": "Letterhead - two colour",
+      "quantity": "1",
+      "unit_price": "47.60",
+      "amount": "47.60"
+    },
+    {
+      "description": "Foam board signs - full colour",
+      "quantity": "2",
+      "unit_price": "203.18",
+      "amount": "406.36"
+    },
+    {
+      "description": "Vinyl banner - matte",
+      "quantity": "24",
+      "unit_price": "55.91",
+      "amount": "1341.84"
+    },
+    {
+      "description": "Vinyl banner - premium stock",
+      "quantity": "50",
+      "unit_price": "154.15",
+      "amount": "7707.50"
+    },
+    {
+      "description": "Product labels - full colour",
+      "quantity": "12",
+      "unit_price": "115.00",
+      "amount": "1380.00"
+    },
+    {
+      "description": "Tri-fold brochures - gloss",
+      "quantity": "2",
+      "unit_price": "182.48",
+      "amount": "364.96"
+    },
+    {
+      "description": "Product labels - gloss",
+      "quantity": "6",
+      "unit_price": "325.21",
+      "amount": "1951.26"
+    },
+    {
+      "description": "Foam board signs - premium stock",
+      "quantity": "3",
+      "unit_price": "60.71",
+      "amount": "182.13"
+    },
+    {
+      "description": "Notepads - matte",
+      "quantity": "4",
+      "unit_price": "114.87",
+      "amount": "459.48"
+    },
+    {
+      "description": "Letterhead - premium stock",
+      "quantity": "2",
+      "unit_price": "345.26",
+      "amount": "690.52"
+    },
+    {
+      "description": "Product labels - two colour",
+      "quantity": "50",
+      "unit_price": "344.07",
+      "amount": "17203.50"
+    },
+    {
+      "description": "Presentation folders - gloss",
+      "quantity": "6",
+      "unit_price": "67.79",
+      "amount": "406.74"
+    },
+    {
+      "description": "Event posters - full colour",
+      "quantity": "50",
+      "unit_price": "279.38",
+      "amount": "13969.00"
+    },
+    {
+      "description": "Letterhead - full colour",
+      "quantity": "12",
+      "unit_price": "360.32",
+      "amount": "4323.84"
+    },
+    {
+      "description": "Vinyl banner - gloss",
+      "quantity": "6",
+      "unit_price": "189.38",
+      "amount": "1136.28"
+    },
+    {
+      "description": "Vinyl banner - full colour",
+      "quantity": "24",
+      "unit_price": "320.50",
+      "amount": "7692.00"
+    },
+    {
+      "description": "Event posters - two colour",
+      "quantity": "24",
+      "unit_price": "46.63",
+      "amount": "1119.12"
+    },
+    {
+      "description": "Window decals - matte",
+      "quantity": "3",
+      "unit_price": "142.61",
+      "amount": "427.83"
+    },
+    {
+      "description": "Presentation folders - two colour",
+      "quantity": "4",
+      "unit_price": "118.47",
+      "amount": "473.88"
+    },
+    {
+      "description": "Vinyl banner - two colour",
+      "quantity": "50",
+      "unit_price": "130.64",
+      "amount": "6532.00"
+    },
+    {
+      "description": "Presentation folders - premium stock",
+      "quantity": "20",
+      "unit_price": "209.99",
+      "amount": "4199.80"
+    },
+    {
+      "description": "Event posters - gloss",
+      "quantity": "5",
+      "unit_price": "40.98",
+      "amount": "204.90"
+    },
+    {
+      "description": "Event posters - premium stock",
+      "quantity": "20",
+      "unit_price": "157.72",
+      "amount": "3154.40"
+    },
+    {
+      "description": "Business cards - two colour",
+      "quantity": "2",
+      "unit_price": "294.82",
+      "amount": "589.64"
+    },
+    {
+      "description": "Foam board signs - matte",
+      "quantity": "50",
+      "unit_price": "396.79",
+      "amount": "19839.50"
+    },
+    {
+      "description": "Tri-fold brochures - matte",
+      "quantity": "1",
+      "unit_price": "218.82",
+      "amount": "218.82"
+    },
+    {
+      "description": "Window decals - two colour",
+      "quantity": "10",
+      "unit_price": "203.32",
+      "amount": "2033.20"
+    },
+    {
+      "description": "Notepads - two colour",
+      "quantity": "3",
+      "unit_price": "38.23",
+      "amount": "114.69"
+    },
+    {
+      "description": "Presentation folders - matte",
+      "quantity": "24",
+      "unit_price": "287.34",
+      "amount": "6896.16"
+    },
+    {
+      "description": "Tri-fold brochures - full colour",
+      "quantity": "24",
+      "unit_price": "156.80",
+      "amount": "3763.20"
+    },
+    {
+      "description": "Business cards - gloss",
+      "quantity": "3",
+      "unit_price": "46.12",
+      "amount": "138.36"
+    }
+  ]
+}
