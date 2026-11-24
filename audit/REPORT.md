@@ -110,9 +110,13 @@ over 471 printed lines.
 - *Strict*: the value exactly as the app hands it to its user. "21,380.24" for 21380.24 is wrong, "$" for USD
   is wrong, "06/10/2026" for 2026-06-10 is wrong. This is what a downstream system receives.
 - *Lenient*: after one shared clean-up, identical for every system. Thousands separators and currency
-  symbols or codes are stripped from amounts; brackets or a trailing minus mean negative. Any date format is
-  accepted **only if it has a single reading**: 05/06/2026 is rejected as ambiguous, not guessed. Invoice
-  numbers are compared ignoring case and spaces. Currency is upper-cased, but a symbol like "$" is still wrong.
+  symbols or codes are stripped from amounts, including codes glued to the number ("USD12.00", "12.00EUR");
+  brackets or a trailing minus mean negative. Letters glued in front of a number are stripped too, so an
+  identifier like "INV1234" in an amount field reads as 1234 (a hyphenated "INV-1234" is rejected). Any date
+  format is accepted, but a numeric date is always read **month first**, for every system: "05/06/2026" is
+  read as 6 May, so a day-first truth printed that way scores wrong for whoever returns it as printed. Only a
+  date missing its day, month or year (or not a date at all) is rejected. Invoice numbers are compared ignoring case and spaces.
+  Currency is upper-cased, but a symbol like "$" is still wrong.
 
 **Rules** (from `audit/scorer.py` and `audit/normalize.py`, as frozen):
 - Amounts, quantities and unit prices: equal to the cent after rounding half-up. Quantities are compared to

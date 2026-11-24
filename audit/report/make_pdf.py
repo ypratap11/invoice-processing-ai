@@ -159,7 +159,8 @@ def build(out: Path = OUT) -> Path:
             "<b>Scoring:</b> 2,283 values (407 header, 1,876 line-item over 471 lines). Amounts and quantities "
             "equal to the cent; dates equal as dates; vendor and line description by fuzzy match "
             "(token_set_ratio 90 and 85); lines paired by best description match. <i>Strict</i> = the value as the "
-            "app returns it; <i>lenient</i> = after one shared clean-up (separators, symbols, unambiguous date formats).",
+            "app returns it; <i>lenient</i> = after one shared clean-up (separators, symbols and glued currency codes or "
+            "letters stripped from amounts; any date format, numeric dates read month first).",
             "<b>Silent error</b> = a wrong value that is not flagged for review. Missing values are never silent. "
             "Flags: before, Document AI confidence below 0.7; after, any failed check sends the whole invoice to "
             "review. Checks: qty x price = amount, lines add to subtotal, subtotal + tax = total, valid dates "
