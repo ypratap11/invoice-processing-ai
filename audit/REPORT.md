@@ -231,7 +231,7 @@ low-confidence flag.
 | Several tax lines, one reported | 7 of 53 | gen-003, as above |
 | Day and month swapped | invoice date 3, due date 2 | gen-026 2026-10-02 for 2026-02-10 |
 | Header value not found | 7 values on 5 invoices | gen-024 currency (INR) not returned |
-| "Rs." amounts passed through as printed (strict) | 9 values on 1 invoice | gen-024 total "Rs.32,304.78" |
+| "Rs." amounts passed through as printed (strict) | 10 values on 1 invoice (8 unflagged) | gen-024 total "Rs.32,304.78" |
 
 In total 261 values were missing after the fixes (254 line values, 7 header values).
 
