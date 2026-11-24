@@ -16,7 +16,7 @@ Every number below comes from the committed files in `audit/results/`. A two-pag
 | Values correct (lenient) | | 356 of 2,283 (16%) | 1,864 of 2,283 (82%) | 2,278 of 2,283 (99.8%) |
 | Values missing | | 1,883 | 261 | 3 |
 | Wrong values passed on silently (lenient) | "Zero data entry errors" | 40 | 31 | 2 |
-| Invoices sent to human review | | 36 of 53 | 49 of 53 | 7 of 53 |
+| Invoices sent to human review | | 36 of 53 had at least one low-confidence field (the app did not route these anywhere) | 49 of 53 | 7 of 53 |
 | Cost per invoice | | $0.20 (Document AI called twice per upload) | $0.10 | about $0.006 |
 
 Before the fixes the silent-error count looks small only because 82% of values were not returned at all.
@@ -276,7 +276,7 @@ check catches all 7 and sends them to review.
 | Line values correct | 0 of 1,876 (0) | 1,476 of 1,876 (1,464) |
 | Values missing | 1,883 (1,883) | 261 (261) |
 | Silent errors | 40 (195) | 31 (31) |
-| Invoices sent to review | 36 of 53 | 49 of 53 |
+| Invoices sent to review | none routed (36 of 53 had a low-confidence field) | 49 of 53 |
 
 Per-field accuracy is in the chart and in `aggregate_lenient.field_accuracy` in each results file.
 The "after" results were re-scored on 2026-11-24 from the same cached responses, after a fix to how the checks

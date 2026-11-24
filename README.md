@@ -2,7 +2,7 @@
 
 > **Advanced invoice processing system powered by Google Document AI with a beautiful Streamlit frontend**
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)](https://fastapi.tiangolo.com)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)](https://streamlit.io)
 [![Google Cloud](https://img.shields.io/badge/Google%20Cloud-Document%20AI-yellow.svg)](https://cloud.google.com/document-ai)
@@ -87,7 +87,7 @@ An end-to-end AI-powered invoice processing system that automates document proce
 ### **Backend & AI**
 - **FastAPI** - High-performance async web framework
 - **Google Cloud Document AI** - Advanced document understanding
-- **Python 3.8+** - Modern Python with type hints
+- **Python 3.11+** - Modern Python with type hints
 - **Pydantic** - Data validation and serialization
 - **Uvicorn** - Lightning-fast ASGI server
 
@@ -113,7 +113,7 @@ An end-to-end AI-powered invoice processing system that automates document proce
 ## 🚀 **Quick Start**
 
 ### **Prerequisites**
-- Python 3.8+
+- Python 3.11+
 - Google Cloud Account with Document AI enabled
 - Git
 - Docker (optional)
@@ -194,9 +194,9 @@ Measured on 53 labeled invoices (40 generated in 5 layouts with deliberate hard 
 | Line items returned | 0 of 471 | 472 for 471 printed | 471 of 471 |
 | Values correct, lenient (strict), of 2,283 | 356 (158) | 1,864 (1,849) | 2,278 (2,278) |
 | Silent errors, lenient (strict) | 40 (195) | 31 (31) | 2 (2) |
-| Invoices sent to human review | 36 of 53 | 49 of 53 | 7 of 53 |
+| Invoices sent to human review | 36 of 53 had at least one low-confidence field (the app did not route these anywhere) | 49 of 53 | 7 of 53 |
 | Cost per invoice | $0.20 (Document AI called twice) | $0.10 | about $0.006 |
-| Median time per invoice | 4.1 s | 4.1 s | 7.9 s |
+| Median time per invoice | 4.1 s | 4.1 s (same cached calls) | 7.9 s |
 
 What this means:
 - After the fixes, header fields are right 388 of 407 times (95%) and line-item values 1,476 of 1,876 (79%).
@@ -364,7 +364,7 @@ This project demonstrates:
 
 ### **Immediate Roadmap**
 - [x] **Accuracy Audit** - Labeled test set, measured field-level accuracy, published method ([report](audit/REPORT.md))
-- [x] **Real Agent Tool** - The chat agent's `process_invoice` tool now runs the real extraction (it used to return sample data)
+- [x] **Real Agent Tool** - The chat agent's `process_invoice` tool now runs the real extraction (it used to return sample data) on files placed in the uploads folder; nothing in the app writes there yet
 - [x] **Arithmetic Checks** - Line items + tax must equal the total, or the invoice goes to review
 - [ ] **Better Line Extraction** - Bring the review rate down from 49 of 53 (scanned invoices fragment line rows)
 - [ ] **Database Integration** - PostgreSQL for processing history
