@@ -13,7 +13,7 @@
 
 An end-to-end AI-powered invoice processing system that automates document processing for enterprises. Built for teams that spend hours keying invoices by hand.
 
-> **Status, honestly:** extraction accuracy has **not yet been measured** against a labeled test set, and the chat agent's `process_invoice` tool currently returns sample data (see `src/agents/tools.py`). A full accuracy audit is in progress; results will be published here with the test set and method.
+> **Status, honestly:** this README used to claim "95%+ accuracy". An audit on 53 labeled invoices (2026-11-23) found the app as built got **0 of 53** invoices fully right: it never extracted a single line item. After the fixes it gets **6 of 53** fully right, and its new arithmetic checks send 49 of 53 to human review. Gemini 3.8 Flash with the same checks got **48 of 53**. The test set is mostly synthetic. Full numbers, method and limits: [audit report](audit/REPORT.md) ([2-page PDF](audit/REPORT.pdf)).
 
 ### 🌟 **Live Demo**
 
@@ -27,7 +27,7 @@ An end-to-end AI-powered invoice processing system that automates document proce
 - ⚡ Turns an invoice into structured data (vendor, dates, totals, line items) in seconds instead of manual keying
 - 🎯 Shows Document AI's per-field confidence, so low-confidence fields can be routed to review
 - 🔄 Batch processing for multiple documents
-- 📏 Accuracy on real invoices: **being measured** (audit in progress)
+- 📏 Accuracy: **measured**, see [Performance Metrics](#-performance-metrics) and the [audit report](audit/REPORT.md)
 
 ## 🏗️ **System Architecture**
 
@@ -186,7 +186,28 @@ helm install invoice-ai ./helm
 
 ## 📊 **Performance Metrics**
 
-Not yet measured. An accuracy audit is in progress: a labeled set of public sample invoices, field-level accuracy for vendor, invoice number, dates, totals, tax and line items, and the failure cases. Results, the test set and the method will be published here; until then, treat any accuracy figure as unverified.
+Measured on 53 labeled invoices (40 generated in 5 layouts with deliberate hard cases, 13 from a public synthetic dataset), runs dated 2026-11-23. *Lenient* = formatting cleaned up the same way for every system; *strict* = values exactly as the app returns them. A *silent error* is a wrong value that is not flagged for review.
+
+| | App as built | App after fixes | Gemini 3.8 Flash + same checks |
+|---|---|---|---|
+| Invoices fully correct, lenient (strict) | 0 of 53 (0) | 6 of 53 (6) | 48 of 53 (48) |
+| Line items returned | 0 of 471 | 472 for 471 printed | 471 of 471 |
+| Values correct, lenient (strict), of 2,283 | 356 (158) | 1,864 (1,849) | 2,278 (2,278) |
+| Silent errors, lenient (strict) | 40 (195) | 32 (40) | 2 (2) |
+| Invoices sent to human review | 36 of 53 | 49 of 53 | 7 of 53 |
+| Cost per invoice | $0.20 (Document AI called twice) | $0.10 | about $0.006 |
+| Median time per invoice | 4.1 s | 4.1 s | 7.9 s |
+
+What this means:
+- After the fixes, header fields are right 388 of 407 times (95%) and line-item values 1,476 of 1,876 (79%).
+- A 92% review rate is not a usable operating point. The checks stop most wrong values from passing silently, but by sending nearly every invoice to a person.
+- Almost all remaining silent errors are on 4 scanned invoices where Document AI splits table rows into fragments.
+- The test set is mostly synthetic and small. Treat the Gemini result as a reason for a real trial, not a verdict. A local-model comparison is deferred.
+
+![Before vs after](audit/report/before_after.png)
+
+- Full report, findings and limits: [audit/REPORT.md](audit/REPORT.md) ([2-page PDF](audit/REPORT.pdf))
+- Test set, scoring rules and how to rerun: [audit/README.md](audit/README.md)
 
 ## 📁 **Project Structure**
 
@@ -342,9 +363,10 @@ This project demonstrates:
 ## 🌟 **What's Next?**
 
 ### **Immediate Roadmap**
-- [ ] **Accuracy Audit** - Labeled test set, measured field-level accuracy, published method (in progress)
-- [ ] **Real Agent Tool** - Wire the chat agent's `process_invoice` tool to Document AI (currently returns sample data)
-- [ ] **Arithmetic Checks** - Line items + tax must equal the total, or the invoice goes to review
+- [x] **Accuracy Audit** - Labeled test set, measured field-level accuracy, published method ([report](audit/REPORT.md))
+- [x] **Real Agent Tool** - The chat agent's `process_invoice` tool now runs the real extraction (it used to return sample data)
+- [x] **Arithmetic Checks** - Line items + tax must equal the total, or the invoice goes to review
+- [ ] **Better Line Extraction** - Bring the review rate down from 49 of 53 (scanned invoices fragment line rows)
 - [ ] **Database Integration** - PostgreSQL for processing history
 - [ ] **User Authentication** - Secure multi-user support
 - [ ] **Advanced Analytics** - Deeper processing insights
