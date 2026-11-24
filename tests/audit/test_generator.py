@@ -1,5 +1,6 @@
 import csv
 import json
+import re
 from collections import Counter
 from pathlib import Path
 
@@ -7,6 +8,7 @@ import pytest
 
 from audit.generate.generator import (
     LAYOUTS,
+    _VENDORS,
     doc_id_for,
     generate_invoices,
     layout_for,
@@ -20,7 +22,6 @@ TESTSET = REPO / "audit" / "testset"
 
 MINIMUMS = {"multipage": 5, "discount": 5, "multi_tax": 5, "non_usd": 5,
             "dmy_date": 5, "bad_total": 3, "scanned": 8}
-BANNED = ()
 
 
 def to_json(invs):
@@ -85,10 +86,18 @@ def test_values_are_cent_quantized_and_ids_unique():
             assert inv.due_date > inv.invoice_date
 
 
-def test_no_banned_names():
-    blob = to_json(generate_invoices()).lower()
-    for w in BANNED:
-        assert w not in blob
+def test_vendor_names_come_only_from_recorded_lists():
+    """Allowlist: every generated vendor is one of the generator's invented
+    names, and every public vendor is the one recorded in SOURCES.md."""
+    invented = {name for name, _ in _VENDORS}
+    assert {inv.vendor_name for inv in generate_invoices()} <= invented
+    recorded = dict(re.findall(r"^\| (pub-\d{3}) \| ([^|]+?) \|$",
+                               (TESTSET / "SOURCES.md").read_text(encoding="utf-8"), re.M))
+    for doc_id, _, truth in load_testset():
+        if doc_id.startswith("gen-"):
+            assert truth.vendor_name in invented, doc_id
+        else:
+            assert recorded.get(doc_id) == truth.vendor_name, doc_id
 
 
 def test_doc_ids():

@@ -69,6 +69,26 @@ Corrections (dataset label -> printed text):
 | pub-011 | line 1 description | `PlayStation 5 Console Disc Version PREORDER"00OO` | `PlayStation 5 Console Disc Version **PREORDER**` (trailing boxes omitted) |
 | pub-011 | line 5 description | `… White "I TESTED Working 11194` | `… White " / TESTED Working 11194` |
 
+### Vendor names
+Each public truth `vendor_name` is the first line of the dataset's `seller` label (after the
+corrections above). `tests/audit/test_generator.py` checks the truth files against this list.
+
+| doc | vendor_name |
+|---|---|
+| pub-001 | Bradley-Andrade |
+| pub-002 | Hopkins and Sons |
+| pub-003 | Trujillo-Hunt |
+| pub-004 | Nichols-Barajas |
+| pub-005 | Smith-Cook |
+| pub-006 | Kaiser, Hays and Cook |
+| pub-007 | Smith Ltd |
+| pub-008 | Gregory, Patterson and Fischer |
+| pub-009 | Gordon, Alvarado and Jones |
+| pub-010 | Rodriguez-Jackson |
+| pub-011 | Potts, Reed and Miller |
+| pub-012 | Conley Ltd |
+| pub-013 | Stone-Waller |
+
 Rows not used and why: test row 13 has a malformed label (missing `item_net_worth`, and
 its gross total `1579 929,37` disagrees with net+VAT); row 22's `seller` is a tax id.
 Both show the dataset labels are not trustworthy unverified, which is why only hand-checked
